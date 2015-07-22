@@ -15,18 +15,12 @@ import rise.splcc.repository.OrganizerRepository;
 //#if ${Reviewer} == "T"
 import rise.splcc.repository.ReviewerRepository;
 //#endif
-//#if ${Speaker} == "T"
-import rise.splcc.repository.SpeakerRepository;
-//#endif
 import rise.splcc.repository.UserRepository;
 import rise.splcc.util.Email;
 
 public class UserControl {
 
 	private UserRepository users;
-	//#if ${Speaker} == "T"
-	private SpeakerRepository speakers;
-	//#endif
 	//#if ${Organizer} == "T"
 	private OrganizerRepository organizers;
 	//#endif

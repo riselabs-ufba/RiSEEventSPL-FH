@@ -36,13 +36,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private UserListAllScreenP screenListAllUser;
 
 	//private UserManagementScreenP screenManagementUser;
-	//#if ${Speaker} == "T"
-	private SpeakerInsertScreenP screenInsertSpeaker;
-	private SpeakerRemoveScreenP screenRemoveSpeaker;
-	private SpeakerUpdateScreenP screenUpdateSpeaker;
-	private SpeakerSearchScreenP screenSearchSpeaker;
-	private SpeakerListAllScreenP screenListAllSpeaker;
-	//#endif
 	//#if ${Reviewer} == "T"
 	private ReviewerInsertScreenP screenInsertReviewer;
 	private ReviewerRemoveScreenP screenRemoveReviewer;
@@ -209,13 +202,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ListAllUserMenuAction listAllUserAction = new ListAllUserMenuAction();
 
 		//ManagementUserMenuAction managementUserAction = new ManagementUserMenuAction();
-		//#if ${Speaker} == "T"
-		InsertSpeakerMenuAction insertSpeakerAction = new InsertSpeakerMenuAction();
-		RemoveSpeakerMenuAction removeSpeakerAction = new RemoveSpeakerMenuAction();
-		UpdateSpeakerMenuAction updateSpeakerAction = new UpdateSpeakerMenuAction();
-		SearchSpeakerMenuAction searchSpeakerAction = new SearchSpeakerMenuAction();
-		ListAllSpeakerMenuAction listAllSpeakerAction = new ListAllSpeakerMenuAction();
-		//#endif
 		//#if ${Reviewer} == "T"
 		InsertReviewerMenuAction insertReviewerAction = new InsertReviewerMenuAction();
 		RemoveReviewerMenuAction removeReviewerAction = new RemoveReviewerMenuAction();
@@ -389,25 +375,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		
 //		JMenuItem mntmUserManagement = new JMenuItem("User Management");
 //		mnUser.add(mntmUserManagement);
-		//#if ${Speaker} == "T"
-		JMenu mnSpeaker = new JMenu("Speaker");
-		menuBar.add(mnSpeaker);
-		
-		JMenuItem mntmInsert_1 = new JMenuItem("Insert");
-		mnSpeaker.add(mntmInsert_1);
-		
-		JMenuItem mntmRemove_1 = new JMenuItem("Remove");
-		mnSpeaker.add(mntmRemove_1);
-		
-		JMenuItem mntmUpdate_1 = new JMenuItem("Update");
-		mnSpeaker.add(mntmUpdate_1);
-		
-		JMenuItem mntmSearch_1 = new JMenuItem("Search");
-		mnSpeaker.add(mntmSearch_1);
-		
-		JMenuItem mntmListall_1 = new JMenuItem("ListAll");
-		mnSpeaker.add(mntmListall_1);
-		//#endif
 		//#if ${Reviewer} == "T"
 		JMenu mnReviewer = new JMenu("Reviewer");
 		menuBar.add(mnReviewer);
@@ -671,13 +638,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmListall.addActionListener(listAllUserAction);
 
 		//mntmUserManagement.addActionListener(managementUserAction);
-		//#if ${Speaker} == "T"
-		mntmInsert_1.addActionListener(insertSpeakerAction);
-		mntmRemove_1.addActionListener(removeSpeakerAction);
-		mntmUpdate_1.addActionListener(updateSpeakerAction);
-		mntmSearch_1.addActionListener(searchSpeakerAction);
-		mntmListall_1.addActionListener(listAllSpeakerAction);
-		//#endif
 		//#if ${Reviewer} == "T"
 		mntmInsert_2.addActionListener(insertReviewerAction);
 		mntmRemove_2.addActionListener(removeReviewerAction);
@@ -924,116 +884,6 @@ public class RiSEEventMainScreenP extends JFrame {
 //	}
 	
 	
-	//SPEAKER
-	
-	//#if ${Speaker} == "T"
-	private class InsertSpeakerMenuAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			screenInsertSpeaker = SpeakerInsertScreenP.getInstanceSpeakerInsertScreenP();
-		//	desktopPane.add(screenInsertSpeaker);
-			if(screenInsertSpeaker.getParent() == null){
-				desktopPane.add(screenInsertSpeaker);
-			}
-			screenInsertSpeaker.setVisible(true);
-			desktopPane.moveToFront(screenInsertSpeaker);
-			try {
-				screenInsertSpeaker.setSelected(true);
-			} catch (PropertyVetoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-		}  
-	}
-	
-	private class RemoveSpeakerMenuAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			screenRemoveSpeaker = SpeakerRemoveScreenP.getInstanceSpeakerRemoveScreenP();
-			//desktopPane.add(screenRemoveSpeaker);
-			if(screenRemoveSpeaker.getParent() == null){
-				desktopPane.add(screenRemoveSpeaker);
-			}
-			screenRemoveSpeaker.setVisible(true);
-			desktopPane.moveToFront(screenRemoveSpeaker);
-			try {
-				screenRemoveSpeaker.setSelected(true);
-			} catch (PropertyVetoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-		}  
-	}
-	
-	private class UpdateSpeakerMenuAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			screenUpdateSpeaker = SpeakerUpdateScreenP.getInstanceSpeakerUpdateScreenP();
-			//desktopPane.add(screenUpdateSpeaker);
-			if(screenUpdateSpeaker.getParent() == null){
-				desktopPane.add(screenUpdateSpeaker);
-			}
-			screenUpdateSpeaker.setVisible(true);
-			desktopPane.moveToFront(screenUpdateSpeaker);
-			try {
-				screenUpdateSpeaker.setSelected(true);
-			} catch (PropertyVetoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}  
-	}
-	
-	private class SearchSpeakerMenuAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			screenSearchSpeaker = SpeakerSearchScreenP.getInstanceSpeakerSearchScreenP();
-			//desktopPane.add(screenSearchSpeaker);
-			if(screenSearchSpeaker.getParent() == null){
-				desktopPane.add(screenSearchSpeaker);
-			}
-			screenSearchSpeaker.setVisible(true);
-			desktopPane.moveToFront(screenSearchSpeaker);
-			try {
-				screenSearchSpeaker.setSelected(true);
-			} catch (PropertyVetoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}  
-	}
-	
-	private class ListAllSpeakerMenuAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			screenListAllSpeaker = SpeakerListAllScreenP.getInstanceSpeakerListAllScreenP();
-			//desktopPane.add(screenListAllSpeaker);
-			if(screenListAllSpeaker.getParent() == null){
-				desktopPane.add(screenListAllSpeaker);
-			}
-			screenListAllSpeaker.setVisible(true);
-			desktopPane.moveToFront(screenListAllSpeaker);
-			try {
-				screenListAllSpeaker.setSelected(true);
-			} catch (PropertyVetoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}  
-	}
-	//#endif
 	
 	
 	//REVIEWER

@@ -41,9 +41,6 @@ import rise.splcc.business.ReviewControl;
 //#if ${Reviewer} == "T"
 import rise.splcc.business.ReviewerControl;
 //#endif
-//#if ${Speaker} == "T"
-import rise.splcc.business.SpeakerControl;
-//#endif
 //#if ${InsertAuthors} == "T"
 import rise.splcc.business.SubmissionAuthorControl;
 //#endif
@@ -85,9 +82,6 @@ import rise.splcc.data.Review;
 //#endif
 //#if ${Reviewer} == "T"
 import rise.splcc.data.Reviewer;
-//#endif
-//#if ${Speaker} == "T"
-import rise.splcc.data.Speaker;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.data.Submission;
@@ -150,10 +144,6 @@ import rise.splcc.exception.ReviewNotFoundException;
 import rise.splcc.exception.ReviewerAlreadyInsertedException;
 import rise.splcc.exception.ReviewerNotFoundException;
 //#endif
-//#if ${Speaker} == "T"
-import rise.splcc.exception.SpeakerAlreadyInsertedException;
-import rise.splcc.exception.SpeakerNotFoundException;
-//#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.exception.SubmissionAlreadyInsertedException;
 //#endif
@@ -214,10 +204,6 @@ import rise.splcc.repository.ReviewRepositoryBDR;
 import rise.splcc.repository.ReviewerRepository;
 import rise.splcc.repository.ReviewerRepositoryBDR;
 //#endif
-//#if ${Speaker} == "T"
-import rise.splcc.repository.SpeakerRepository;
-import rise.splcc.repository.SpeakerRepositoryBDR;
-//#endif
 //#if ${InsertAuthors} == "T"
 import rise.splcc.repository.SubmissionAuthorRepository;
 import rise.splcc.repository.SubmissionAuthorRepositoryBDR;
@@ -242,9 +228,6 @@ public class RiSEventFacade {
 
 	private UserControl users;
 
-	//#if ${Speaker} == "T"
-	private SpeakerControl speakers;
-	//#endif
 	//#if ${Organizer} == "T"
 	private OrganizerControl organizers;
 	//#endif
@@ -299,9 +282,6 @@ public class RiSEventFacade {
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
-		//#if ${Speaker} == "T"
-		SpeakerRepository speakerRepository = SpeakerRepositoryBDR.getInstance();
-		//#endif
 		//#if ${Organizer} == "T"
 		OrganizerRepository organizerRepository = OrganizerRepositoryBDR.getInstance();
 		//#endif
@@ -353,9 +333,6 @@ public class RiSEventFacade {
 		
 		users = new UserControl(userRepository);
 		
-		//#if ${Speaker} == "T"
-		speakers = new SpeakerControl(speakerRepository);
-		//#endif
 		//#if ${Organizer} == "T"
 		organizers = new OrganizerControl(organizerRepository);
 		//#endif
@@ -500,32 +477,7 @@ public class RiSEventFacade {
 	//#endif
 	
 	
-	//SPEAKER
-	//#if ${Speaker} == "T"
-	public void insertSpeaker(Speaker speaker) throws SpeakerAlreadyInsertedException, RepositoryException{
-		speakers.insert(speaker);
-	}
-
-	public void removeSpeaker(int idUser) throws SpeakerNotFoundException, RepositoryException, SpeakerAlreadyInsertedException{
-		speakers.remove(idUser);  
-	}
-
-	public void updateSpeaker(Speaker speaker) throws SpeakerNotFoundException, RepositoryException, SpeakerAlreadyInsertedException{
-		speakers.update(speaker);
-	}
-
-	public List<Speaker> getSpeakers() throws RepositoryException{
-		return speakers.getSpeakers();
-	}
-
-	public Speaker searchSpeaker(int idUser) throws SpeakerNotFoundException, RepositoryException, SpeakerAlreadyInsertedException{
-		return speakers.search(idUser);
-	} 
 	
-	public boolean isThereSpeaker(int idUser) throws RepositoryException{
-		return speakers.isThere(idUser);
-	}
-	//#endif
 	//REVIEWER
 	//#if ${Reviewer} == "T"
 	public void insertReviewer(Reviewer reviewer) throws ReviewerAlreadyInsertedException, RepositoryException{
