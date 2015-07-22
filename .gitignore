@@ -1,0 +1,12 @@
+
+# ignore MacOS files
+*.DS_Store
+
+# ignore generated files
+bin/
+*.class
+src/
+ 
+# ignore temporary files
+.tmp/
+
