@@ -209,8 +209,7 @@ public class ReceiptScreenP extends JInternalFrame{
 				
 				payment = RiSEEventMainScreenP.facade.searchPayment(receipt2.getIdPayment());
 				receipt.gerarRecibo(payment);
-			} catch (PaymentNotFoundException | RepositoryException
-					| PaymentAlreadyInsertedException e1) {
+			} catch (PaymentNotFoundException | RepositoryException | PaymentAlreadyInsertedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (IOException e1) {

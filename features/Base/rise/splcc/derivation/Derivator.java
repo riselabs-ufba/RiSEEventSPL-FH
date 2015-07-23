@@ -72,7 +72,7 @@ public class Derivator {
 	}
 	
 	private static List<Feature> readXML(String fileName) {
-        List<Feature> featureList = new ArrayList<>();
+        List<Feature> featureList = new ArrayList<Feature>();
         Feature feature = null;
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         try {
