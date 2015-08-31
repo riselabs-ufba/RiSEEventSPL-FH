@@ -11,9 +11,6 @@ import rise.splcc.business.ActivityControl;
 //#if ${RegistrationOrganizerActivity} == "T"
 import rise.splcc.business.ActivityOrganizerControl;
 //#endif
-//#if ${RegistrationSpeakerActivity} == "T"
-import rise.splcc.business.ActivitySpeakerControl;
-//#endif
 import rise.splcc.business.ActivityUserControl;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.business.AssignmentControl;
@@ -52,9 +49,6 @@ import rise.splcc.business.UserControl;
 import rise.splcc.data.Activity;
 //#if ${RegistrationOrganizerActivity} == "T"
 import rise.splcc.data.ActivityOrganizer;
-//#endif
-//#if ${RegistrationSpeakerActivity} == "T"
-import rise.splcc.data.ActivitySpeaker;
 //#endif
 import rise.splcc.data.ActivityUser;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
@@ -100,10 +94,6 @@ import rise.splcc.exception.ActivityNotFoundException;
 //#if ${RegistrationOrganizerActivity} == "T"
 import rise.splcc.exception.ActivityOrganizerAlreadyInsertedException;
 import rise.splcc.exception.ActivityOrganizerNotFoundException;
-//#endif
-//#if ${RegistrationSpeakerActivity} == "T"
-import rise.splcc.exception.ActivitySpeakerAlreadyInsertedException;
-import rise.splcc.exception.ActivitySpeakerNotFoundException;
 //#endif
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
 import rise.splcc.exception.ActivityUserNotFoundException;
@@ -162,10 +152,6 @@ import rise.splcc.repository.ActivityOrganizerRepositoryBDR;
 //#endif
 import rise.splcc.repository.ActivityRepository;
 import rise.splcc.repository.ActivityRepositoryBDR;
-//#if ${RegistrationSpeakerActivity} == "T"
-import rise.splcc.repository.ActivitySpeakerRepository;
-import rise.splcc.repository.ActivitySpeakerRepositoryBDR;
-//#endif
 import rise.splcc.repository.ActivityUserRepository;
 import rise.splcc.repository.ActivityUserRepositoryBDR;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
@@ -241,9 +227,6 @@ public class RiSEventFacade {
 	private PaymentControl payments;
 	//#endif
 	private RegistrationControl registrations;
-	//#if ${RegistrationSpeakerActivity} == "T"
-	private ActivitySpeakerControl activitySpeakers;
-	//#endif
 	//#if ${RegistrationUserActivity} == "T"
 	private ActivityUserControl activityUsers;
 	//#endif
@@ -301,9 +284,6 @@ public class RiSEventFacade {
 		PaymentRepository paymentRepository = PaymentRepositoryBDR.getInstance();
 		//#endif
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
-		//#if ${RegistrationSpeakerActivity} == "T"
-		ActivitySpeakerRepository activitySpeakerRepository = ActivitySpeakerRepositoryBDR.getInstance();
-		//#endif
 		//#if ${RegistrationUserActivity} == "T"
 		ActivityUserRepository activityUserRepository = ActivityUserRepositoryBDR.getInstance();
 		//#endif
@@ -352,9 +332,6 @@ public class RiSEventFacade {
 		payments = new PaymentControl(paymentRepository);
 		//#endif
 		registrations = new RegistrationControl(registrationRepository);
-		//#if ${RegistrationSpeakerActivity} == "T"
-		activitySpeakers = new ActivitySpeakerControl(activitySpeakerRepository);
-		//#endif
 		//#if ${RegistrationUserActivity} == "T"
 		activityUsers = new ActivityUserControl(activityUserRepository);
 		//#endif
@@ -605,28 +582,6 @@ public class RiSEventFacade {
 		return organizers.isThere(idUser);
 	}
 	//#endif
-	
-	
-	
-	//ACTIVITYSPEAKER
-	//#if ${RegistrationSpeakerActivity} == "T"
-	public void insertActivitySpeaker(ActivitySpeaker activitySpeaker) throws ActivitySpeakerAlreadyInsertedException, RepositoryException{
-		activitySpeakers.insert(activitySpeaker);
-	}
-
-	public void removeActivitySpeaker(ActivitySpeaker activitySpeaker) throws ActivitySpeakerNotFoundException, RepositoryException, ActivitySpeakerAlreadyInsertedException{
-		activitySpeakers.remove(activitySpeaker);  
-	}
-	
-	public List<ActivitySpeaker> getActivitiesSpeakers() throws RepositoryException{
-		return activitySpeakers.getActivitiesSpeakers();
-	}
-	
-	public List<ActivitySpeaker> getActivitiesById(int idActivity) throws RepositoryException{
-		return activitySpeakers.getActivitiesById(idActivity);
-	}
-	//#endif
-	
 	
 	
 	//ACTIVITYORGANIZER
