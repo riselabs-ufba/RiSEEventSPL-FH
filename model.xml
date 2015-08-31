@@ -4,7 +4,7 @@
 			<and abstract="true" mandatory="true" name="RiSEEventsSPLFH">
 				<and abstract="true" mandatory="true" name="User">
 					<feature name="Speaker"/>
-					<feature hidden="true" name="Organizer"/>
+					<feature name="Organizer"/>
 					<feature hidden="true" name="Reviewer"/>
 				</and>
 				<or abstract="true" mandatory="true" name="Registration">

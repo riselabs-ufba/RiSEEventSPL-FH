@@ -43,13 +43,7 @@ public class RiSEEventMainScreenP extends JFrame {
 	private ReviewerSearchScreenP screenSearchReviewer;
 	private ReviewerListAllScreenP screenListAllReviewer;
 	//#endif
-	//#if ${Organizer} == "T"
-	private OrganizerInsertScreenP screenInsertOrganizer;
-	private OrganizerRemoveScreenP screenRemoveOrganizer;
-	private OrganizerUpdateScreenP screenUpdateOrganizer;
-	private OrganizerSearchScreenP screenSearchOrganizer;
-	private OrganizerListAllScreenP screenListAllOrganizer;
-	//#endif
+	
 	
 	private EventInsertScreenP screenInsertEvent;
 	 
@@ -213,13 +207,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		UpdateReviewerMenuAction updateReviewerAction = new UpdateReviewerMenuAction();
 		SearchReviewerMenuAction searchReviewerAction = new SearchReviewerMenuAction();
 		ListAllReviewerMenuAction listAllReviewerAction = new ListAllReviewerMenuAction();
-		//#endif
-		//#if ${Organizer} == "T"
-		InsertOrganizerMenuAction insertOrganizerAction = new InsertOrganizerMenuAction();
-		RemoveOrganizerMenuAction removeOrganizerAction = new RemoveOrganizerMenuAction();
-     	UpdateOrganizerMenuAction updateOrganizerAction = new UpdateOrganizerMenuAction();
-		SearchOrganizerMenuAction searchOrganizerAction = new SearchOrganizerMenuAction();
-		ListAllOrganizerMenuAction listAllOrganizerAction = new ListAllOrganizerMenuAction();
 		//#endif
 		
 		InsertEventMenuAction insertEventAction = new InsertEventMenuAction();
@@ -398,25 +385,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		
 		JMenuItem mntmListall_2 = new JMenuItem("ListAll");
 		mnReviewer.add(mntmListall_2);
-		//#endif
-		//#if ${Organizer} == "T"
-		JMenu mnOrganizer = new JMenu("Organizer");
-		menuBar.add(mnOrganizer);
-		
-		JMenuItem mntmInsert_3 = new JMenuItem("Insert");
-		mnOrganizer.add(mntmInsert_3);
-		
-		JMenuItem mntmRemove_3 = new JMenuItem("Remove");
-		mnOrganizer.add(mntmRemove_3);
-		
-		JMenuItem mntmUpdate_3 = new JMenuItem("Update");
-		mnOrganizer.add(mntmUpdate_3);
-		
-		JMenuItem mntmSearch_3 = new JMenuItem("Search");
-		mnOrganizer.add(mntmSearch_3);
-		
-		JMenuItem mntmListall_3 = new JMenuItem("Listall");
-		mnOrganizer.add(mntmListall_3);
 		//#endif
 		JMenu mnEvent = new JMenu("Event");
 		menuBar.add(mnEvent);
@@ -650,13 +618,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmSearch_2.addActionListener(searchReviewerAction);
 		mntmListall_2.addActionListener(listAllReviewerAction);
 		//#endif
-		//#if ${Organizer} == "T"
-		mntmInsert_3.addActionListener(insertOrganizerAction);
-		mntmRemove_3.addActionListener(removeOrganizerAction);
-		mntmUpdate_3.addActionListener(updateOrganizerAction);
-		mntmSearch_3.addActionListener(searchOrganizerAction);
-		mntmListall_3.addActionListener(listAllOrganizerAction);
-		//#endif
+
 		mntmInsert_4.addActionListener(insertEventAction);
 		
 		mntmRemove_4.addActionListener(removeEventAction);

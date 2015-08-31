@@ -214,9 +214,6 @@ public class RiSEventFacade {
 
 	private UserControl users;
 
-	//#if ${Organizer} == "T"
-	private OrganizerControl organizers;
-	//#endif
 	//#if ${Reviewer} == "T"
 	private ReviewerControl reviewers;
 	//#endif
@@ -271,9 +268,6 @@ public class RiSEventFacade {
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
-		//#if ${Organizer} == "T"
-		OrganizerRepository organizerRepository = OrganizerRepositoryBDR.getInstance();
-		//#endif
 		//#if ${Reviewer} == "T"
 		ReviewerRepository reviewerRepository = ReviewerRepositoryBDR.getInstance();
 		//#endif
@@ -319,9 +313,6 @@ public class RiSEventFacade {
 		
 		users = new UserControl(userRepository);
 		
-		//#if ${Organizer} == "T"
-		organizers = new OrganizerControl(organizerRepository);
-		//#endif
 		//#if ${Reviewer} == "T"
 		reviewers = new ReviewerControl(reviewerRepository);
 		//#endif
@@ -554,35 +545,6 @@ public class RiSEventFacade {
 	}
 	//#endif
 	//#endif
-	
-	
-	
-	//ORGANIZER
-	//#if ${Organizer} == "T"
-	public void insertOrganizer(Organizer organizer) throws OrganizerAlreadyInsertedException, RepositoryException{
-		organizers.insert(organizer);
-	}
-
-	public void removeOrganizer(int idUser) throws OrganizerNotFoundException, RepositoryException, OrganizerAlreadyInsertedException{
-		organizers.remove(idUser);  
-	}
-
-	public void updateOrganizer(Organizer organizer) throws OrganizerNotFoundException, RepositoryException, OrganizerAlreadyInsertedException{
-		organizers.update(organizer);
-	}
-
-	public List<Organizer> getOrganizers() throws RepositoryException{
-		return organizers.getOrganizers();
-	}
-
-	public Organizer searchOrganizer(int idUser) throws OrganizerNotFoundException, RepositoryException, OrganizerAlreadyInsertedException{
-		return organizers.search(idUser);
-	}
-	public boolean isThereOrganizer(int idUser) throws RepositoryException{
-		return organizers.isThere(idUser);
-	}
-	//#endif
-	
 	
 	//ACTIVITYORGANIZER
 	//#if ${RegistrationOrganizerActivity} == "T"

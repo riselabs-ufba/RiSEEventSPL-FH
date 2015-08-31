@@ -21,9 +21,7 @@ import rise.splcc.util.Email;
 public class UserControl {
 
 	private UserRepository users;
-	//#if ${Organizer} == "T"
-	private OrganizerRepository organizers;
-	//#endif
+
 	//#if ${Reviewer} == "T"
 	private ReviewerRepository reviewers;
 	//#endif
