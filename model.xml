@@ -10,7 +10,7 @@
 				<or abstract="true" mandatory="true" name="Registration">
 					<feature hidden="true" mandatory="true" name="RegistrationUserActivity"/>
 					<feature mandatory="true" name="RegistrationSpeakerActivity"/>
-					<feature hidden="true" mandatory="true" name="RegistrationOrganizerActivity"/>
+					<feature mandatory="true" name="RegistrationOrganizerActivity"/>
 				</or>
 				<and abstract="true" mandatory="true" name="Activity">
 					<feature hidden="true" name="ActivityWorkshop"/>

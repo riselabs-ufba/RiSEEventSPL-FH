@@ -9,9 +9,6 @@ import rise.splcc.data.User;
 import rise.splcc.exception.RepositoryException;
 import rise.splcc.exception.UserAlreadyInsertedException;
 import rise.splcc.exception.UserNotFoundException;
-//#if ${Organizer} == "T"
-import rise.splcc.repository.OrganizerRepository;
-//#endif
 //#if ${Reviewer} == "T"
 import rise.splcc.repository.ReviewerRepository;
 //#endif
