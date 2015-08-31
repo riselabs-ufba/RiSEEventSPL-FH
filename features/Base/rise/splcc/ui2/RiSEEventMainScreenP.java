@@ -81,9 +81,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	//#if ${RegistrationSpeakerActivity} == "T"
 	private ActivitySpeakerManagementScreenP screenActivitySpeakerManagement;
 	//#endif
-	//#if ${RegistrationOrganizerActivity} == "T"
-	private ActivityOrganizerManagementScreenP screenActivityOrganizerManagement;
-	//#endif
 	//#if ${ReportsFrequencyperActivity} == "T" 
 	private FrequencyPerActivityScreenP screenFrequencyPerActivity;
 	//#endif
@@ -180,6 +177,8 @@ public class RiSEEventMainScreenP extends JFrame {
 	}
 
 	public JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
+	public JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
+	
 	/**
 	 * Create the frame.
 	 */
@@ -244,9 +243,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#endif
 		//#if ${RegistrationSpeakerActivity} == "T"
 		ActivitySpeakerManagementMenuAction managementActivitySpeakerAction = new ActivitySpeakerManagementMenuAction();
-		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		ActivityOrganizerManagementMenuAction managementActivityOrganizerAction = new ActivityOrganizerManagementMenuAction();
 		//#endif
 		//#if ${ReportsFrequencyperActivity} == "T"
 		FrequencyPerActivityAction frequencyPerActivityAction = new FrequencyPerActivityAction();
@@ -462,7 +458,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mnReview.add(mntmReviewResults);
 		//#endif
 		
-		JMenu mnRegistration = new JMenu("Registration");
 		menuBar.add(mnRegistration);
 		//#if ${RegistrationUserActivity} == "T"
 		JMenuItem mntmUserActivity = new JMenuItem("User -> Activity");
@@ -471,10 +466,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#if ${RegistrationSpeakerActivity} == "T"
 		JMenuItem mntmSpeakerActivity = new JMenuItem("Speaker -> Activity");
 		mnRegistration.add(mntmSpeakerActivity);
-		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		JMenuItem mntmOrganizerActivity = new JMenuItem("Organizer -> Activity");
-		mnRegistration.add(mntmOrganizerActivity);
 		//#endif
 		JMenuItem mntmInsert_10 = new JMenuItem("Insert");
 		mnRegistration.add(mntmInsert_10);
@@ -654,9 +645,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#endif
 		//#if ${RegistrationSpeakerActivity} == "T"
 		mntmSpeakerActivity.addActionListener(managementActivitySpeakerAction);
-		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		mntmOrganizerActivity.addActionListener(managementActivityOrganizerAction);
 		//#endif
 		//#if ${ReportsFrequencyperActivity} == "T"
 		mntmFrequencyPerActivity.addActionListener(frequencyPerActivityAction);
@@ -1567,27 +1555,6 @@ public class RiSEEventMainScreenP extends JFrame {
 			}
 		}
 		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		private class ActivityOrganizerManagementMenuAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenActivityOrganizerManagement = ActivityOrganizerManagementScreenP.getInstanceActivityOrganizerManagementScreenP();
-				//desktopPane.add(screenActivityOrganizerManagement);
-				if(screenActivityOrganizerManagement.getParent() == null){
-					desktopPane.add(screenActivityOrganizerManagement);
-				}
-				screenActivityOrganizerManagement.setVisible(true);
-				desktopPane.moveToFront(screenActivityOrganizerManagement);
-				try {
-					screenActivityOrganizerManagement.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
-		//#endif
-		
 		
 		//REPORTS
 		//#if ${ReportsFrequencyperActivity} == "T"
