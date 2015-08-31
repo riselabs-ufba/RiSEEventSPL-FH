@@ -8,9 +8,6 @@ import java.util.Set;
 import org.apache.commons.mail.EmailException;
 
 import rise.splcc.business.ActivityControl;
-//#if ${RegistrationOrganizerActivity} == "T"
-import rise.splcc.business.ActivityOrganizerControl;
-//#endif
 import rise.splcc.business.ActivityUserControl;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.business.AssignmentControl;
@@ -22,9 +19,6 @@ import rise.splcc.business.AuthorControl;
 import rise.splcc.business.CheckingCopyControl;
 //#endif
 import rise.splcc.business.EventControl;
-//#if ${Organizer} == "T"
-import rise.splcc.business.OrganizerControl;
-//#endif
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.business.PaymentControl;
 //#endif
@@ -47,9 +41,6 @@ import rise.splcc.business.SubmissionUserControl;
 //#endif
 import rise.splcc.business.UserControl;
 import rise.splcc.data.Activity;
-//#if ${RegistrationOrganizerActivity} == "T"
-import rise.splcc.data.ActivityOrganizer;
-//#endif
 import rise.splcc.data.ActivityUser;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.data.Assignment;
@@ -61,9 +52,6 @@ import rise.splcc.data.Author;
 import rise.splcc.data.CheckingCopy;
 //#endif
 import rise.splcc.data.Event;
-//#if ${Organizer} == "T"
-import rise.splcc.data.Organizer;
-//#endif
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.data.Payment;
 //#endif
@@ -91,10 +79,6 @@ import rise.splcc.data.User;
 import rise.splcc.exception.ActivityAlreadyInsertedException;
 import rise.splcc.exception.ActivityNotFoundException;
 //#endif
-//#if ${RegistrationOrganizerActivity} == "T"
-import rise.splcc.exception.ActivityOrganizerAlreadyInsertedException;
-import rise.splcc.exception.ActivityOrganizerNotFoundException;
-//#endif
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
 import rise.splcc.exception.ActivityUserNotFoundException;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
@@ -111,10 +95,6 @@ import rise.splcc.exception.CheckingCopyNotFoundException;
 //#endif
 import rise.splcc.exception.EventAlreadyInsertedException;
 import rise.splcc.exception.EventNotFoundException;
-//#if ${Organizer} == "T"
-import rise.splcc.exception.OrganizerAlreadyInsertedException;
-import rise.splcc.exception.OrganizerNotFoundException;
-//#endif
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.exception.PaymentAlreadyInsertedException;
 import rise.splcc.exception.PaymentNotFoundException;
@@ -146,10 +126,6 @@ import rise.splcc.exception.SubmissionUserAlreadyInsertedException;
 //#endif
 import rise.splcc.exception.UserAlreadyInsertedException;
 import rise.splcc.exception.UserNotFoundException;
-//#if ${RegistrationOrganizerActivity} == "T"
-import rise.splcc.repository.ActivityOrganizerRepository;
-import rise.splcc.repository.ActivityOrganizerRepositoryBDR;
-//#endif
 import rise.splcc.repository.ActivityRepository;
 import rise.splcc.repository.ActivityRepositoryBDR;
 import rise.splcc.repository.ActivityUserRepository;
@@ -168,10 +144,6 @@ import rise.splcc.repository.CheckingCopyRepositoryBDR;
 //#endif
 import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
-//#if ${Organizer} == "T"
-import rise.splcc.repository.OrganizerRepository;
-import rise.splcc.repository.OrganizerRepositoryBDR;
-//#endif
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.repository.PaymentRepository;
 import rise.splcc.repository.PaymentRepositoryBDR;
