@@ -33,9 +33,11 @@ public class RiSEEventMainScreenP extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RiSEEventMainScreenP() {
+	public void init() {
 		original();
-
+		initSpeaker();
+	}
+	public void initSpeaker(){ 
 		//#if ${Speaker} == "T"
 		InsertSpeakerMenuAction insertSpeakerAction = new InsertSpeakerMenuAction();
 		RemoveSpeakerMenuAction removeSpeakerAction = new RemoveSpeakerMenuAction();

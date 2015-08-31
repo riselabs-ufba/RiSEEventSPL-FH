@@ -9,7 +9,7 @@
 				</and>
 				<or abstract="true" mandatory="true" name="Registration">
 					<feature hidden="true" mandatory="true" name="RegistrationUserActivity"/>
-					<feature hidden="true" mandatory="true" name="RegistrationSpeakerActivity"/>
+					<feature mandatory="true" name="RegistrationSpeakerActivity"/>
 					<feature hidden="true" mandatory="true" name="RegistrationOrganizerActivity"/>
 				</or>
 				<and abstract="true" mandatory="true" name="Activity">
@@ -82,5 +82,41 @@
 		</constraints>
 		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
 		<comments/>
-		<featureOrder userDefined="false"/>
+		<featureOrder userDefined="true">
+			<feature name="Base"/>
+			<feature name="Speaker"/>
+			<feature name="Organizer"/>
+			<feature name="Reviewer"/>
+			<feature name="RegistrationUserActivity"/>
+			<feature name="RegistrationSpeakerActivity"/>
+			<feature name="RegistrationOrganizerActivity"/>
+			<feature name="ActivityWorkshop"/>
+			<feature name="ActivityPainel"/>
+			<feature name="ActivityTutorial"/>
+			<feature name="ActivityMinicurso"/>
+			<feature name="ActivityMainTrack"/>
+			<feature name="ReportsFrequencyperEvent"/>
+			<feature name="ReportsFrequencyperActivity"/>
+			<feature name="ReportsListofAuthors"/>
+			<feature name="EventImportantDates"/>
+			<feature name="EventProgram"/>
+			<feature name="Receipt"/>
+			<feature name="PaymentCartao"/>
+			<feature name="PaymentDeposito"/>
+			<feature name="PaymentAvista"/>
+			<feature name="NotificationsDeadline"/>
+			<feature name="NotificationsAceptanceRejection"/>
+			<feature name="NotificationsPaperAssignemnt"/>
+			<feature name="SubmissionCompleta"/>
+			<feature name="ReviewRoundofReview"/>
+			<feature name="ReviewSimpleReview"/>
+			<feature name="AssignmentChairindication"/>
+			<feature name="Assignmentautomatic"/>
+			<feature name="ConflictofinterestAutomatic"/>
+			<feature name="SubmissionParcial"/>
+			<feature name="InsertAuthors"/>
+			<feature name="CheckingCopyAtestado"/>
+			<feature name="CheckingCopyCertificado"/>
+			<feature name="BugTrack"/>
+		</featureOrder>
 	</featureModel>

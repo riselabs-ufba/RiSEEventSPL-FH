@@ -104,7 +104,9 @@ public class Derivator {
                }
             }
              
-        } catch (FileNotFoundException | XMLStreamException e) {
+        } catch (FileNotFoundException  e) {
+            e.printStackTrace();
+        } catch(XMLStreamException e) {
             e.printStackTrace();
         }
         return featureList;

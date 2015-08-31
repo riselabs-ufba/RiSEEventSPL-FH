@@ -24,10 +24,13 @@ public class RiSEventFacade {
 	private SpeakerControl speakers;
 	//#endif
 	
-	
 	public RiSEventFacade(){
+//		init();
+	}
+	
+	public void init(){
 		original();
-		
+
 		//#if ${Speaker} == "T"
 		SpeakerRepository speakerRepository = SpeakerRepositoryBDR.getInstance();
 		//#endif

@@ -185,10 +185,15 @@ public class RiSEEventMainScreenP extends JFrame {
 		});
 	}
 
+	public JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
 	/**
 	 * Create the frame.
 	 */
 	public RiSEEventMainScreenP() {
+		init();
+	}
+	
+	public void init(){
 		
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
@@ -339,7 +344,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		labelImagem.setIcon(new ImageIcon(imag));
 		desktopPane.add(labelImagem);
 		
-		JMenuBar menuBar = new JMenuBar();
+		
 		menuBar.setBounds(32, 12, 1078, 22);
 		contentPane.add(menuBar);
 		

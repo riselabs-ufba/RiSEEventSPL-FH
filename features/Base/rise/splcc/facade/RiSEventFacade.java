@@ -278,6 +278,12 @@ public class RiSEventFacade {
 	protected static RiSEventFacade instance;
 	
 	public RiSEventFacade(){
+		init();
+	}
+	
+	
+	public void init(){
+		
 		EventRepository eventRepository = EventRepositoryBDR.getInstance();
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
