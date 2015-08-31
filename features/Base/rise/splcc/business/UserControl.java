@@ -9,9 +9,6 @@ import rise.splcc.data.User;
 import rise.splcc.exception.RepositoryException;
 import rise.splcc.exception.UserAlreadyInsertedException;
 import rise.splcc.exception.UserNotFoundException;
-//#if ${Reviewer} == "T"
-import rise.splcc.repository.ReviewerRepository;
-//#endif
 import rise.splcc.repository.UserRepository;
 import rise.splcc.util.Email;
 
@@ -19,10 +16,6 @@ public class UserControl {
 
 	private UserRepository users;
 
-	//#if ${Reviewer} == "T"
-	private ReviewerRepository reviewers;
-	//#endif
-	
 	public UserControl(UserRepository repository){
 		this.users = repository;
 	}

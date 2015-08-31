@@ -4,6 +4,10 @@ package rise.splcc.facade;
 import rise.splcc.business.ActivityOrganizerControl;
 //#endif
 //#if ${RegistrationOrganizerActivity} == "T"
+import rise.splcc.repository.ActivityOrganizerRepository;
+import rise.splcc.repository.ActivityOrganizerRepositoryBDR;
+//#endif
+//#if ${RegistrationOrganizerActivity} == "T"
 import rise.splcc.data.ActivityOrganizer;
 //#endif
 //#if ${RegistrationOrganizerActivity} == "T"

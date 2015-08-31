@@ -29,9 +29,6 @@ import rise.splcc.business.RegistrationControl;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.business.ReviewControl;
 //#endif
-//#if ${Reviewer} == "T"
-import rise.splcc.business.ReviewerControl;
-//#endif
 //#if ${InsertAuthors} == "T"
 import rise.splcc.business.SubmissionAuthorControl;
 //#endif
@@ -61,9 +58,6 @@ import rise.splcc.data.Receipt;
 import rise.splcc.data.Registration;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.data.Review;
-//#endif
-//#if ${Reviewer} == "T"
-import rise.splcc.data.Reviewer;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.data.Submission;
@@ -110,10 +104,6 @@ import rise.splcc.exception.RepositoryException;
 import rise.splcc.exception.ReviewAlreadyInsertedException;
 import rise.splcc.exception.ReviewNotFoundException;
 //#endif
-//#if ${Reviewer} == "T"
-import rise.splcc.exception.ReviewerAlreadyInsertedException;
-import rise.splcc.exception.ReviewerNotFoundException;
-//#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.exception.SubmissionAlreadyInsertedException;
 //#endif
@@ -158,10 +148,6 @@ import rise.splcc.repository.RegistrationRepositoryBDR;
 import rise.splcc.repository.ReviewRepository;
 import rise.splcc.repository.ReviewRepositoryBDR;
 //#endif
-//#if ${Reviewer} == "T"
-import rise.splcc.repository.ReviewerRepository;
-import rise.splcc.repository.ReviewerRepositoryBDR;
-//#endif
 //#if ${InsertAuthors} == "T"
 import rise.splcc.repository.SubmissionAuthorRepository;
 import rise.splcc.repository.SubmissionAuthorRepositoryBDR;
@@ -186,9 +172,6 @@ public class RiSEventFacade {
 
 	private UserControl users;
 
-	//#if ${Reviewer} == "T"
-	private ReviewerControl reviewers;
-	//#endif
 	//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
 	private ActivityControl activities;
 	//#endif
@@ -240,9 +223,6 @@ public class RiSEventFacade {
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
-		//#if ${Reviewer} == "T"
-		ReviewerRepository reviewerRepository = ReviewerRepositoryBDR.getInstance();
-		//#endif
 		//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
 		ActivityRepository activityRepository = ActivityRepositoryBDR.getInstance();
 		//#endif
@@ -285,9 +265,6 @@ public class RiSEventFacade {
 		
 		users = new UserControl(userRepository);
 		
-		//#if ${Reviewer} == "T"
-		reviewers = new ReviewerControl(reviewerRepository);
-		//#endif
 		//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
 		activities = new ActivityControl(activityRepository);
 		//#endif
@@ -422,38 +399,6 @@ public class RiSEventFacade {
 	}
 	//#endif
 	
-	
-	
-	//REVIEWER
-	//#if ${Reviewer} == "T"
-	public void insertReviewer(Reviewer reviewer) throws ReviewerAlreadyInsertedException, RepositoryException{
-		reviewers.insert(reviewer);
-	}
-
-	public void removeReviewer(int idUser) throws ReviewerNotFoundException, RepositoryException, ReviewerAlreadyInsertedException{
-		reviewers.remove(idUser);  
-	}
-
-	public void updateReviewer(Reviewer reviewer) throws ReviewerNotFoundException, RepositoryException, ReviewerAlreadyInsertedException{
-		reviewers.update(reviewer);
-	}
-
-	public List<Reviewer> getReviewers() throws RepositoryException{
-		return reviewers.getReviewers();
-	}
-
-	public Reviewer searchReviewer(int idUser) throws ReviewerNotFoundException, RepositoryException, ReviewerAlreadyInsertedException{
-		return reviewers.search(idUser);
-	} 
-	
-	public boolean isThereReviewer(int idUser) throws RepositoryException{
-		return reviewers.isThere(idUser);
-	}
-	
-	public Reviewer getReviewerByknowledgeArea(String knowledgearea) throws ReviewerNotFoundException, RepositoryException, ReviewerAlreadyInsertedException{
-		return reviewers.getReviewerByknowledgeArea(knowledgearea);
-	}
-	//#endif
 	
 	//ACTIVITY
 	//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"

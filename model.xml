@@ -6,7 +6,7 @@
 				<and abstract="true" mandatory="true" name="User">
 					<feature name="Speaker"/>
 					<feature name="Organizer"/>
-					<feature hidden="true" name="Reviewer"/>
+					<feature name="Reviewer"/>
 				</and>
 				<or abstract="true" mandatory="true" name="Registration">
 					<feature hidden="true" mandatory="true" name="RegistrationUserActivity"/>
