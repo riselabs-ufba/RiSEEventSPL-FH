@@ -2,6 +2,7 @@
 	<featureModel chosenLayoutAlgorithm="1">
 		<struct>
 			<and abstract="true" mandatory="true" name="RiSEEventsSPLFH">
+				<feature mandatory="true" name="Base"/>
 				<and abstract="true" mandatory="true" name="User">
 					<feature name="Speaker"/>
 					<feature name="Organizer"/>
@@ -63,7 +64,6 @@
 					<feature name="CheckingCopyCertificado"/>
 				</and>
 				<feature hidden="true" name="BugTrack"/>
-				<feature mandatory="true" name="Base"/>
 			</and>
 		</struct>
 		<constraints>
