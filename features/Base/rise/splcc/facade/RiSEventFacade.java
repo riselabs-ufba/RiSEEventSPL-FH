@@ -69,10 +69,6 @@ import rise.splcc.data.SubmissionAuthor;
 import rise.splcc.data.SubmissionUser;
 //#endif
 import rise.splcc.data.User;
-//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
-import rise.splcc.exception.ActivityAlreadyInsertedException;
-import rise.splcc.exception.ActivityNotFoundException;
-//#endif
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
 import rise.splcc.exception.ActivityUserNotFoundException;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
@@ -172,9 +168,6 @@ public class RiSEventFacade {
 
 	private UserControl users;
 
-	//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
-	private ActivityControl activities;
-	//#endif
 	//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 	private PaymentControl payments;
 	//#endif
@@ -217,9 +210,6 @@ public class RiSEventFacade {
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
-		//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
-		ActivityRepository activityRepository = ActivityRepositoryBDR.getInstance();
-		//#endif
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 		PaymentRepository paymentRepository = PaymentRepositoryBDR.getInstance();
 		//#endif
@@ -253,9 +243,6 @@ public class RiSEventFacade {
 		
 		users = new UserControl(userRepository);
 		
-		//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
-		activities = new ActivityControl(activityRepository);
-		//#endif
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 		payments = new PaymentControl(paymentRepository);
 		//#endif
@@ -351,7 +338,6 @@ public class RiSEventFacade {
 	
 	
 	//USER
-	
 	public void insertUser(User user) throws UserAlreadyInsertedException, RepositoryException{
 		this.users.insert(user);
 	}
@@ -378,76 +364,6 @@ public class RiSEventFacade {
 	//#if ${Bugs} == "T"
 	public String sendBug(String nome, String assunto, String mensagem, Email email) throws EmailException {
 		return users.sendBug(nome, assunto, mensagem, email);
-	}
-	//#endif
-	
-	
-	//ACTIVITY
-	//#if ${ActivityMinicurso} == "T" or ${ActivityTutorial} == "T" or ${ActivityPainel} == "T" or ${ActivityWorkshop} == "T" or ${ActivityMainTrack} == "T"
-	public void insertActivity(Activity activity) throws ActivityAlreadyInsertedException, RepositoryException{
-		activities.insert(activity);
-	}
-
-	public void removeActivity(int idActivity) throws ActivityNotFoundException, RepositoryException, ActivityAlreadyInsertedException{
-		activities.remove(idActivity);  
-	}
-
-	public void updateActivity(Activity activity) throws ActivityNotFoundException, RepositoryException, ActivityAlreadyInsertedException{
-		activities.update(activity);
-	}
-
-	public List<Activity> getActivities() throws RepositoryException{
-		return activities.getActivities();
-	}
-
-	public Activity searchActivity(int idActivity) throws ActivityNotFoundException, RepositoryException, ActivityAlreadyInsertedException{
-		return activities.search(idActivity);
-	} 
-	
-	public int getActivityLastId() throws RepositoryException{
-		return activities.getActivityLastId();
-	}
-	
-	public int getActivityIdByName(String activityName) throws RepositoryException{
-		return activities.getActivityIdByName(activityName);
-	}
-	
-	public List<Activity> getActivitiesByEvent(int idEvent) throws RepositoryException{
-		return activities.getActivitiesByEvent(idEvent);
-	}
-	
-	public float getEventMainTrackValue(int idEvent) throws RepositoryException{
-		return activities.getEventMainTrackValue(idEvent);
-	}
-	
-	public int getActivityMainTrackId(int idEvent) throws RepositoryException{
-		return activities.getActivityMainTrackId(idEvent);
-	}
-	
-	public int getEventbyActivity(int idActivity) throws RepositoryException{
-		return activities.getEventbyActivity(idActivity);
-	}
-	
-	//#if ${ReportsFrequencyperActivity} == "T"
-	public void frequencyPerActivity(List<String> ParticipantsPerActivity, Activity activity, String eventName) throws DocumentException, IOException{
-		activities.frequencyPerActivity(ParticipantsPerActivity, activity, eventName);
-	}
-	//#endif
-	
-	//#if ${ReportsListofAuthors} == "T"
-	public List<String> getListOfAuthorsPerActivity(int idActivity) throws RepositoryException{
-		return activities.getListOfAuthorsPerActivity(idActivity);
-	}
-	
-	public void listOfAuthorsPerActivity(Set<String> authorsPerActivity, Activity activity) throws DocumentException, IOException{
-		activity.listOfAuthorsPerActivity(authorsPerActivity);
-	}
-	//#endif
-	
-	
-	//#if ${ReportsFrequencyperActivity} == "T"
-	public List<String> getParticipantsPerActivity(int idActivity) throws RepositoryException{
-		return activityUsers.getParticipantsPerActivity(idActivity);
 	}
 	//#endif
 	

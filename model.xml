@@ -14,16 +14,16 @@
 					<feature mandatory="true" name="RegistrationOrganizerActivity"/>
 				</or>
 				<and abstract="true" mandatory="true" name="Activity">
-					<feature hidden="true" name="ActivityWorkshop"/>
-					<feature hidden="true" name="ActivityPainel"/>
-					<feature hidden="true" name="ActivityTutorial"/>
-					<feature hidden="true" name="ActivityMinicurso"/>
+					<feature name="ActivityWorkshop"/>
+					<feature name="ActivityPainel"/>
+					<feature name="ActivityTutorial"/>
+					<feature name="ActivityMinicurso"/>
 					<feature mandatory="true" name="ActivityMainTrack"/>
 				</and>
-				<and abstract="true" hidden="true" name="Reports">
+				<and abstract="true" name="Reports">
 					<feature hidden="true" name="ReportsFrequencyperEvent"/>
-					<feature hidden="true" name="ReportsFrequencyperActivity"/>
-					<feature hidden="true" name="ReportsListofAuthors"/>
+					<feature name="ReportsFrequencyperActivity"/>
+					<feature name="ReportsListofAuthors"/>
 				</and>
 				<and abstract="true" hidden="true" name="EventReport">
 					<feature hidden="true" name="EventImportantDates"/>
@@ -90,11 +90,11 @@
 			<feature name="RegistrationUserActivity"/>
 			<feature name="RegistrationSpeakerActivity"/>
 			<feature name="RegistrationOrganizerActivity"/>
+			<feature name="ActivityMainTrack"/>
 			<feature name="ActivityWorkshop"/>
 			<feature name="ActivityPainel"/>
 			<feature name="ActivityTutorial"/>
 			<feature name="ActivityMinicurso"/>
-			<feature name="ActivityMainTrack"/>
 			<feature name="ReportsFrequencyperEvent"/>
 			<feature name="ReportsFrequencyperActivity"/>
 			<feature name="ReportsListofAuthors"/>

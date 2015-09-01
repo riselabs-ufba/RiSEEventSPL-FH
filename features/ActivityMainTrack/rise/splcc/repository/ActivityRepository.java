@@ -7,8 +7,6 @@ import rise.splcc.data.Activity;
 import rise.splcc.exception.ActivityNotFoundException;
 import rise.splcc.exception.RepositoryException;
 
-
-
 public interface ActivityRepository {
 	
 	
@@ -35,9 +33,5 @@ public interface ActivityRepository {
 	public int getActivityMainTrackId(int idEvent) throws RepositoryException;
 
 	public int getEventbyActivity(int idActivity) throws RepositoryException;
-	
-	//#if ${ReportsListofAuthors} == "T"
-	public List<String> getListOfAuthorsPerActivity(int idActivity) throws RepositoryException;
-	//#endif
 }
 //#endif

@@ -78,20 +78,5 @@ public class ActivityControl {
 	public int getEventbyActivity(int idActivity) throws RepositoryException{
 		return activities.getEventbyActivity(idActivity);
 	}
-	
-	//#if ${ReportsFrequencyperActivity} == "T"
-	public void frequencyPerActivity(List<String> participantsPerActivity, Activity activity , String eventName) throws DocumentException, IOException{
-		activity.frequencyPerActivity(participantsPerActivity, eventName);
-	}
-	//#endif
-	//#if ${ReportsListofAuthors} == "T"
-	public void listOfAuthorsPerActivity(Set<String> authorsPerActivity, Activity activity) throws DocumentException, IOException{
-		activity.listOfAuthorsPerActivity(authorsPerActivity);
-	}
-	
-	public List<String> getListOfAuthorsPerActivity(int idActivity) throws RepositoryException{
-		return activities.getListOfAuthorsPerActivity(idActivity);
-	}
-	//#endif
 }
 //#endif
