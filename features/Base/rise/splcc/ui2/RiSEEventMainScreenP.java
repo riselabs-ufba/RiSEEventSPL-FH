@@ -71,9 +71,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	//#if ${ReportsFrequencyperEvent} == "T"
 	private FrequencyPerEventScreenP screenFrequencyPerEvent;
 	//#endif
-	//#if ${ReportsListofAuthors} == "T"
-	private ListOfAuthorsPerActivityScreenP screenListOfAuthorsPerActivity;
-	//#endif
 	
 	//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 	private PaymentInsertScreenP screenInsertPayment;
@@ -222,9 +219,6 @@ public class RiSEEventMainScreenP extends JFrame {
 
 		//#if ${ReportsFrequencyperEvent} == "T"
 		FrequencyPerEventAction frequencyPerEventAction = new FrequencyPerEventAction();
-		//#endif
-		//#if ${ReportsListofAuthors} == "T"
-		ListOfAuthorsPerActivityAction listOfAuthorsPerActivityAction = new ListOfAuthorsPerActivityAction();
 		//#endif
 		
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
@@ -433,10 +427,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		menuBar.add(mnReports);
 		//#endif
 		
-		//#if ${ReportsListofAuthors} == "T"
-		JMenuItem mntmListOfAuthors = new JMenuItem("List Of Authors");
-		mnReports.add(mntmListOfAuthors);
-		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		JMenuItem mntmFrequencyPerEvent = new JMenuItem("Frequency Per Event");
 		mnReports.add(mntmFrequencyPerEvent);
@@ -574,9 +564,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		mntmFrequencyPerEvent.addActionListener(frequencyPerEventAction);
-		//#endif
-		//#if ${ReportsListofAuthors} == "T"
-		mntmListOfAuthors.addActionListener(listOfAuthorsPerActivityAction);
 		//#endif
 		
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
@@ -1328,29 +1315,6 @@ public class RiSEEventMainScreenP extends JFrame {
 			}
 		}
 		//#endif
-		//#if ${ReportsListofAuthors} == "T"
-		private class ListOfAuthorsPerActivityAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenListOfAuthorsPerActivity = ListOfAuthorsPerActivityScreenP.getInstanceListOfAuthorsPerActivityScreenP();
-				//desktopPane.add(screenFrequencyPerEvent);
-				if(screenListOfAuthorsPerActivity.getParent() == null){
-					desktopPane.add(screenListOfAuthorsPerActivity);
-				}
-				screenListOfAuthorsPerActivity.setVisible(true);
-				desktopPane.moveToFront(screenListOfAuthorsPerActivity);
-				try {
-					screenListOfAuthorsPerActivity.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-			}
-		}
-		//#endif
-		
-		
 		
 		//PAYMENT
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
