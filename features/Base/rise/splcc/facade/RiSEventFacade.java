@@ -179,12 +179,6 @@ public class RiSEventFacade {
 	private PaymentControl payments;
 	//#endif
 	private RegistrationControl registrations;
-	//#if ${RegistrationUserActivity} == "T"
-	private ActivityUserControl activityUsers;
-	//#endif
-	//#if ${RegistrationOrganizerActivity} == "T"
-	private ActivityOrganizerControl activityOrganizers;
-	//#endif
 	//#if ${Receipt} == "T"
 	private ReceiptControl receipts;
 	//#endif
@@ -230,12 +224,6 @@ public class RiSEventFacade {
 		PaymentRepository paymentRepository = PaymentRepositoryBDR.getInstance();
 		//#endif
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
-		//#if ${RegistrationUserActivity} == "T"
-		ActivityUserRepository activityUserRepository = ActivityUserRepositoryBDR.getInstance();
-		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		ActivityOrganizerRepository activityOrganizerRepository = ActivityOrganizerRepositoryBDR.getInstance();
-		//#endif
 		//#if ${Receipt} == "T"
 		ReceiptRepository receiptRepository = ReceiptRepositoryBDR.getInstance();
 		//#endif
@@ -272,12 +260,6 @@ public class RiSEventFacade {
 		payments = new PaymentControl(paymentRepository);
 		//#endif
 		registrations = new RegistrationControl(registrationRepository);
-		//#if ${RegistrationUserActivity} == "T"
-		activityUsers = new ActivityUserControl(activityUserRepository);
-		//#endif
-		//#if ${RegistrationOrganizerActivity} == "T"
-		activityOrganizers = new ActivityOrganizerControl(activityOrganizerRepository);
-		//#endif
 		//#if ${Receipt} == "T"
 		receipts = new ReceiptControl(receiptRepository);
 		//#endif
@@ -461,48 +443,8 @@ public class RiSEventFacade {
 		activity.listOfAuthorsPerActivity(authorsPerActivity);
 	}
 	//#endif
-	//#endif
-	
-	//ACTIVITYORGANIZER
-	//#if ${RegistrationOrganizerActivity} == "T"
-	public void insertActivityOrganizer(ActivityOrganizer activityOrganizer) throws ActivityOrganizerAlreadyInsertedException, RepositoryException{
-		activityOrganizers.insert(activityOrganizer);
-	}
-
-	public void removeActivityOrganizer(ActivityOrganizer activityOrganizer) throws ActivityOrganizerNotFoundException, RepositoryException, ActivityOrganizerAlreadyInsertedException{
-		activityOrganizers.remove(activityOrganizer);  
-	}
-
-	public List<ActivityOrganizer> getActivitiesOrganizers() throws RepositoryException{
-		return activityOrganizers.getActivitiesOrganizers();
-	}
-
-	public List<ActivityOrganizer> getActivitiesOrganizersById(int idActivity) throws RepositoryException{
-		return activityOrganizers.getActivitiesById(idActivity);
-	}
-	//#endif
 	
 	
-	
-	
-	//ACTIVITYUSER
-	//#if ${RegistrationUserActivity} == "T"
-	public void insertActivityUser(ActivityUser activityUser) throws ActivityUserAlreadyInsertedException, RepositoryException{
-		activityUsers.insert(activityUser);
-	}
-
-	public void removeActivityUser(ActivityUser activityUser) throws ActivityUserNotFoundException, RepositoryException, ActivityUserAlreadyInsertedException{
-		activityUsers.remove(activityUser);  
-	}
-	
-	public List<ActivityUser> getActivitiesUsers() throws RepositoryException{
-		return activityUsers.getActivitiesUsers();
-	}
-	
-	public List<ActivityUser> getActivitiesUsersById(int idActivity) throws RepositoryException{
-		return activityUsers.getActivitiesById(idActivity);
-	}
-	//#endif
 	//#if ${ReportsFrequencyperActivity} == "T"
 	public List<String> getParticipantsPerActivity(int idActivity) throws RepositoryException{
 		return activityUsers.getParticipantsPerActivity(idActivity);
@@ -510,10 +452,7 @@ public class RiSEventFacade {
 	//#endif
 	
 	
-	
-	
 	//REGISTRATION
-	
 	public List<Registration> getRegistrations() throws RepositoryException{
 		return registrations.getRegistrations();
 	}

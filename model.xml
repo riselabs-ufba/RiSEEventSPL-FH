@@ -9,7 +9,7 @@
 					<feature name="Reviewer"/>
 				</and>
 				<or abstract="true" mandatory="true" name="Registration">
-					<feature hidden="true" mandatory="true" name="RegistrationUserActivity"/>
+					<feature mandatory="true" name="RegistrationUserActivity"/>
 					<feature mandatory="true" name="RegistrationSpeakerActivity"/>
 					<feature mandatory="true" name="RegistrationOrganizerActivity"/>
 				</or>

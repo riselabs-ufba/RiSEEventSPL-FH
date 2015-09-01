@@ -75,12 +75,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private ReviewManagementScreenP screenManagementReview;
 	private ReviewResultsScreenP screenResultsReview;
 	//#endif
-	//#if ${RegistrationUserActivity} == "T"
-	private ActivityUserManagementScreenP screenActivityUserManagement;
-	//#endif
-	//#if ${RegistrationSpeakerActivity} == "T"
-	private ActivitySpeakerManagementScreenP screenActivitySpeakerManagement;
-	//#endif
 	//#if ${ReportsFrequencyperActivity} == "T" 
 	private FrequencyPerActivityScreenP screenFrequencyPerActivity;
 	//#endif
@@ -238,12 +232,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		ManagementReviewMenuAction managementReviewAction = new ManagementReviewMenuAction();
 		ResultsReviewMenuAction resultsReviewAction = new ResultsReviewMenuAction();
 		//#endif
-		//#if ${RegistrationUserActivity} == "T"
-		ActivityUserManagementMenuAction managementActivityUserAction = new ActivityUserManagementMenuAction();
-		//#endif
-		//#if ${RegistrationSpeakerActivity} == "T"
-		ActivitySpeakerManagementMenuAction managementActivitySpeakerAction = new ActivitySpeakerManagementMenuAction();
-		//#endif
+
 		//#if ${ReportsFrequencyperActivity} == "T"
 		FrequencyPerActivityAction frequencyPerActivityAction = new FrequencyPerActivityAction();
 		//#endif
@@ -459,14 +448,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#endif
 		
 		menuBar.add(mnRegistration);
-		//#if ${RegistrationUserActivity} == "T"
-		JMenuItem mntmUserActivity = new JMenuItem("User -> Activity");
-		mnRegistration.add(mntmUserActivity);
-		//#endif
-		//#if ${RegistrationSpeakerActivity} == "T"
-		JMenuItem mntmSpeakerActivity = new JMenuItem("Speaker -> Activity");
-		mnRegistration.add(mntmSpeakerActivity);
-		//#endif
+
 		JMenuItem mntmInsert_10 = new JMenuItem("Insert");
 		mnRegistration.add(mntmInsert_10);
 		
@@ -639,12 +621,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmListall_6.addActionListener(listAllReviewAction);
 		mntmReviewManagement.addActionListener(managementReviewAction);
 		mntmReviewResults.addActionListener(resultsReviewAction);
-		//#endif
-		//#if ${RegistrationUserActivity} == "T"
-		mntmUserActivity.addActionListener(managementActivityUserAction);
-		//#endif
-		//#if ${RegistrationSpeakerActivity} == "T"
-		mntmSpeakerActivity.addActionListener(managementActivitySpeakerAction);
 		//#endif
 		//#if ${ReportsFrequencyperActivity} == "T"
 		mntmFrequencyPerActivity.addActionListener(frequencyPerActivityAction);
@@ -1512,50 +1488,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		}
 		//#endif
 		
-		//ACTIVITY USER/SPEAKER/ORGANIZER
-		//#if ${RegistrationUserActivity} == "T"
-		private class ActivityUserManagementMenuAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenActivityUserManagement = ActivityUserManagementScreenP.getInstanceActivityUserManagementScreenP();
-				//desktopPane.add(screenActivityUserManagement);
-				if(screenActivityUserManagement.getParent() == null){
-					desktopPane.add(screenActivityUserManagement);
-				}
-				screenActivityUserManagement.setVisible(true);
-				desktopPane.moveToFront(screenActivityUserManagement);
-				try {
-					screenActivityUserManagement.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
-		//#endif
-		
-		
-		//#if ${RegistrationSpeakerActivity} == "T"
-		private class ActivitySpeakerManagementMenuAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenActivitySpeakerManagement = ActivitySpeakerManagementScreenP.getInstanceActivitySpeakerManagementScreenP();
-				//desktopPane.add(screenActivitySpeakerManagement);
-				if(screenActivitySpeakerManagement.getParent() == null){
-					desktopPane.add(screenActivitySpeakerManagement);
-				}
-				screenActivitySpeakerManagement.setVisible(true);
-				desktopPane.moveToFront(screenActivitySpeakerManagement);
-				try {
-					screenActivitySpeakerManagement.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
-		//#endif
-		
 		//REPORTS
 		//#if ${ReportsFrequencyperActivity} == "T"
 		private class FrequencyPerActivityAction implements ActionListener{
@@ -1574,7 +1506,6 @@ public class RiSEEventMainScreenP extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
 			}
 		}
 		//#endif
