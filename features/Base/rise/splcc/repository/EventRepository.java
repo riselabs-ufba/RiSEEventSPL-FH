@@ -8,7 +8,6 @@ import rise.splcc.exception.EventNotFoundException;
 import rise.splcc.exception.RepositoryException;
 
 
-
 public interface EventRepository {
 	
 
@@ -28,9 +27,4 @@ public interface EventRepository {
 	
 	public int getEventIdByName(String eventName) throws RepositoryException;
 	
-	
-	
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public List<String> getParticipantsPerEvent(int idEvent) throws RepositoryException;
-	//#endif
 }

@@ -68,9 +68,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private ReviewManagementScreenP screenManagementReview;
 	private ReviewResultsScreenP screenResultsReview;
 	//#endif
-	//#if ${ReportsFrequencyperEvent} == "T"
-	private FrequencyPerEventScreenP screenFrequencyPerEvent;
-	//#endif
 	
 	//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 	private PaymentInsertScreenP screenInsertPayment;
@@ -217,9 +214,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ResultsReviewMenuAction resultsReviewAction = new ResultsReviewMenuAction();
 		//#endif
 
-		//#if ${ReportsFrequencyperEvent} == "T"
-		FrequencyPerEventAction frequencyPerEventAction = new FrequencyPerEventAction();
-		//#endif
 		
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 		InsertPaymentMenuAction insertPaymentAction = new InsertPaymentMenuAction();
@@ -427,10 +421,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		menuBar.add(mnReports);
 		//#endif
 		
-		//#if ${ReportsFrequencyperEvent} == "T"
-		JMenuItem mntmFrequencyPerEvent = new JMenuItem("Frequency Per Event");
-		mnReports.add(mntmFrequencyPerEvent);
-		//#endif
 		//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
 		JMenu menu = new JMenu("CheckingCopy");
 		mnReports.add(menu);
@@ -561,9 +551,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmListall_6.addActionListener(listAllReviewAction);
 		mntmReviewManagement.addActionListener(managementReviewAction);
 		mntmReviewResults.addActionListener(resultsReviewAction);
-		//#endif
-		//#if ${ReportsFrequencyperEvent} == "T"
-		mntmFrequencyPerEvent.addActionListener(frequencyPerEventAction);
 		//#endif
 		
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
@@ -1293,28 +1280,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		}
 		//#endif
 		
-		//REPORTS
-		//#if ${ReportsFrequencyperEvent} == "T"
-		private class FrequencyPerEventAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenFrequencyPerEvent = FrequencyPerEventScreenP.getInstanceFrequencyPerEventScreenP();
-				//desktopPane.add(screenFrequencyPerEvent);
-				if(screenFrequencyPerEvent.getParent() == null){
-					desktopPane.add(screenFrequencyPerEvent);
-				}
-				screenFrequencyPerEvent.setVisible(true);
-				desktopPane.moveToFront(screenFrequencyPerEvent);
-				try {
-					screenFrequencyPerEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-			}
-		}
-		//#endif
 		
 		//PAYMENT
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"

@@ -21,7 +21,7 @@
 					<feature mandatory="true" name="ActivityMainTrack"/>
 				</and>
 				<and abstract="true" name="Reports">
-					<feature hidden="true" name="ReportsFrequencyperEvent"/>
+					<feature name="ReportsFrequencyperEvent"/>
 					<feature name="ReportsFrequencyperActivity"/>
 					<feature name="ReportsListofAuthors"/>
 				</and>

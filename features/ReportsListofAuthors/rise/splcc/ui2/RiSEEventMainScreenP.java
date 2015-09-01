@@ -35,10 +35,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ListOfAuthorsPerActivityAction listOfAuthorsPerActivityAction = new ListOfAuthorsPerActivityAction();
 		//#endif
 		
-		//#if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity} == "T" or ${ReportsFrequencyperEvent} == "T" or ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"	
-		menuBar.add(mnReports);
-		//#endif
-		
 		//#if ${ReportsListofAuthors} == "T"
 		JMenuItem mntmListOfAuthors = new JMenuItem("List Of Authors");
 		mnReports.add(mntmListOfAuthors);

@@ -62,11 +62,6 @@ public class EventControl {
 	}
 	
 	
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public List<String> getParticipantsPerEvent (int idEvent) throws RepositoryException{
-		return events.getParticipantsPerEvent(idEvent);
-	}
-	//#endif
 	//#if ${EventProgram} == "T"
 	public void generateProgram(List<Activity> activities, Event event) throws DocumentException, IOException{
 		event.generateProgram(activities);
@@ -75,11 +70,6 @@ public class EventControl {
 	//#if ${EventImportantDates} == "T"
 	public void generateImportantDates (String abstractDate, String fullPaperDate, String notificationDate, Event event) throws DocumentException, IOException{
 		event.generateImportantDates(abstractDate, fullPaperDate, notificationDate);
-	}
-	//#endif
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public void frequencyPerEvent(List<String> ParticipantsPerEvent, Event event) throws DocumentException, IOException{
-		event.frequencyPerEvent(ParticipantsPerEvent);
 	}
 	//#endif
 }

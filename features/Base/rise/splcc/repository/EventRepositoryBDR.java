@@ -235,33 +235,4 @@ public class EventRepositoryBDR implements EventRepository {
     return answer;
 	}
 	
-	
-	
-	
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public List<String> getParticipantsPerEvent(int idEvent) throws RepositoryException{
-		ArrayList<String> list = new ArrayList<String>();
-        try {
-            Statement statement = (Statement) pm.getCommunicationChannel();
-            ResultSet resultset = statement.executeQuery("select nameUser from User inner join activityuser on user.idUser = activityuser.idUser inner join activity on activity.idActivity = activityuser.idActivity where activity.idEvent ='"+ idEvent + "'");
-            while (resultset.next()) {
-            	String nameUser;
-            	nameUser = resultset.getString("nameUser");
-				list.add(nameUser);
-            } 
-			resultset.close();
-		} catch(PersistenceMechanismException e){
-            throw new RepositoryException(e);
-        } catch (SQLException e) {
-			throw new RepositoryException(e);
-		} finally {
-			try {
-				pm.releaseCommunicationChannel();
-			} catch (PersistenceMechanismException ex) {
-				throw new RepositoryException(ex);
-			}
-		}
-		return list;
-	}
-	//#endif
 }

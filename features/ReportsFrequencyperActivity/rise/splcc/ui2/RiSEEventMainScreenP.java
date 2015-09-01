@@ -35,7 +35,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		FrequencyPerActivityAction frequencyPerActivityAction = new FrequencyPerActivityAction();
 		//#endif
 		
-		menuBar.add(mnReports);
 		
 		//#if ${ReportsFrequencyperActivity} == "T"
 		JMenuItem mntmFrequencyPerActivity = new JMenuItem("Frequency Per Activity");

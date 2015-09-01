@@ -311,12 +311,6 @@ public class RiSEventFacade {
 		return events.getEventIdByName(eventName);
 	}
 	
-	
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public List<String> getParticipantsPerEvent(int idEvent) throws RepositoryException{
-		return events.getParticipantsPerEvent(idEvent);
-	}
-	//#endif
 	//#if ${EventProgram} == "T"
 	public void generateProgram (List<Activity> activities, Event event) throws DocumentException, IOException{
 		events.generateProgram(activities, event);
@@ -327,15 +321,6 @@ public class RiSEventFacade {
 	public void generateImportantDates(String abstractDate, String fullPaperDate, String notificationDate, Event event) throws DocumentException, IOException{
 		events.generateImportantDates(abstractDate, fullPaperDate, notificationDate, event);
 	}
-	//#endif
-	//#if ${ReportsFrequencyperEvent} == "T"
-	public void frequencyPerEvent(List<String> ParticipantsPerEvent, Event event) throws DocumentException, IOException{
-		events.frequencyPerEvent(ParticipantsPerEvent, event);
-	}
-	//#endif
-	
-	
-	
 	
 	//USER
 	public void insertUser(User user) throws UserAlreadyInsertedException, RepositoryException{
