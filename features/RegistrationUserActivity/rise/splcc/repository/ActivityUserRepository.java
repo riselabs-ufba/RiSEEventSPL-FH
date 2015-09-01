@@ -24,8 +24,5 @@ public interface ActivityUserRepository {
 	public int getActivityUserLastId() throws RepositoryException;
 	
 	public List<ActivityUser> getActivitiesById(int idActivity) throws RepositoryException;
-	//#if ${ReportsFrequencyperActivity} == "T"
-	public List<String> getParticipantsPerActivity(int idActivity) throws RepositoryException;
-	//#endif
 }
 //#endif

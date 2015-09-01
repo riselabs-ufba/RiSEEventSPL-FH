@@ -56,10 +56,6 @@ public class ActivityUserControl {
 	public List<ActivityUser> getActivitiesById(int idActivity) throws RepositoryException{
 		return activitiesUsers.getActivitiesById(idActivity);
 	}
-	//#if ${ReportsFrequencyperActivity} == "T"
-	public List<String> getParticipantsPerActivity(int idActivity) throws RepositoryException{
-		return activitiesUsers.getParticipantsPerActivity(idActivity);
-	}
-	//#endif
+	
 }
 //#endif

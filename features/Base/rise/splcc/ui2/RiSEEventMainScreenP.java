@@ -68,9 +68,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private ReviewManagementScreenP screenManagementReview;
 	private ReviewResultsScreenP screenResultsReview;
 	//#endif
-	//#if ${ReportsFrequencyperActivity} == "T" 
-	private FrequencyPerActivityScreenP screenFrequencyPerActivity;
-	//#endif
 	//#if ${ReportsFrequencyperEvent} == "T"
 	private FrequencyPerEventScreenP screenFrequencyPerEvent;
 	//#endif
@@ -173,6 +170,11 @@ public class RiSEEventMainScreenP extends JFrame {
 		init();
 	}
 	
+	//#if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity} == "T" or ${ReportsFrequencyperEvent} == "T" or ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"	
+	private JMenu mnReports = new JMenu("Reports");
+	//#endif
+			
+			
 	public void init(){
 		
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -218,9 +220,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ResultsReviewMenuAction resultsReviewAction = new ResultsReviewMenuAction();
 		//#endif
 
-		//#if ${ReportsFrequencyperActivity} == "T"
-		FrequencyPerActivityAction frequencyPerActivityAction = new FrequencyPerActivityAction();
-		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		FrequencyPerEventAction frequencyPerEventAction = new FrequencyPerEventAction();
 		//#endif
@@ -429,18 +428,14 @@ public class RiSEEventMainScreenP extends JFrame {
 		
 		JMenuItem mntmRegistrationManagement = new JMenuItem("Registration Management");
 		mnRegistration.add(mntmRegistrationManagement);
+		
 		//#if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity} == "T" or ${ReportsFrequencyperEvent} == "T" or ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"	
-		JMenu mnReports = new JMenu("Reports");
 		menuBar.add(mnReports);
 		//#endif
 		
 		//#if ${ReportsListofAuthors} == "T"
 		JMenuItem mntmListOfAuthors = new JMenuItem("List Of Authors");
 		mnReports.add(mntmListOfAuthors);
-		//#endif
-		//#if ${ReportsFrequencyperActivity} == "T"
-		JMenuItem mntmFrequencyPerActivity = new JMenuItem("Frequency Per Activity");
-		mnReports.add(mntmFrequencyPerActivity);
 		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		JMenuItem mntmFrequencyPerEvent = new JMenuItem("Frequency Per Event");
@@ -576,9 +571,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmListall_6.addActionListener(listAllReviewAction);
 		mntmReviewManagement.addActionListener(managementReviewAction);
 		mntmReviewResults.addActionListener(resultsReviewAction);
-		//#endif
-		//#if ${ReportsFrequencyperActivity} == "T"
-		mntmFrequencyPerActivity.addActionListener(frequencyPerActivityAction);
 		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		mntmFrequencyPerEvent.addActionListener(frequencyPerEventAction);
@@ -1315,26 +1307,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		//#endif
 		
 		//REPORTS
-		//#if ${ReportsFrequencyperActivity} == "T"
-		private class FrequencyPerActivityAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenFrequencyPerActivity = FrequencyPerActivityScreenP.getInstanceFrequencyPerActivityScreenP();
-				//desktopPane.add(screenFrequencyPerActivity);
-				if(screenFrequencyPerActivity.getParent() == null){
-					desktopPane.add(screenFrequencyPerActivity);
-				}
-				screenFrequencyPerActivity.setVisible(true);
-				desktopPane.moveToFront(screenFrequencyPerActivity);
-				try {
-					screenFrequencyPerActivity.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
-		//#endif
 		//#if ${ReportsFrequencyperEvent} == "T"
 		private class FrequencyPerEventAction implements ActionListener{
 			@Override
