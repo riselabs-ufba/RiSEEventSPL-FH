@@ -61,9 +61,4 @@ public class UserControl {
 	public int getUserIdByName(String userName) throws RepositoryException{
 		return users.getUserIdByName(userName);
 	}
-	//#if ${Bugs} == "T"
-	public String sendBug(String nome, String assunto, String mensagem, Email email) throws EmailException{
-		return email.sendBugtrackEmail(nome, assunto, mensagem);
-	}
-	//#endif
 }

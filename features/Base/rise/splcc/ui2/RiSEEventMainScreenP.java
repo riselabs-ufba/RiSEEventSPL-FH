@@ -88,11 +88,7 @@ public class RiSEEventMainScreenP extends JFrame {
 	private RegistrationManagementScreenP screenManagementRegistration;
 	private RegistrationUpdateScreenP screenUpdateRegistration;
 	private RegistrationRemoveScreenP screenRemoveRegistration;
-	
-	//#if ${Bugs} == "T"
-	private BugtrackScreenP screenBugtrack;
-	//#endif
-	
+
 	private static JLabel labelImagem;
 	
 	private JDesktopPane desktopPane;
@@ -127,6 +123,7 @@ public class RiSEEventMainScreenP extends JFrame {
 	}
 
 	private JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
+	private JMenu mnArchieve = new JMenu("Archieve"); // moved out due references issue
 	private JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
 	private JMenu mnReports = new JMenu("Reports");  // moved out due references issue
 	private JMenu mnPayment = new JMenu("Payment"); // moved out due references issue
@@ -206,9 +203,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ListAllRegistrationMenuAction listAllRegistrationAction = new ListAllRegistrationMenuAction();
 		ManagementRegistrationMenuAction managementRegistrationAction = new ManagementRegistrationMenuAction();
 		
-		//#if ${Bugs} == "T"
-		BugtrackScreenMenuAction bugtrackAction = new BugtrackScreenMenuAction();
-		//#endif
 		
 		//		
 		//ADICIONADO
@@ -238,13 +232,8 @@ public class RiSEEventMainScreenP extends JFrame {
 		menuBar.setBounds(32, 12, 1078, 22);
 		contentPane.add(menuBar);
 		
-		JMenu mnArchieve = new JMenu("Archieve");
 		menuBar.add(mnArchieve);
 		
-		//#if ${Bugs} == "T"		
-		JMenuItem mntmBugtrack = new JMenuItem("Bugtrack");
-		mnArchieve.add(mntmBugtrack);
-		//#endif
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnArchieve.add(mntmExit);
@@ -461,10 +450,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmSearch_10.addActionListener(searchRegistrationAction);
 		mntmListall_10.addActionListener(listAllRegistrationAction);
 		mntmRegistrationManagement.addActionListener(managementRegistrationAction);
-		
-		//#if ${Bugs} == "T"
-		mntmBugtrack.addActionListener(bugtrackAction);
-		//#endif
 	}
 	
 	private class ExitMenuAction  implements ActionListener{ 
@@ -1457,26 +1442,4 @@ public class RiSEEventMainScreenP extends JFrame {
 					}  
 				}
 				
-				//BUGTRACK
-				//#if ${Bugs} == "T"
-				private class BugtrackScreenMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						screenBugtrack = BugtrackScreenP.getInstanceBugtrackScreenP();
-						//desktopPane.add(screenBugtrack);
-						if(screenBugtrack.getParent() == null){
-							desktopPane.add(screenBugtrack);
-						}
-						screenBugtrack.setVisible(true);
-						desktopPane.moveToFront(screenBugtrack);
-						try {
-							screenBugtrack.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-				//#endif
 }

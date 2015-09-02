@@ -267,11 +267,6 @@ public class RiSEventFacade {
 	public int getUserIdByName(String userName) throws RepositoryException{
 		return users.getUserIdByName(userName);
 	}
-	//#if ${Bugs} == "T"
-	public String sendBug(String nome, String assunto, String mensagem, Email email) throws EmailException {
-		return users.sendBug(nome, assunto, mensagem, email);
-	}
-	//#endif
 	
 	
 	//REGISTRATION

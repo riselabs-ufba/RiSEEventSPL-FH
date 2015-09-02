@@ -63,7 +63,7 @@
 					<feature name="CheckingCopyAtestado"/>
 					<feature name="CheckingCopyCertificado"/>
 				</and>
-				<feature hidden="true" name="BugTrack"/>
+				<feature name="BugTrack"/>
 			</and>
 		</struct>
 		<constraints>
