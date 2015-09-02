@@ -65,6 +65,10 @@ public class CheckingCopyTypeScreenP  extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public CheckingCopyTypeScreenP() {
+		init();
+	}
+	
+	public void init(){
 		setTitle("Checking Copy Type");
 		
 		int inset = 30;
@@ -85,21 +89,11 @@ public class CheckingCopyTypeScreenP  extends JInternalFrame {
 		comboBoxEvent.setBounds(72, 66, 360, 27);
 		getContentPane().add(comboBoxEvent);
 		
-		//#if ${CheckingCopyAtestado} == "T"
-		JButton btnAtestado = new JButton("Generate Atestado");
-		btnAtestado.setBounds(481, 37, 150, 29);
-		getContentPane().add(btnAtestado);
-		//#endif
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(481, 149, 117, 29);
 		getContentPane().add(btnBack);
 		
-		//#if ${CheckingCopyCertificado} == "T"
-		JButton btnCertificado = new JButton("Generate Certificado");
-		btnCertificado.setBounds(481, 89, 183, 29);
-		getContentPane().add(btnCertificado);
-		//#endif
 		
 		comboBoxUser = new JComboBox();
 		comboBoxUser.setBounds(72, 121, 360, 27);
@@ -117,20 +111,8 @@ public class CheckingCopyTypeScreenP  extends JInternalFrame {
 		lblTypeActivity.setBounds(6, 186, 102, 16);
 		getContentPane().add(lblTypeActivity);
 		
-		//#if ${CheckingCopyAtestado} == "T"
-		GenerateAtestadoButtonAction generateAtestadoAction = new GenerateAtestadoButtonAction();
-		//#endif
-		//#if ${CheckingCopyCertificado} == "T"
-		GenerateCertificadoButtonAction generateCertificadoAction = new GenerateCertificadoButtonAction();
-		//#endif
 		BackButtonAction backAction = new BackButtonAction();
 		
-		//#if ${CheckingCopyAtestado} == "T"
-		btnAtestado.addActionListener(generateAtestadoAction);
-		//#endif
-		//#if ${CheckingCopyCertificado} == "T"
-		btnCertificado.addActionListener(generateCertificadoAction);
-		//#endif
 		btnBack.addActionListener(backAction);
 		
 		carregarEventComboBox();
@@ -157,92 +139,6 @@ public class CheckingCopyTypeScreenP  extends JInternalFrame {
 			CheckingCopyTypeScreenP.instanceCheckingCopyTypeScreenP = null;
 		}
 	}
-	//#if ${CheckingCopyAtestado} == "T"
-	private class GenerateAtestadoButtonAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser local = new JFileChooser();  
-			local.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);  
-	        local.setDialogTitle("Escolha um local para salvar");  
-	        
-	        String nomeEvento = comboBoxEvent.getSelectedItem().toString();
-	        String nomeUsuario = comboBoxUser.getSelectedItem().toString();
-	        
-	        if (nomeEvento.equals("") || nomeUsuario.equals("")) {
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Não pode haver campo vazio.", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
-				return;
-
-			} else {
-	        
-		        local.setFileHidingEnabled(false);
-		        int res = local.showSaveDialog(null);  
-		        
-		        if (res == JFileChooser.APPROVE_OPTION) {
-					String caminho = String.valueOf(local.getSelectedFile());
-					CheckingCopy checkcopy = new CheckingCopy();
-					try {
-						RiSEEventMainScreenP.facade.emitirAtestado(nomeUsuario, nomeEvento, periodo, checkcopy);
-					} catch (RepositoryException e1) {
-						JOptionPane.showMessageDialog(getContentPane(),
-								e.toString(), "Erro",
-								JOptionPane.INFORMATION_MESSAGE);
-						e1.printStackTrace();
-					}
-		        }
-			}
-		}
-	}
-	//#endif
-	
-	//#if ${CheckingCopyCertificado} == "T"
-	private class GenerateCertificadoButtonAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser local = new JFileChooser();  
-			local.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);  
-	        local.setDialogTitle("Escolha um local para salvar");  
-	        
-	        String nomeEvento = comboBoxEvent.getSelectedItem().toString();
-	        String nomeUsuario = comboBoxUser.getSelectedItem().toString();
-	        String typeActivity = comboBoxTypeActivity.getSelectedItem().toString();
-	        
-	        if (nomeEvento.equals("") || nomeUsuario.equals("") || typeActivity.equals("")) {
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Não pode haver campo vazio.", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
-				return;
-
-			} else {
-	        
-		        local.setFileHidingEnabled(false);
-		        int res = local.showSaveDialog(null);  
-		        
-		        if (res == JFileChooser.APPROVE_OPTION) {
-					String caminho = String.valueOf(local.getSelectedFile());
-					CheckingCopy checkcopy = new CheckingCopy();
-					try {
-						RiSEEventMainScreenP.facade.emitirCertificado(nomeUsuario, nomeEvento , periodo, typeActivity, checkcopy);
-					} catch (RepositoryException e1) {
-						JOptionPane.showMessageDialog(getContentPane(),
-								e.toString(), "Erro",
-								JOptionPane.INFORMATION_MESSAGE);
-						e1.printStackTrace();
-					} catch (DocumentException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-		        }
-			}
-		}
-	}
-	//#endif
 	
 	private void carregarEventComboBox(){
 		try {

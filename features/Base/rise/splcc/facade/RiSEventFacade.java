@@ -15,9 +15,6 @@ import rise.splcc.business.AssignmentControl;
 //#if ${InsertAuthors} == "T"
 import rise.splcc.business.AuthorControl;
 //#endif
-//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-import rise.splcc.business.CheckingCopyControl;
-//#endif
 import rise.splcc.business.EventControl;
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.business.PaymentControl;
@@ -41,9 +38,6 @@ import rise.splcc.data.Assignment;
 //#endif
 //#if ${InsertAuthors} == "T"
 import rise.splcc.data.Author;
-//#endif
-//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-import rise.splcc.data.CheckingCopy;
 //#endif
 import rise.splcc.data.Event;
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
@@ -72,10 +66,6 @@ import rise.splcc.exception.AssignmentNotFoundException;
 //#if ${InsertAuthors} == "T"
 import rise.splcc.exception.AuthorAlreadyInsertedException;
 import rise.splcc.exception.AuthorNotFoundException;
-//#endif
-//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-import rise.splcc.exception.CheckingCopyAlreadyInsertedException;
-import rise.splcc.exception.CheckingCopyNotFoundException;
 //#endif
 import rise.splcc.exception.EventAlreadyInsertedException;
 import rise.splcc.exception.EventNotFoundException;
@@ -113,10 +103,6 @@ import rise.splcc.repository.AssignmentRepositoryBDR;
 //#if ${InsertAuthors} == "T"
 import rise.splcc.repository.AuthorRepository;
 import rise.splcc.repository.AuthorRepositoryBDR;
-//#endif
-//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-import rise.splcc.repository.CheckingCopyRepository;
-import rise.splcc.repository.CheckingCopyRepositoryBDR;
 //#endif
 import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
@@ -170,9 +156,6 @@ public class RiSEventFacade {
 	//#if ${InsertAuthors} == "T"
 	private SubmissionAuthorControl submissionAuthors;
 	//#endif
-	//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-	private CheckingCopyControl checkingCopys;
-	//#endif
 	//#if ${InsertAuthors} == "T"
 	private AuthorControl authors;
 	//#endif
@@ -209,9 +192,6 @@ public class RiSEventFacade {
 		//#if ${InsertAuthors} == "T"
 		SubmissionAuthorRepository submissionAuthorRepository = SubmissionAuthorRepositoryBDR.getInstance();
 		//#endif
-		//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-		CheckingCopyRepository checkingCopyRepository = CheckingCopyRepositoryBDR.getInstance();
-		//#endif
 		//#if ${InsertAuthors} == "T"
 		AuthorRepository authorRepository = AuthorRepositoryBDR.getInstance();
 		//#endif
@@ -238,9 +218,6 @@ public class RiSEventFacade {
 		//#endif
 		//#if ${InsertAuthors} == "T"
 		submissionAuthors = new SubmissionAuthorControl(submissionAuthorRepository);
-		//#endif
-		//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-		checkingCopys = new CheckingCopyControl(checkingCopyRepository);
 		//#endif
 		//#if ${InsertAuthors} == "T"
 		authors = new AuthorControl(authorRepository);
@@ -506,44 +483,6 @@ public class RiSEventFacade {
 	public boolean isThereSubmissionAuthor(SubmissionAuthor submissionauthor) throws RepositoryException{
 		return submissionAuthors.isThere(submissionauthor);
 	}
-	//#endif
-	//CHECKINGCOPY
-	
-	//#if ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
-	public void insertCheckingCopy(CheckingCopy checkingCopy) throws RepositoryException, CheckingCopyAlreadyInsertedException{
-		this.checkingCopys.insert(checkingCopy);
-	}
-	
-	public List<CheckingCopy> getCheckingCopys() throws RepositoryException{
-		return checkingCopys.getCheckingCopys();
-	}
-	
-	public int getCheckingCopyLastId() throws RepositoryException{
-		return checkingCopys.getCheckingCopyLastId();
-	}
-	
-	public void removeCheckingCopy(int idCheckingCopy) throws CheckingCopyNotFoundException, RepositoryException, CheckingCopyAlreadyInsertedException{
-		checkingCopys.remove(idCheckingCopy);  
-	}
-	
-	public void updateCheckingCopy(CheckingCopy checkingCopy) throws CheckingCopyNotFoundException, RepositoryException, CheckingCopyAlreadyInsertedException{
-		checkingCopys.update(checkingCopy);
-	}
-	
-	public CheckingCopy searchCheckingCopy(int idCheckingCopy) throws CheckingCopyNotFoundException, RepositoryException, CheckingCopyAlreadyInsertedException{
-		return checkingCopys.search(idCheckingCopy);
-	}
-	//#if ${CheckingCopyAtestado} == "T"
-	public void emitirAtestado (String nome, String evento, String periodo, CheckingCopy checkingcopy) throws RepositoryException {
-		checkingCopys.emitirAtestado(nome, evento, periodo, checkingcopy);
-	}
-	//#endif
-	
-	//#if ${CheckingCopyCertificado} == "T"
-	public void emitirCertificado (String nome, String evento, String periodo, String atividade, CheckingCopy checkingcopy) throws RepositoryException, DocumentException, IOException {
-		checkingCopys.emitirCertificado(nome, evento, periodo, atividade, checkingcopy);
-	}
-	//#endif
 	//#endif
 	
 	//AUTHOR

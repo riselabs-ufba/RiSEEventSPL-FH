@@ -19,14 +19,7 @@ import com.lowagie.text.pdf.PdfWriter;
 
 public class CheckingCopy {
 
-	public enum TypeCheckingCopy{
-		//#if ${CheckingCopyAtestado} == "T"
-		Atestado,
-		//#endif
-		//#if ${CheckingCopyCertificado} == "T"
-		Certificado
-		//#endif
-	}
+	public enum TypeCheckingCopy{}
 	
 	private int idCheckingCopy;
 	private int idUser;

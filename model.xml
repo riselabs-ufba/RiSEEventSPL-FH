@@ -59,9 +59,9 @@
 					<feature mandatory="true" name="SubmissionParcial"/>
 					<feature mandatory="true" name="InsertAuthors"/>
 				</or>
-				<and abstract="true" name="CheckingCopy">
+				<and name="CheckingCopy">
 					<feature name="CheckingCopyAtestado"/>
-					<feature hidden="true" name="CheckingCopyCertificado"/>
+					<feature name="CheckingCopyCertificado"/>
 				</and>
 				<feature hidden="true" name="BugTrack"/>
 			</and>
@@ -115,6 +115,7 @@
 			<feature name="ConflictofinterestAutomatic"/>
 			<feature name="SubmissionParcial"/>
 			<feature name="InsertAuthors"/>
+			<feature name="CheckingCopy"/>
 			<feature name="CheckingCopyAtestado"/>
 			<feature name="CheckingCopyCertificado"/>
 			<feature name="BugTrack"/>
