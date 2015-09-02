@@ -425,7 +425,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				//#endif	
 					
 				//#if ${NotificationsDeadline} == "T" or ${NotificationsPaperAssignemnt} == "T" or ${NotificationsAceptanceRejection} == "T"	
-				enviarEmails(reviewer1, submission, review1);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					enviarEmails(reviewer1, submission, review1);
 				//#endif
 				
 				//#if ${ConflictofinterestAutomatic} == "T"
@@ -438,7 +439,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				//#endif
 					
 				//#if ${NotificationsDeadline} == "T" or ${NotificationsPaperAssignemnt} == "T" or ${NotificationsAceptanceRejection} == "T"	
-				enviarEmails(reviewer2, submission, review2);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					enviarEmails(reviewer2, submission, review2);
 				//#endif
 				
 				//#if ${ConflictofinterestAutomatic} == "T"
@@ -451,7 +453,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				//#endif
 					
 				//#if ${NotificationsDeadline} == "T" or ${NotificationsPaperAssignemnt} == "T" or ${NotificationsAceptanceRejection} == "T"	
-				enviarEmails(reviewer3, submission, review3);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					enviarEmails(reviewer3, submission, review3);
 				//#endif
 				
 				//#if ${ConflictofinterestAutomatic} == "T"
@@ -605,35 +608,7 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 	
 	//#if ${NotificationsDeadline} == "T" or ${NotificationsPaperAssignemnt} == "T" or ${NotificationsAceptanceRejection} == "T"
 	public void enviarEmails(Reviewer reviewer, Submission submission, Review review){
-		Email email = new Email();
-		User user = new User();
-		try {
-			user = RiSEEventMainScreenP.facade.searchUser(reviewer.getIdUser());
-		} catch (UserNotFoundException e1) {
-			JOptionPane.showMessageDialog(getContentPane(),
-					e1.toString(), "Erro",
-					JOptionPane.INFORMATION_MESSAGE);
-			e1.printStackTrace();
-		} catch (RepositoryException e1) {
-			JOptionPane.showMessageDialog(getContentPane(),
-					e1.toString(), "Erro",
-					JOptionPane.INFORMATION_MESSAGE);
-			e1.printStackTrace();
-		} catch (UserAlreadyInsertedException e1) {
-			JOptionPane.showMessageDialog(getContentPane(),
-					e1.toString(), "Erro",
-					JOptionPane.INFORMATION_MESSAGE);
-			e1.printStackTrace();
-		}
-		
-		try {
-			RiSEEventMainScreenP.facade.emailNotification(user, review, email);
-		} catch (EmailException e) {
-			JOptionPane.showMessageDialog(getContentPane(),
-					e.toString(), "Erro",
-					JOptionPane.INFORMATION_MESSAGE);
-			e.printStackTrace();
-		}
+		// XXX Empty due feature interaction. I could not find any better solution.
 	}
 	//#endif
 	

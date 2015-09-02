@@ -463,13 +463,5 @@ public class RiSEventFacade {
 	public boolean isThereAssignment(Assignment assignment) throws RepositoryException{
 		return assignments.isThere(assignment);
 	}
-	//#if ${NotificationsDeadline} == "T" or ${NotificationsPaperAssignemnt} == "T" or ${NotificationsAceptanceRejection} == "T"
-	public void emailNotification (User user, Review review, Email email) throws EmailException{
-		assignments.emailNotification(user, review, email);
-	}
 	//#endif
-	//#endif
-	//REPORT
-	
-	
 }

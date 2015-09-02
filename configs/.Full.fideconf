@@ -28,10 +28,10 @@
 22PaymentCartao
 22PaymentDeposito
 22PaymentAvista
-22Notification
-22NotificationsDeadline
-22NotificationsAceptanceRejection
-22NotificationsPaperAssignemnt
+11Notification
+12NotificationsDeadline
+12NotificationsAceptanceRejection
+12NotificationsPaperAssignemnt
 22Submission
 22SubmissionCompleta
 22Review

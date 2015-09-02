@@ -35,14 +35,14 @@
 					<feature name="PaymentDeposito"/>
 					<feature name="PaymentAvista"/>
 				</and>
-				<and abstract="true" hidden="true" name="Notification">
+				<and name="Notification">
 					<feature name="NotificationsDeadline"/>
 					<feature name="NotificationsAceptanceRejection"/>
 					<feature name="NotificationsPaperAssignemnt"/>
 				</and>
 				<or abstract="true" hidden="true" name="Submission">
 					<and mandatory="true" name="SubmissionCompleta">
-						<alt abstract="true" mandatory="true" name="Review">
+						<alt hidden="true" mandatory="true" name="Review">
 							<feature mandatory="true" name="ReviewRoundofReview"/>
 							<feature mandatory="true" name="ReviewSimpleReview"/>
 						</alt>
@@ -104,9 +104,6 @@
 			<feature name="PaymentCartao"/>
 			<feature name="PaymentDeposito"/>
 			<feature name="PaymentAvista"/>
-			<feature name="NotificationsDeadline"/>
-			<feature name="NotificationsAceptanceRejection"/>
-			<feature name="NotificationsPaperAssignemnt"/>
 			<feature name="SubmissionCompleta"/>
 			<feature name="ReviewRoundofReview"/>
 			<feature name="ReviewSimpleReview"/>
@@ -114,11 +111,16 @@
 			<feature name="Assignmentautomatic"/>
 			<feature name="ConflictofinterestAutomatic"/>
 			<feature name="SubmissionParcial"/>
+			<feature name="Notification"/>
+			<feature name="NotificationsDeadline"/>
+			<feature name="NotificationsAceptanceRejection"/>
+			<feature name="NotificationsPaperAssignemnt"/>
 			<feature name="InsertAuthors"/>
 			<feature name="CheckingCopy"/>
 			<feature name="CheckingCopyAtestado"/>
 			<feature name="CheckingCopyCertificado"/>
 			<feature name="BugTrack"/>
 			<feature name="Payment"/>
+			<feature name="Review"/>
 		</featureOrder>
 	</featureModel>
