@@ -265,16 +265,6 @@ public class RiSEventFacade {
 		return events.getEventIdByName(eventName);
 	}
 	
-	//#if ${EventProgram} == "T"
-	public void generateProgram (List<Activity> activities, Event event) throws DocumentException, IOException{
-		events.generateProgram(activities, event);
-	}
-	//#endif
-	
-	//#if ${EventImportantDates} == "T"
-	public void generateImportantDates(String abstractDate, String fullPaperDate, String notificationDate, Event event) throws DocumentException, IOException{
-		events.generateImportantDates(abstractDate, fullPaperDate, notificationDate, event);
-	}
 	
 	//USER
 	public void insertUser(User user) throws UserAlreadyInsertedException, RepositoryException{

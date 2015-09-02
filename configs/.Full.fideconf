@@ -20,9 +20,9 @@
 12ReportsFrequencyperEvent
 12ReportsFrequencyperActivity
 12ReportsListofAuthors
-22EventReport
-22EventImportantDates
-22EventProgram
+11EventReport
+12EventImportantDates
+12EventProgram
 12Receipt
 22Payment
 22PaymentCartao

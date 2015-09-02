@@ -25,9 +25,9 @@
 					<feature name="ReportsFrequencyperActivity"/>
 					<feature name="ReportsListofAuthors"/>
 				</and>
-				<and abstract="true" hidden="true" name="EventReport">
-					<feature hidden="true" name="EventImportantDates"/>
-					<feature hidden="true" name="EventProgram"/>
+				<and abstract="true" name="EventReport">
+					<feature name="EventImportantDates"/>
+					<feature name="EventProgram"/>
 				</and>
 				<feature name="Receipt"/>
 				<and abstract="true" hidden="true" name="Payment">

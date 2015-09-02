@@ -52,12 +52,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private EventSearchScreenP screenSearchEvent;
 	private EventListAllScreenP screenListAllEvent;
 	private EventManagementScreenP screenManagementEvent;
-	//#if ${EventProgram} == "T"
-	private EventProgramScreenP screenEventProgram;
-	//#endif
-	//#if ${EventImportantDates} == "T"
-	private EventImportantDatesScreenP screenEventImportantDates;
-	//#endif
 	
 	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 	private ReviewInsertScreenP screenInsertReview;
@@ -145,7 +139,8 @@ public class RiSEEventMainScreenP extends JFrame {
 	private JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
 	private JMenu mnReports = new JMenu("Reports");  // moved out due references issue
 	private JMenu mnPayment = new JMenu("Payment"); // moved out due references issue
-	private JMenu menu = new JMenu("CheckingCopy");
+	private JMenu menu = new JMenu("CheckingCopy"); // moved out due references issue
+	private JMenu mnEvent = new JMenu("Event"); // moved out due references issue
 	
 	/**
 	 * Create the frame.
@@ -184,12 +179,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		SearchEventMenuAction searchEventAction = new SearchEventMenuAction();
 		ListAllEventMenuAction listAllEventAction = new ListAllEventMenuAction();
 		ManagementEventMenuAction managementEventAction = new ManagementEventMenuAction();
-		//#if ${EventProgram} == "T"
-		EventProgramMenuAction eventProgramAction = new EventProgramMenuAction();
-		//#endif
-		//#if ${EventImportantDates} == "T"
-		EventImpontantDatesMenuAction eventImportantDatesAction = new EventImpontantDatesMenuAction();
-		//#endif
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		InsertReviewMenuAction insertReviewAction = new InsertReviewMenuAction();
 		RemoveReviewMenuAction removeReviewAction = new RemoveReviewMenuAction();
@@ -338,14 +327,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		
 		JMenuItem mntmEventManagement = new JMenuItem("Event Management");
 		mnEvent.add(mntmEventManagement);
-		//#if ${EventProgram} == "T"
-		JMenuItem mntmEventProgram = new JMenuItem("Event Program");
-		mnEvent.add(mntmEventProgram);
-		//#endif
-		//#if ${EventImportantDates} == "T"
-		JMenuItem mntmEventImportantDates = new JMenuItem("Event Important Dates");
-		mnEvent.add(mntmEventImportantDates);
-		//#endif
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		JMenu mnReview = new JMenu("Review");
 		menuBar.add(mnReview);
@@ -485,12 +466,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmSearch_4.addActionListener(searchEventAction);
 		mntmListall_4.addActionListener(listAllEventAction);
 		mntmEventManagement.addActionListener(managementEventAction);
-		//#if ${EventProgram} == "T"
-		mntmEventProgram.addActionListener(eventProgramAction);
-		//#endif
-		//#if ${EventImportantDates} == "T"
-		mntmEventImportantDates.addActionListener(eventImportantDatesAction);
-		//#endif
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		mntmInsert_6.addActionListener(insertReviewAction);
 		mntmRemove_6.addActionListener(removeReviewAction);
@@ -1026,46 +1001,6 @@ public class RiSEEventMainScreenP extends JFrame {
 				}
 			}  
 		}
-		//#if ${EventProgram} == "T"
-		private class EventProgramMenuAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenEventProgram = EventProgramScreenP.getInstanceEventProgramScreenP();
-				//desktopPane.add(screenEventProgram);
-				if(screenEventProgram.getParent() == null){
-					desktopPane.add(screenEventProgram);
-				}
-				screenEventProgram.setVisible(true);
-				desktopPane.moveToFront(screenEventProgram);
-				try {
-					screenEventProgram.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		//#endif
-		//#if ${EventImportantDates} == "T"
-		private class EventImpontantDatesMenuAction implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenEventImportantDates = EventImportantDatesScreenP.getInstanceEventImportantDatesScreenP();
-			//	desktopPane.add(screenEventImportantDates);
-				if(screenEventImportantDates.getParent() == null){
-					desktopPane.add(screenEventImportantDates);
-				}
-				screenEventImportantDates.setVisible(true);
-				desktopPane.moveToFront(screenEventImportantDates);
-				try {
-					screenEventImportantDates.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		//#endif
 		
 		//REVIEW
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"

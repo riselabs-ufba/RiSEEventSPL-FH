@@ -12,7 +12,6 @@ import rise.splcc.exception.EventNotFoundException;
 import rise.splcc.exception.RepositoryException;
 import rise.splcc.repository.EventRepository;
 
-
 public class EventControl {
 	
     private EventRepository events;
@@ -61,15 +60,4 @@ public class EventControl {
 		return events.getEventIdByName(eventName);
 	}
 	
-	
-	//#if ${EventProgram} == "T"
-	public void generateProgram(List<Activity> activities, Event event) throws DocumentException, IOException{
-		event.generateProgram(activities);
-	}
-	//#endif
-	//#if ${EventImportantDates} == "T"
-	public void generateImportantDates (String abstractDate, String fullPaperDate, String notificationDate, Event event) throws DocumentException, IOException{
-		event.generateImportantDates(abstractDate, fullPaperDate, notificationDate);
-	}
-	//#endif
 }
