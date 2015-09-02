@@ -30,7 +30,7 @@
 					<feature name="EventProgram"/>
 				</and>
 				<feature name="Receipt"/>
-				<and abstract="true" hidden="true" name="Payment">
+				<and name="Payment">
 					<feature name="PaymentCartao"/>
 					<feature name="PaymentDeposito"/>
 					<feature name="PaymentAvista"/>
@@ -119,5 +119,6 @@
 			<feature name="CheckingCopyAtestado"/>
 			<feature name="CheckingCopyCertificado"/>
 			<feature name="BugTrack"/>
+			<feature name="Payment"/>
 		</featureOrder>
 	</featureModel>

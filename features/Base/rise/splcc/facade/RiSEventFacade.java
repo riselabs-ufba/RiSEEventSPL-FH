@@ -16,9 +16,6 @@ import rise.splcc.business.AssignmentControl;
 import rise.splcc.business.AuthorControl;
 //#endif
 import rise.splcc.business.EventControl;
-//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-import rise.splcc.business.PaymentControl;
-//#endif
 import rise.splcc.business.RegistrationControl;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.business.ReviewControl;
@@ -40,9 +37,6 @@ import rise.splcc.data.Assignment;
 import rise.splcc.data.Author;
 //#endif
 import rise.splcc.data.Event;
-//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-import rise.splcc.data.Payment;
-//#endif
 import rise.splcc.data.Registration;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.data.Review;
@@ -69,10 +63,6 @@ import rise.splcc.exception.AuthorNotFoundException;
 //#endif
 import rise.splcc.exception.EventAlreadyInsertedException;
 import rise.splcc.exception.EventNotFoundException;
-//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-import rise.splcc.exception.PaymentAlreadyInsertedException;
-import rise.splcc.exception.PaymentNotFoundException;
-//#endif
 import rise.splcc.exception.RegistrationAlreadyInsertedException;
 import rise.splcc.exception.RegistrationNotFoundException;
 import rise.splcc.exception.RepositoryException;
@@ -106,10 +96,6 @@ import rise.splcc.repository.AuthorRepositoryBDR;
 //#endif
 import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
-//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-import rise.splcc.repository.PaymentRepository;
-import rise.splcc.repository.PaymentRepositoryBDR;
-//#endif
 import rise.splcc.repository.RegistrationRepository;
 import rise.splcc.repository.RegistrationRepositoryBDR;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
@@ -140,9 +126,6 @@ public class RiSEventFacade {
 
 	private UserControl users;
 
-	//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-	private PaymentControl payments;
-	//#endif
 	private RegistrationControl registrations;
 	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 	private ReviewControl reviews;
@@ -176,9 +159,6 @@ public class RiSEventFacade {
 		
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
-		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-		PaymentRepository paymentRepository = PaymentRepositoryBDR.getInstance();
-		//#endif
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		ReviewRepository reviewRepository = ReviewRepositoryBDR.getInstance();
@@ -203,9 +183,6 @@ public class RiSEventFacade {
 		
 		users = new UserControl(userRepository);
 		
-		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-		payments = new PaymentControl(paymentRepository);
-		//#endif
 		registrations = new RegistrationControl(registrationRepository);
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		reviews = new ReviewControl(reviewRepository);
@@ -332,41 +309,6 @@ public class RiSEventFacade {
 	public int searchRegistration(int idUser, int idEvent) throws RegistrationNotFoundException, RepositoryException{
 		return registrations.search(idUser, idEvent);
 	}
-	
-	
-	//PAYMENT
-	
-	//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-	public void insertPayment(Payment payment) throws PaymentAlreadyInsertedException, RepositoryException{
-		this.payments.insert(payment);
-	}
-	
-	public List<Payment> getPayments() throws RepositoryException{
-		return payments.getPayments();
-	}
-	
-	public int getPaymentLastId() throws RepositoryException{
-		return payments.getPaymentLastId();
-	}
-	
-	public void updatePayment(Payment payment) throws PaymentNotFoundException, RepositoryException, PaymentAlreadyInsertedException{
-		payments.update(payment);
-	}
-	
-	public void removePayment(int idPayment) throws PaymentNotFoundException, RepositoryException, PaymentAlreadyInsertedException{
-		payments.remove(idPayment);  
-	}
-	
-	public Payment searchPayment(int idPayment) throws PaymentNotFoundException, RepositoryException, PaymentAlreadyInsertedException{
-		return payments.search(idPayment);
-	}
-	
-	public void typePayment(Payment payment, Payment paymentout) throws DocumentException, IOException {
-		this.payments.type(payment, paymentout);
-	}
-	//#endif
-	
-	
 	
 	
 	//REVIEW

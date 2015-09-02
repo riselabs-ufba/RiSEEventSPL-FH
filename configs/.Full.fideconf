@@ -23,8 +23,8 @@
 11EventReport
 12EventImportantDates
 12EventProgram
-12Receipt
-22Payment
+11Receipt
+12Payment
 22PaymentCartao
 22PaymentDeposito
 22PaymentAvista
