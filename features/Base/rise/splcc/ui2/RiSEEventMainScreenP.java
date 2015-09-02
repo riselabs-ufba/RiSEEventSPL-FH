@@ -151,8 +151,11 @@ public class RiSEEventMainScreenP extends JFrame {
 		});
 	}
 
-	public JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
-	public JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
+	private JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
+	private JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
+	private JMenu mnReports = new JMenu("Reports");  // moved out due references issue
+	private JMenu mnPayment = new JMenu("Payment"); // moved out due references issue
+	
 	
 	/**
 	 * Create the frame.
@@ -161,10 +164,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		init();
 	}
 	
-	//#if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity} == "T" or ${ReportsFrequencyperEvent} == "T" or ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"	
-	private JMenu mnReports = new JMenu("Reports");
-	//#endif
-			
 			
 	public void init(){
 		
@@ -438,7 +437,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		menu.add(menuItem_5);
 		//#endif
 		//#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
-		JMenu mnPayment = new JMenu("Payment");
 		menuBar.add(mnPayment);
 		
 		JMenuItem mntmInsert_7 = new JMenuItem("Insert");
