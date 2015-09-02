@@ -40,7 +40,7 @@
 					<feature name="NotificationsAceptanceRejection"/>
 					<feature name="NotificationsPaperAssignemnt"/>
 				</and>
-				<or abstract="true" hidden="true" name="Submission">
+				<or abstract="true" name="Submission">
 					<and mandatory="true" name="SubmissionCompleta">
 						<alt hidden="true" mandatory="true" name="Review">
 							<feature mandatory="true" name="ReviewRoundofReview"/>

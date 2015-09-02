@@ -300,6 +300,7 @@ setTitle("Insert Assignment");
 					}
 				}
 				//#endif
+				
 				User user = new User();
 				//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 				List<SubmissionUser> submissionUser = new ArrayList<SubmissionUser>();
@@ -410,6 +411,7 @@ setTitle("Insert Assignment");
 
 			}
 		}
+	
 	
 	private void carregarComboSubmission(){
 		try {

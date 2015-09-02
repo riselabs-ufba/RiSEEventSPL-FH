@@ -32,7 +32,7 @@
 12NotificationsDeadline
 12NotificationsAceptanceRejection
 12NotificationsPaperAssignemnt
-22Submission
+21Submission
 22SubmissionCompleta
 22Review
 22ReviewRoundofReview
@@ -44,7 +44,7 @@
 22Conflicto
 22ConflictofinterestAutomatic
 22SubmissionParcial
-22InsertAuthors
+12InsertAuthors
 22CheckingCopy
 22CheckingCopyAtestado
 22CheckingCopyCertificado

@@ -388,7 +388,7 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				Author author = new Author();
 				List<SubmissionAuthor> submissionAuthor = new ArrayList<SubmissionAuthor>();
 				submissionAuthor = RiSEEventMainScreenP.facade.getSubmissionAuthors();
-							
+				
 				for(SubmissionAuthor sa : submissionAuthor){
 					if(sa.getIdSubmission() == idSubmission){
 						author = RiSEEventMainScreenP.facade.searchAuthor(sa.getIdAuthor());
@@ -506,6 +506,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 			}
 			}		
 		}
+	
+	
 	
 	private class RemoveButtonAction  implements ActionListener{ 
 

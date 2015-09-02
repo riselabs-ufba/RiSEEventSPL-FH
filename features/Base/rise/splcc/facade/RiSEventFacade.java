@@ -12,16 +12,10 @@ import rise.splcc.business.ActivityUserControl;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.business.AssignmentControl;
 //#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.business.AuthorControl;
-//#endif
 import rise.splcc.business.EventControl;
 import rise.splcc.business.RegistrationControl;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.business.ReviewControl;
-//#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.business.SubmissionAuthorControl;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.business.SubmissionControl;
@@ -33,9 +27,6 @@ import rise.splcc.data.ActivityUser;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.data.Assignment;
 //#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.data.Author;
-//#endif
 import rise.splcc.data.Event;
 import rise.splcc.data.Registration;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
@@ -43,9 +34,6 @@ import rise.splcc.data.Review;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.data.Submission;
-//#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.data.SubmissionAuthor;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.data.SubmissionUser;
@@ -56,10 +44,6 @@ import rise.splcc.exception.ActivityUserNotFoundException;
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 import rise.splcc.exception.AssignmentAlreadyInsertedException;
 import rise.splcc.exception.AssignmentNotFoundException;
-//#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.exception.AuthorAlreadyInsertedException;
-import rise.splcc.exception.AuthorNotFoundException;
 //#endif
 import rise.splcc.exception.EventAlreadyInsertedException;
 import rise.splcc.exception.EventNotFoundException;
@@ -72,9 +56,6 @@ import rise.splcc.exception.ReviewNotFoundException;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.exception.SubmissionAlreadyInsertedException;
-//#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.exception.SubmissionAuthorAlreadyInsertedException;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.exception.SubmissionNotFoundException;
@@ -90,10 +71,6 @@ import rise.splcc.repository.ActivityUserRepositoryBDR;
 import rise.splcc.repository.AssignmentRepository;
 import rise.splcc.repository.AssignmentRepositoryBDR;
 //#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.repository.AuthorRepository;
-import rise.splcc.repository.AuthorRepositoryBDR;
-//#endif
 import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
 import rise.splcc.repository.RegistrationRepository;
@@ -101,10 +78,6 @@ import rise.splcc.repository.RegistrationRepositoryBDR;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.repository.ReviewRepository;
 import rise.splcc.repository.ReviewRepositoryBDR;
-//#endif
-//#if ${InsertAuthors} == "T"
-import rise.splcc.repository.SubmissionAuthorRepository;
-import rise.splcc.repository.SubmissionAuthorRepositoryBDR;
 //#endif
 //#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 import rise.splcc.repository.SubmissionRepository;
@@ -136,12 +109,6 @@ public class RiSEventFacade {
 	//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 	private SubmissionUserControl submissionUsers;
 	//#endif
-	//#if ${InsertAuthors} == "T"
-	private SubmissionAuthorControl submissionAuthors;
-	//#endif
-	//#if ${InsertAuthors} == "T"
-	private AuthorControl authors;
-	//#endif
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T" 
 	private AssignmentControl assignments;
 	//#endif
@@ -169,12 +136,6 @@ public class RiSEventFacade {
 		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 		SubmissionUserRepository submissionUserRepository = SubmissionUserRepositoryBDR.getInstance();
 		//#endif
-		//#if ${InsertAuthors} == "T"
-		SubmissionAuthorRepository submissionAuthorRepository = SubmissionAuthorRepositoryBDR.getInstance();
-		//#endif
-		//#if ${InsertAuthors} == "T"
-		AuthorRepository authorRepository = AuthorRepositoryBDR.getInstance();
-		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		AssignmentRepository assignmentRepository = AssignmentRepositoryBDR.getInstance();
 		//#endif
@@ -192,12 +153,6 @@ public class RiSEventFacade {
 		//#endif
 		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 		submissionUsers = new SubmissionUserControl(submissionUserRepository);
-		//#endif
-		//#if ${InsertAuthors} == "T"
-		submissionAuthors = new SubmissionAuthorControl(submissionAuthorRepository);
-		//#endif
-		//#if ${InsertAuthors} == "T"
-		authors = new AuthorControl(authorRepository);
 		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		assignments = new AssignmentControl(assignmentRepository);
@@ -397,47 +352,6 @@ public class RiSEventFacade {
 	}
 	//#endif
 	
-	//SUBMISSIONAUTHOR
-	//#if ${InsertAuthors} == "T"
-	public void insertSubmissionAuthor(SubmissionAuthor submissionAuthor) throws SubmissionAuthorAlreadyInsertedException, RepositoryException{
-		submissionAuthors.insert(submissionAuthor);
-	}
-	
-	public List<SubmissionAuthor> getSubmissionAuthors() throws RepositoryException{
-		return submissionAuthors.getSubmissionAuthors();
-	}
-	
-	public boolean isThereSubmissionAuthor(SubmissionAuthor submissionauthor) throws RepositoryException{
-		return submissionAuthors.isThere(submissionauthor);
-	}
-	//#endif
-	
-	//AUTHOR
-	//#if ${InsertAuthors} == "T"
-	public void insertAuthor(Author author) throws AuthorAlreadyInsertedException, RepositoryException{
-		authors.insert(author);
-	}
-
-	public void removeAuthor(int idAuthor) throws AuthorNotFoundException, RepositoryException, AuthorAlreadyInsertedException{
-		authors.remove(idAuthor);  
-	}
-
-	public void updateAuthor(Author author) throws AuthorNotFoundException, RepositoryException, AuthorAlreadyInsertedException{
-		authors.update(author);
-	}
-
-	public List<Author> getAuthors() throws RepositoryException{
-		return authors.getAuthors();
-	}
-
-	public Author searchAuthor(int idAuthor) throws AuthorNotFoundException, RepositoryException, AuthorAlreadyInsertedException{
-		return authors.search(idAuthor);
-	} 
-	public int getAuthorLastId() throws RepositoryException{
-		return authors.getAuthorLastId();
-		
-	}
-	//#endif
 	//ASSIGNMENT
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 	public void insertAssignment(Assignment review) throws RepositoryException, AssignmentAlreadyInsertedException{
