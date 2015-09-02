@@ -106,9 +106,6 @@ public class RiSEEventMainScreenP extends JFrame {
 	private AssignmentManagementScreenP screenManagementAssignment;
 	private AssignmentSearchScreenP screenSearchAssignment;
 	//#endif
-	//#if ${Receipt} == "T" 
-	private ReceiptScreenP screenReceipt;
-	//#endif
 	
 	private RegistrationInsertScreenP screenInsertRegistration;
 	private RegistrationSearchScreenP screenSearchRegistration;
@@ -248,9 +245,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		ListAllAssignmentMenuAction listAllAssignmentAction = new ListAllAssignmentMenuAction();
 		ManagementAssignmentMenuAction managementAssignmentAction = new ManagementAssignmentMenuAction();
 		SearchAssignmentMenuAction searchAssignmentAction = new SearchAssignmentMenuAction();
-		//#endif
-		//#if ${Receipt} == "T" 
-		ReceiptScreenMenuAction receiptAction = new ReceiptScreenMenuAction();
 		//#endif
 		
 		InsertRegistrationMenuAction insertRegistrationAction = new InsertRegistrationMenuAction();
@@ -466,10 +460,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mnPayment.add(mntmPaymentManagement);
 		//#endif
 
-		//#if ${Receipt} == "T" 
-		JMenuItem mntmReceiptScreen = new  JMenuItem("Receipt");
-		mnPayment.add(mntmReceiptScreen);
-		//#endif
 		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
 		JMenu mnSubmission = new JMenu("Submission");
 		menuBar.add(mnSubmission);
@@ -586,9 +576,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmRemove_9.addActionListener(removeAssignmentAction);
 		mntmListall_9.addActionListener(listAllAssignmentAction);
 		mntmAssignmentManagement.addActionListener(managementAssignmentAction);
-		//#endif
-		//#if ${Receipt} == "T" 
-		mntmReceiptScreen.addActionListener(receiptAction);
 		//#endif
 		
 		mntmInsert_10.addActionListener(insertRegistrationAction);
@@ -1754,28 +1741,6 @@ public class RiSEEventMainScreenP extends JFrame {
 				desktopPane.moveToFront(screenManagementCheckingCopy);
 				try {
 					screenManagementCheckingCopy.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		//#endif
-		//RECEIPT
-		//#if ${Receipt} == "T" 
-		private class ReceiptScreenMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenReceipt = ReceiptScreenP.getInstanceReceiptScreenP();
-				//desktopPane.add(screenReceipt);
-				if(screenReceipt.getParent() == null){
-					desktopPane.add(screenReceipt);
-				}
-				screenReceipt.setVisible(true);
-				desktopPane.moveToFront(screenReceipt);
-				try {
-					screenReceipt.setSelected(true);
 				} catch (PropertyVetoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

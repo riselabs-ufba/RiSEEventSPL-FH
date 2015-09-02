@@ -22,9 +22,6 @@ import rise.splcc.business.EventControl;
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.business.PaymentControl;
 //#endif
-//#if ${Receipt} == "T"
-import rise.splcc.business.ReceiptControl;
-//#endif
 import rise.splcc.business.RegistrationControl;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.business.ReviewControl;
@@ -51,9 +48,6 @@ import rise.splcc.data.CheckingCopy;
 import rise.splcc.data.Event;
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.data.Payment;
-//#endif
-//#if ${Receipt} == "T"
-import rise.splcc.data.Receipt;
 //#endif
 import rise.splcc.data.Registration;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
@@ -88,10 +82,6 @@ import rise.splcc.exception.EventNotFoundException;
 //#if ${PaymentAvista} == "T" or ${PaymentDeposito} == "T" or ${PaymentCartao} == "T"
 import rise.splcc.exception.PaymentAlreadyInsertedException;
 import rise.splcc.exception.PaymentNotFoundException;
-//#endif
-//#if ${Receipt} == "T"
-import rise.splcc.exception.ReceiptAlreadyInsertedException;
-import rise.splcc.exception.ReceiptNotFoundException;
 //#endif
 import rise.splcc.exception.RegistrationAlreadyInsertedException;
 import rise.splcc.exception.RegistrationNotFoundException;
@@ -134,10 +124,6 @@ import rise.splcc.repository.EventRepositoryBDR;
 import rise.splcc.repository.PaymentRepository;
 import rise.splcc.repository.PaymentRepositoryBDR;
 //#endif
-//#if ${Receipt} == "T"
-import rise.splcc.repository.ReceiptRepository;
-import rise.splcc.repository.ReceiptRepositoryBDR;
-//#endif
 import rise.splcc.repository.RegistrationRepository;
 import rise.splcc.repository.RegistrationRepositoryBDR;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
@@ -172,9 +158,6 @@ public class RiSEventFacade {
 	private PaymentControl payments;
 	//#endif
 	private RegistrationControl registrations;
-	//#if ${Receipt} == "T"
-	private ReceiptControl receipts;
-	//#endif
 	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 	private ReviewControl reviews;
 	//#endif
@@ -214,9 +197,6 @@ public class RiSEventFacade {
 		PaymentRepository paymentRepository = PaymentRepositoryBDR.getInstance();
 		//#endif
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
-		//#if ${Receipt} == "T"
-		ReceiptRepository receiptRepository = ReceiptRepositoryBDR.getInstance();
-		//#endif
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		ReviewRepository reviewRepository = ReviewRepositoryBDR.getInstance();
 		//#endif
@@ -247,9 +227,6 @@ public class RiSEventFacade {
 		payments = new PaymentControl(paymentRepository);
 		//#endif
 		registrations = new RegistrationControl(registrationRepository);
-		//#if ${Receipt} == "T"
-		receipts = new ReceiptControl(receiptRepository);
-		//#endif
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		reviews = new ReviewControl(reviewRepository);
 		//#endif
@@ -424,32 +401,6 @@ public class RiSEventFacade {
 	
 	
 	
-	//RECEIPT
-	//#if ${Receipt} == "T"
-	public void insertReceipt(Receipt receipt) throws ReceiptAlreadyInsertedException, RepositoryException{
-		this.receipts.insert(receipt);
-	}
-	
-	public List<Receipt> getReceipts() throws RepositoryException{
-		return receipts.getReceipts();
-	}
-	
-	public int getReceiptLastId() throws RepositoryException{
-		return receipts.getReceiptLastId();
-	}
-	
-	public void removeReceipt(int idReceipt) throws ReceiptNotFoundException, RepositoryException, ReceiptAlreadyInsertedException{
-		receipts.remove(idReceipt);  
-	}
-	
-	public void updateReceipt(Receipt review) throws ReceiptNotFoundException, RepositoryException, ReceiptAlreadyInsertedException{
-		receipts.update(review);
-	}
-	
-	public Receipt searchReceipt(int idReceipt) throws ReceiptNotFoundException, RepositoryException, ReceiptAlreadyInsertedException{
-		return receipts.search(idReceipt);
-	}
-	//#endif
 	
 	//REVIEW
 	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"

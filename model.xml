@@ -29,7 +29,7 @@
 					<feature hidden="true" name="EventImportantDates"/>
 					<feature hidden="true" name="EventProgram"/>
 				</and>
-				<feature hidden="true" name="Receipt"/>
+				<feature name="Receipt"/>
 				<and abstract="true" hidden="true" name="Payment">
 					<feature name="PaymentCartao"/>
 					<feature name="PaymentDeposito"/>
