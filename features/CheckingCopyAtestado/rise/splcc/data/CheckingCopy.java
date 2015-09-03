@@ -8,6 +8,15 @@ public class CheckingCopy {
 		//#endif
 	}
 	
+	private TypeCheckingCopy checkingCopyType;
+	
+	public TypeCheckingCopy getCheckingCopyType() {
+		return checkingCopyType;
+	}
+	public void setCheckingCopyType(TypeCheckingCopy checkingCopyType) {
+		this.checkingCopyType = checkingCopyType;
+	}
+	
 	//#if ${CheckingCopyAtestado} == "T"
 	public boolean emitirAtestado(String nome, String evento, String periodo) {
         Document documento = new Document();

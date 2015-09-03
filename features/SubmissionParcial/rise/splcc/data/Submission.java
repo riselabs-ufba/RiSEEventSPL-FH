@@ -8,4 +8,10 @@ public class Submission {
 		//#endif
 	}
 	
+	private TypeSubmission type;
+	
+	public void setType(TypeSubmission type) {
+		this.type = type;
+	}
+	
 }

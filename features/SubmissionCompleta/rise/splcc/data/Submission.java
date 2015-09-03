@@ -7,6 +7,12 @@ public class Submission {
 		Completa
 		//#endif
 	}
+
+	private TypeSubmission type;
+	
+	public void setType(TypeSubmission type) {
+		this.type = type;
+	}
 	
 	
 }

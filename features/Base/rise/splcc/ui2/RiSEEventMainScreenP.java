@@ -241,16 +241,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		menuBar.add(mnReports);
 		// #endif
 
-		JMenuItem mntmRemove_8 = new JMenuItem("Remove");
-		mnSubmission.add(mntmRemove_8);
-
-		JMenuItem mntmSearch_8 = new JMenuItem("Search");
-		mnSubmission.add(mntmSearch_8);
-
-		JMenuItem mntmListall_8 = new JMenuItem("List All");
-		mnSubmission.add(mntmListall_8);
-		// #endif
-
 		mntmExit.addActionListener(exitMenuAction);
 
 		mntmInsert.addActionListener(insertUserAction);

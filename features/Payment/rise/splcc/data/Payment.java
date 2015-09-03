@@ -20,17 +20,13 @@ import com.lowagie.text.pdf.PdfWriter;
 
 public class Payment {
 	
-	public enum TypePayment{
-		
-	}
-	
 	public enum StatusPayment{
 		Parcial, Completo, Incompleto
 	}
 
 	private int idPayment;
 	private int idRegistration;
-	private TypePayment paymentType;
+
 	private StatusPayment status;
 	private String date;
 	private float value;
@@ -68,12 +64,7 @@ public class Payment {
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
-	public TypePayment getPaymentType() {
-		return paymentType;
-	}
-	public void setPaymentType(TypePayment paymentType) {
-		this.paymentType = paymentType;
-	}
+
 	public StatusPayment getStatus() {
 		return status;
 	}

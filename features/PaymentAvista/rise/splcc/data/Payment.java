@@ -8,7 +8,14 @@ public class Payment {
 		//#endif
 	}
 	
+	private TypePayment paymentType;
 	
+	public TypePayment getPaymentType() {
+		return paymentType;
+	}
+	public void setPaymentType(TypePayment paymentType) {
+		this.paymentType = paymentType;
+	}
 	
 	public void startarAcaoTypePayment(Payment payment) throws DocumentException, IOException{
 		original();

@@ -5,13 +5,10 @@ import java.sql.Blob;
 
 public class Submission {
 
-	public enum TypeSubmission{
-		
-	}
 	
 	private int idSubmission;
 	private int idActivity;
-	private TypeSubmission type;
+	
 	private String abstractPaper;
 	private Blob attachment;
 	private String keywords;
@@ -51,9 +48,7 @@ public class Submission {
 	public TypeSubmission getType() {
 		return type;
 	}
-	public void setType(TypeSubmission type) {
-		this.type = type;
-	}
+
 	public String getTitle() {
 		return title;
 	}
