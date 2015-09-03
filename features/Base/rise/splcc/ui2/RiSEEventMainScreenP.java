@@ -53,27 +53,7 @@ public class RiSEEventMainScreenP extends JFrame {
 	private EventListAllScreenP screenListAllEvent;
 	private EventManagementScreenP screenManagementEvent;
 	
-	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-	private ReviewInsertScreenP screenInsertReview;
-	private ReviewRemoveScreenP screenRemoveReview;
-	private ReviewUpdateScreenP screenUpdateReview;
-	private ReviewSearchScreenP screenSearchReview;
-	private ReviewListAllScreenP screenListAllReview;
-	private ReviewManagementScreenP screenManagementReview;
-	private ReviewResultsScreenP screenResultsReview;
-	//#endif
-	
-	//#if ${SubmissionCompleta} == "T"
-	private SubmissionCompleteInsertScreenP screenInsertSubmission;
-	//#endif
-	//#if ${SubmissionParcial} == "T" 
-	private SubmissionPartialInsertScreenP screenInsertSubmissionPartial;
-	//#endif
-	//#if ${SubmissionCompleta} == "T" or ${SubmissionParcial} == "T"
-	private SubmissionSearchScreenP screenSearchSubmission;
-	private SubmissionListAllScreenP screenListAllSubmission;
-	private SubmissionRemoveScreenP screenRemoveSubmission;
-	//#endif
+
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 	private AssignmentInsertScreenP screenInsertAssignment;
 	private AssignmentRemoveScreenP screenRemoveAssignment;
@@ -168,27 +148,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		SearchEventMenuAction searchEventAction = new SearchEventMenuAction();
 		ListAllEventMenuAction listAllEventAction = new ListAllEventMenuAction();
 		ManagementEventMenuAction managementEventAction = new ManagementEventMenuAction();
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		InsertReviewMenuAction insertReviewAction = new InsertReviewMenuAction();
-		RemoveReviewMenuAction removeReviewAction = new RemoveReviewMenuAction();
-		UpdateReviewMenuAction updateReviewAction = new UpdateReviewMenuAction();
-		SearchReviewMenuAction searchReviewAction = new SearchReviewMenuAction();
-		ListAllReviewMenuAction listAllReviewAction = new ListAllReviewMenuAction();
-		ManagementReviewMenuAction managementReviewAction = new ManagementReviewMenuAction();
-		ResultsReviewMenuAction resultsReviewAction = new ResultsReviewMenuAction();
-		//#endif
 		
-		//#if ${SubmissionCompleta} == "T"
-		InsertSubmissionMenuAction insertSubmissionAction = new InsertSubmissionMenuAction();
-		//#endif
-		//#if ${SubmissionParcial} == "T" 
-		InsertSubmissionPartialMenuAction insertSubmissionPartialAction = new InsertSubmissionPartialMenuAction();
-		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		SearchSubmissionMenuAction searchSubmissionAction = new SearchSubmissionMenuAction();
-		ListAllSubmissionMenuAction listAllSubmissionAction = new ListAllSubmissionMenuAction();
-		RemoveSubmissionMenuAction removeSubmissionAction = new RemoveSubmissionMenuAction();
-		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		InsertAssignmentMenuAction insertAssignmentAction = new InsertAssignmentMenuAction();
 		RemoveAssignmentMenuAction removeAssignmentAction = new RemoveAssignmentMenuAction();
@@ -299,31 +259,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		
 		JMenuItem mntmEventManagement = new JMenuItem("Event Management");
 		mnEvent.add(mntmEventManagement);
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		JMenu mnReview = new JMenu("Review");
-		menuBar.add(mnReview);
-		
-		JMenuItem mntmInsert_6 = new JMenuItem("Insert");
-		mnReview.add(mntmInsert_6);
-		
-		JMenuItem mntmRemove_6 = new JMenuItem("Remove");
-		mnReview.add(mntmRemove_6);
-		
-		JMenuItem mntmUpdate_6 = new JMenuItem("Update");
-		mnReview.add(mntmUpdate_6);
-		
-		JMenuItem mntmSearch_6 = new JMenuItem("Search");
-		mnReview.add(mntmSearch_6);
-		
-		JMenuItem mntmListall_6 = new JMenuItem("ListAll");
-		mnReview.add(mntmListall_6);
-		
-		JMenuItem mntmReviewManagement = new JMenuItem("Review Management");
-		mnReview.add(mntmReviewManagement);
-		
-		JMenuItem mntmReviewResults = new JMenuItem("Review Results");
-		mnReview.add(mntmReviewResults);
-		//#endif
 		
 		menuBar.add(mnRegistration);
 
@@ -349,17 +284,6 @@ public class RiSEEventMainScreenP extends JFrame {
 		menuBar.add(mnReports);
 		//#endif
 
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		JMenu mnSubmission = new JMenu("Submission");
-		menuBar.add(mnSubmission);
-		//#if ${SubmissionCompleta} == "T"
-		JMenuItem mntmInsertComplete = new JMenuItem("Insert Complete");
-		mnSubmission.add(mntmInsertComplete);
-		//#endif
-		//#if ${SubmissionParcial} == "T" 
-		JMenuItem mntmInsertPartial = new JMenuItem("Insert Partial");
-		mnSubmission.add(mntmInsertPartial);
-		//#endif
 		JMenuItem mntmRemove_8 = new JMenuItem("Remove");
 		mnSubmission.add(mntmRemove_8);
 		
@@ -416,27 +340,7 @@ public class RiSEEventMainScreenP extends JFrame {
 		mntmSearch_4.addActionListener(searchEventAction);
 		mntmListall_4.addActionListener(listAllEventAction);
 		mntmEventManagement.addActionListener(managementEventAction);
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		mntmInsert_6.addActionListener(insertReviewAction);
-		mntmRemove_6.addActionListener(removeReviewAction);
-		mntmUpdate_6.addActionListener(updateReviewAction);
-		mntmSearch_6.addActionListener(searchReviewAction);
-		mntmListall_6.addActionListener(listAllReviewAction);
-		mntmReviewManagement.addActionListener(managementReviewAction);
-		mntmReviewResults.addActionListener(resultsReviewAction);
-		//#endif
 		
-		//#if ${SubmissionCompleta} == "T"
-		mntmInsertComplete.addActionListener(insertSubmissionAction);
-		//#endif
-		//#if ${SubmissionParcial} == "T" 
-		mntmInsertPartial.addActionListener(insertSubmissionPartialAction);
-		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		mntmSearch_8.addActionListener(searchSubmissionAction);
-		mntmListall_8.addActionListener(listAllSubmissionAction);
-		mntmRemove_8.addActionListener(removeSubmissionAction);
-		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		mntmInsert_9.addActionListener(insertAssignmentAction);
 		mntmSearch_9.addActionListener(searchAssignmentAction);
@@ -940,270 +844,6 @@ public class RiSEEventMainScreenP extends JFrame {
 			}  
 		}
 		
-		//REVIEW
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		private class InsertReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				screenInsertReview = ReviewInsertScreenP.getInstanceReviewInsertScreenP();
-				//desktopPane.add(screenInsertReview);
-				if(screenInsertReview.getParent() == null){
-					desktopPane.add(screenInsertReview);
-				}
-				screenInsertReview.setVisible(true);
-				desktopPane.moveToFront(screenInsertReview);
-				try {
-					screenInsertReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}  
-		}
-
-		private class RemoveReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				screenRemoveReview = ReviewRemoveScreenP.getInstanceReviewRemoveScreenP();
-				//desktopPane.add(screenRemoveReview);
-				if(screenRemoveReview.getParent() == null){
-					desktopPane.add(screenRemoveReview);
-				}
-				screenRemoveReview.setVisible(true);
-				desktopPane.moveToFront(screenRemoveReview);
-				try {
-					screenRemoveReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}  
-		}
-
-		private class UpdateReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				screenUpdateReview = ReviewUpdateScreenP.getInstanceReviewUpdateScreenP();
-				//desktopPane.add(screenUpdateReview);
-				if(screenUpdateReview.getParent() == null){
-					desktopPane.add(screenUpdateReview);
-				}
-				screenUpdateReview.setVisible(true);
-				desktopPane.moveToFront(screenUpdateReview);
-				try {
-					screenUpdateReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-
-		private class SearchReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				screenSearchReview = ReviewSearchScreenP.getInstanceReviewSearchScreenP();
-				//desktopPane.add(screenSearchReview);
-				if(screenSearchReview.getParent() == null){
-					desktopPane.add(screenSearchReview);
-				}
-				screenSearchReview.setVisible(true);
-				desktopPane.moveToFront(screenSearchReview);
-				try {
-					screenSearchReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-
-		private class ListAllReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				screenListAllReview = ReviewListAllScreenP.getInstanceReviewListAllScreenP();
-				//desktopPane.add(screenListAllReview);
-				if(screenListAllReview.getParent() == null){
-					desktopPane.add(screenListAllReview);
-				}
-				screenListAllReview.setVisible(true);
-				desktopPane.moveToFront(screenListAllReview);
-				try {
-					screenListAllReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-
-		private class ManagementReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenManagementReview = ReviewManagementScreenP.getInstanceReviewManagementScreenP();
-				//desktopPane.add(screenManagementReview);
-				if(screenManagementReview.getParent() == null){
-					desktopPane.add(screenManagementReview);
-				}
-				screenManagementReview.setVisible(true);
-				desktopPane.moveToFront(screenManagementReview);
-				try {
-					screenManagementReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		
-		private class ResultsReviewMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenResultsReview = ReviewResultsScreenP.getInstanceReviewResultsScreenP();
-				//desktopPane.add(screenManagementReview);
-				if(screenResultsReview.getParent() == null){
-					desktopPane.add(screenResultsReview);
-				}
-				screenResultsReview.setVisible(true);
-				desktopPane.moveToFront(screenResultsReview);
-				try {
-					screenResultsReview.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		//#endif
-		
-		
-				
-				//SUBMISSION
-		//#if ${SubmissionCompleta} == "T"
-				private class InsertSubmissionMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenInsertSubmission = SubmissionCompleteInsertScreenP.getInstanceSubmissionInsertScreenP();
-						//desktopPane.add(screenInsertSubmission);
-						if(screenInsertSubmission.getParent() == null){
-							desktopPane.add(screenInsertSubmission);
-						}
-						screenInsertSubmission.setVisible(true);
-						desktopPane.moveToFront(screenInsertSubmission);
-						try {
-							screenInsertSubmission.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}  
-				}
-			//#endif	
-			//#if ${SubmissionParcial} == "T" 
-				private class InsertSubmissionPartialMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenInsertSubmissionPartial = SubmissionPartialInsertScreenP.getInstanceSubmissionPartialInsertScreenP();
-						//desktopPane.add(screenInsertSubmission);
-						if(screenInsertSubmissionPartial.getParent() == null){
-							desktopPane.add(screenInsertSubmissionPartial);
-						}  
-						screenInsertSubmissionPartial.setVisible(true);
-						desktopPane.moveToFront(screenInsertSubmissionPartial);
-						try {
-							screenInsertSubmissionPartial.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}  
-				}
-				//#endif
-				//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"	
-				private class RemoveSubmissionMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenRemoveSubmission = SubmissionRemoveScreenP.getInstanceSubmissionRemoveScreenP();
-						//desktopPane.add(screenRemoveSubmission);
-						if(screenRemoveSubmission.getParent() == null){
-							desktopPane.add(screenRemoveSubmission);
-						}
-						screenRemoveSubmission.setVisible(true);
-						desktopPane.moveToFront(screenRemoveSubmission);
-						try {
-							screenRemoveSubmission.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				private class SearchSubmissionMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenSearchSubmission = SubmissionSearchScreenP.getInstanceSubmissionSearchScreenP();
-						//desktopPane.add(screenSearchSubmission);
-						if(screenSearchSubmission.getParent() == null){
-							desktopPane.add(screenSearchSubmission);
-						}
-						screenSearchSubmission.setVisible(true);
-						desktopPane.moveToFront(screenSearchSubmission);
-						try {
-							screenSearchSubmission.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				private class ListAllSubmissionMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenListAllSubmission = SubmissionListAllScreenP.getInstanceSubmissionListAllScreenP();
-					//	desktopPane.add(screenListAllSubmission);
-						if(screenListAllSubmission.getParent() == null){
-							desktopPane.add(screenListAllSubmission);
-						}
-						screenListAllSubmission.setVisible(true);
-						desktopPane.moveToFront(screenListAllSubmission);
-						try {
-							screenListAllSubmission.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				//#endif
 				
 				//Assignemnt
 				//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
@@ -1315,7 +955,6 @@ public class RiSEEventMainScreenP extends JFrame {
 				//#endif
 		
 		//REGISTRATION
-		
 				private class InsertRegistrationMenuAction  implements ActionListener{ 
 
 					@Override

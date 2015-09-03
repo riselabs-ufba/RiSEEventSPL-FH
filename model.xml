@@ -42,7 +42,7 @@
 				</and>
 				<or name="Submission">
 					<and mandatory="true" name="SubmissionCompleta">
-						<alt hidden="true" mandatory="true" name="Review">
+						<alt mandatory="true" name="Review">
 							<feature mandatory="true" name="ReviewRoundofReview"/>
 							<feature mandatory="true" name="ReviewSimpleReview"/>
 						</alt>
@@ -83,6 +83,12 @@
 				<imp>
 					<var>InsertAuthors</var>
 					<var>SubmissionCompleta</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>InsertAuthors</var>
+					<var>SubmissionParcial</var>
 				</imp>
 			</rule>
 		</constraints>

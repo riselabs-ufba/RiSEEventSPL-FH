@@ -14,9 +14,6 @@ import rise.splcc.business.AssignmentControl;
 //#endif
 import rise.splcc.business.EventControl;
 import rise.splcc.business.RegistrationControl;
-//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-import rise.splcc.business.ReviewControl;
-//#endif
 import rise.splcc.business.UserControl;
 import rise.splcc.data.Activity;
 import rise.splcc.data.ActivityUser;
@@ -25,9 +22,6 @@ import rise.splcc.data.Assignment;
 //#endif
 import rise.splcc.data.Event;
 import rise.splcc.data.Registration;
-//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-import rise.splcc.data.Review;
-//#endif
 import rise.splcc.data.User;
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
 import rise.splcc.exception.ActivityUserNotFoundException;
@@ -40,10 +34,6 @@ import rise.splcc.exception.EventNotFoundException;
 import rise.splcc.exception.RegistrationAlreadyInsertedException;
 import rise.splcc.exception.RegistrationNotFoundException;
 import rise.splcc.exception.RepositoryException;
-//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-import rise.splcc.exception.ReviewAlreadyInsertedException;
-import rise.splcc.exception.ReviewNotFoundException;
-//#endif
 import rise.splcc.exception.UserAlreadyInsertedException;
 import rise.splcc.exception.UserNotFoundException;
 import rise.splcc.repository.ActivityRepository;
@@ -58,10 +48,6 @@ import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
 import rise.splcc.repository.RegistrationRepository;
 import rise.splcc.repository.RegistrationRepositoryBDR;
-//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-import rise.splcc.repository.ReviewRepository;
-import rise.splcc.repository.ReviewRepositoryBDR;
-//#endif
 import rise.splcc.repository.UserRepository;
 import rise.splcc.repository.UserRepositoryBDR;
 import rise.splcc.util.Email;
@@ -76,9 +62,7 @@ public class RiSEventFacade {
 	private UserControl users;
 
 	private RegistrationControl registrations;
-	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-	private ReviewControl reviews;
-	//#endif
+
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T" 
 	private AssignmentControl assignments;
 	//#endif
@@ -97,9 +81,7 @@ public class RiSEventFacade {
 		UserRepository userRepository = UserRepositoryBDR.getInstance();
 		
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		ReviewRepository reviewRepository = ReviewRepositoryBDR.getInstance();
-		//#endif
+
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		AssignmentRepository assignmentRepository = AssignmentRepositoryBDR.getInstance();
 		//#endif
@@ -109,9 +91,7 @@ public class RiSEventFacade {
 		users = new UserControl(userRepository);
 		
 		registrations = new RegistrationControl(registrationRepository);
-		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-		reviews = new ReviewControl(reviewRepository);
-		//#endif
+
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		assignments = new AssignmentControl(assignmentRepository);
 		//#endif
@@ -217,46 +197,6 @@ public class RiSEventFacade {
 	public int searchRegistration(int idUser, int idEvent) throws RegistrationNotFoundException, RepositoryException{
 		return registrations.search(idUser, idEvent);
 	}
-	
-	
-	//REVIEW
-	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
-	public void insertReview(Review review) throws RepositoryException, ReviewAlreadyInsertedException{
-		this.reviews.insert(review);
-	}
-	
-	public List<Review> getReviews() throws RepositoryException{
-		return reviews.getReviews();
-	}
-	
-	public int getReviewLastId() throws RepositoryException{
-		return reviews.getReviewLastId();
-	}
-	
-	public void removeReview(int idReview) throws ReviewNotFoundException, RepositoryException, ReviewAlreadyInsertedException{
-		reviews.remove(idReview);  
-	}
-	
-	public void updateReview(Review review) throws ReviewNotFoundException, RepositoryException, ReviewAlreadyInsertedException{
-		reviews.update(review);
-	}
-	
-	public Review searchReview(int idReview) throws ReviewNotFoundException, RepositoryException, ReviewAlreadyInsertedException{
-		return reviews.search(idReview);
-	}
-	
-	public boolean isThereReview(int idReview) throws RepositoryException{
-		return reviews.isThere(idReview);
-	}
-	
-	public void emailRoundNotification (Review review, User user, Email email) throws EmailException{
-		reviews.emailRoundNotification(review, user, email);
-	}
-	
-	public List<String> getReviewsBySubmission(int idSubmission) throws RepositoryException{
-		return reviews.getReviewsBySubmission(idSubmission);
-	}
-	//#endif
 	
 	
 	//ASSIGNMENT

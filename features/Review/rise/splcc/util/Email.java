@@ -1,18 +1,8 @@
 package rise.splcc.util;
 
-import javax.swing.JOptionPane;
-
-import org.apache.commons.mail.EmailAttachment;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
-import org.apache.commons.mail.SimpleEmail;
-//#if ${InsertAuthors} == "T"
-import rise.splcc.data.Author;
-//#endif
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.data.Review;
 //#endif
-import rise.splcc.data.User;
 
 public class Email {
 

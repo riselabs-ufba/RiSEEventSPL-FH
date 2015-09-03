@@ -2,7 +2,6 @@ package rise.splcc.ui2;
 
 public class RiSEEventMainScreenP extends JFrame {
 
-	
 	//#if ${SubmissionCompleta} == "T"
 	private SubmissionCompleteInsertScreenP screenInsertSubmission;
 	//#endif
