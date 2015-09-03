@@ -46,7 +46,7 @@
 							<feature mandatory="true" name="ReviewRoundofReview"/>
 							<feature mandatory="true" name="ReviewSimpleReview"/>
 						</alt>
-						<and abstract="true" hidden="true" mandatory="true" name="Assignment">
+						<and abstract="true" mandatory="true" name="Assignment">
 							<alt abstract="true" mandatory="true" name="AssignmentIndications">
 								<feature mandatory="true" name="AssignmentChairindication"/>
 								<feature mandatory="true" name="Assignmentautomatic"/>

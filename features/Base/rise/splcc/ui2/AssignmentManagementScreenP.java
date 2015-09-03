@@ -418,9 +418,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				
 				//#if ${ConflictofinterestAutomatic} == "T"
 				if(resultAutomaticConflict1 == true){
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Essa atribuicao nao pode ser feita por conflito de interesses", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					notifyConflictOfInterest();
 				}else{
 				//#endif	
 					
@@ -432,9 +431,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				//#if ${ConflictofinterestAutomatic} == "T"
 				}
 				if(resultAutomaticConflict2 == true){
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Essa atribuicao nao pode ser feita por conflito de interesses", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					notifyConflictOfInterest();
 				}else{
 				//#endif
 					
@@ -446,9 +444,8 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 				//#if ${ConflictofinterestAutomatic} == "T"
 				}
 				if(resultAutomaticConflict3 == true){
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Essa atribuicao nao pode ser feita por conflito de interesses", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
+					// XXX I keep it here due feature intereaction. I could not find any better solution.
+					notifyConflictOfInterest();
 				}else{
 				//#endif
 					
@@ -508,6 +505,9 @@ public class AssignmentManagementScreenP extends JInternalFrame {
 		}
 	
 	
+	private void notifyConflictOfInterest(){
+		// XXX Empty due feature intereaction. I could not find any better solution.
+	}
 	
 	private class RemoveButtonAction  implements ActionListener{ 
 
