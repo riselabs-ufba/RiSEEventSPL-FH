@@ -3,9 +3,8 @@ package rise.splcc.data;
 public class CheckingCopy {
 
 	public enum TypeCheckingCopy{
-		original();
 		//#if ${CheckingCopyAtestado} == "T"
-		Atestado,
+		Atestado
 		//#endif
 	}
 	

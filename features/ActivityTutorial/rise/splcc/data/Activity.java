@@ -7,10 +7,8 @@ public class Activity {
 	
 	//solucao sera dividir os enums, contendo todas as possibilidades possiveis e colocando cc
 	public enum TypeActivity{
-		original();
-		
 		//#if ${ActivityTutorial} == "T"
-		Tutorial, 
+		Tutorial
 		//#endif
 	}
 }

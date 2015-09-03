@@ -3,7 +3,6 @@ package rise.splcc.data;
 public class CheckingCopy {
 
 	public enum TypeCheckingCopy{
-		original();
 		//#if ${CheckingCopyCertificado} == "T"
 		Certificado
 		//#endif

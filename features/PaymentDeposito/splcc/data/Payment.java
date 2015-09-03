@@ -3,8 +3,6 @@ package rise.splcc.data;
 public class Payment {
 	
 	public enum TypePayment{
-		original();
-		
 		//#if ${PaymentDeposito} == "T"
 		Deposito
 		//#endif
