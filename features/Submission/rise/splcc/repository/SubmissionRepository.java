@@ -26,9 +26,7 @@ public interface SubmissionRepository {
 	public int getSubmissionIdByTitle(String submissionTitle) throws RepositoryException;
 	
 	public Submission search(int idSubmission) throws SubmissionNotFoundException, RepositoryException;
-	//#if ${SubmissionCompleta} == "T"
-	public void insert (File attachment, int idActivity) throws RepositoryException;
-	//#endif
+
 	public void pdfRecover(int idSubmission) throws RepositoryException;
 	
 	public List<Submission> getSubmissionsByUser(int idUser) throws RepositoryException ;

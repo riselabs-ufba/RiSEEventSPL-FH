@@ -6,15 +6,8 @@ import java.sql.Blob;
 public class Submission {
 
 	public enum TypeSubmission{
-		//#if ${SubmissionCompleta} == "T"
-		Completa,
-		//#endif
 		
-		//#if ${SubmissionParcial} == "T"
-		Parcial
-		//#endif
 	}
-	
 	
 	private int idSubmission;
 	private int idActivity;

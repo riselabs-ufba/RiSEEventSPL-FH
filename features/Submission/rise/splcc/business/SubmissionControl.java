@@ -56,11 +56,7 @@ public class SubmissionControl {
 	public Submission search(int idSubmission) throws SubmissionAlreadyInsertedException, RepositoryException, SubmissionNotFoundException{
 		return submissions.search(idSubmission);
 	}
-	//#if ${SubmissionCompleta} == "T"
-	public void inserAttachmanet(File attachment, int idActivity) throws SubmissionAlreadyInsertedException, RepositoryException{
-		submissions.insert(attachment, idActivity);
-	}
-	//#endif
+
 	public void pdfRecover(int idSubmission) throws RepositoryException {
 		submissions.pdfRecover(idSubmission);
 	}

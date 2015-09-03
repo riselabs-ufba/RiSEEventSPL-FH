@@ -17,10 +17,6 @@ import rise.splcc.business.RegistrationControl;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.business.ReviewControl;
 //#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.business.SubmissionControl;
-import rise.splcc.business.SubmissionUserControl;
-//#endif
 import rise.splcc.business.UserControl;
 import rise.splcc.data.Activity;
 import rise.splcc.data.ActivityUser;
@@ -31,12 +27,6 @@ import rise.splcc.data.Event;
 import rise.splcc.data.Registration;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.data.Review;
-//#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.data.Submission;
-//#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.data.SubmissionUser;
 //#endif
 import rise.splcc.data.User;
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
@@ -53,13 +43,6 @@ import rise.splcc.exception.RepositoryException;
 //#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 import rise.splcc.exception.ReviewAlreadyInsertedException;
 import rise.splcc.exception.ReviewNotFoundException;
-//#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.exception.SubmissionAlreadyInsertedException;
-//#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.exception.SubmissionNotFoundException;
-import rise.splcc.exception.SubmissionUserAlreadyInsertedException;
 //#endif
 import rise.splcc.exception.UserAlreadyInsertedException;
 import rise.splcc.exception.UserNotFoundException;
@@ -79,13 +62,6 @@ import rise.splcc.repository.RegistrationRepositoryBDR;
 import rise.splcc.repository.ReviewRepository;
 import rise.splcc.repository.ReviewRepositoryBDR;
 //#endif
-//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-import rise.splcc.repository.SubmissionRepository;
-import rise.splcc.repository.SubmissionRepositoryBDR;
-
-import rise.splcc.repository.SubmissionUserRepository;
-import rise.splcc.repository.SubmissionUserRepositoryBDR;
-//#endif
 import rise.splcc.repository.UserRepository;
 import rise.splcc.repository.UserRepositoryBDR;
 import rise.splcc.util.Email;
@@ -102,12 +78,6 @@ public class RiSEventFacade {
 	private RegistrationControl registrations;
 	//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 	private ReviewControl reviews;
-	//#endif
-	//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-	private SubmissionControl submissions;
-	//#endif
-	//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-	private SubmissionUserControl submissionUsers;
 	//#endif
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T" 
 	private AssignmentControl assignments;
@@ -130,12 +100,6 @@ public class RiSEventFacade {
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		ReviewRepository reviewRepository = ReviewRepositoryBDR.getInstance();
 		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		SubmissionRepository submissionRepository = SubmissionRepositoryBDR.getInstance();
-		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		SubmissionUserRepository submissionUserRepository = SubmissionUserRepositoryBDR.getInstance();
-		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		AssignmentRepository assignmentRepository = AssignmentRepositoryBDR.getInstance();
 		//#endif
@@ -147,12 +111,6 @@ public class RiSEventFacade {
 		registrations = new RegistrationControl(registrationRepository);
 		//#if ${ReviewRoundofReview} == "T" or ${ReviewSimpleReview} == "T"
 		reviews = new ReviewControl(reviewRepository);
-		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		submissions = new SubmissionControl(submissionRepository);
-		//#endif
-		//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-		submissionUsers = new SubmissionUserControl(submissionUserRepository);
 		//#endif
 		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 		assignments = new AssignmentControl(assignmentRepository);
@@ -299,58 +257,7 @@ public class RiSEventFacade {
 		return reviews.getReviewsBySubmission(idSubmission);
 	}
 	//#endif
-	//SUBMISSION
-	//#if ${SubmissionParcial} == "T" or ${SubmissionCompleta} == "T"
-	public void insertSubmission(Submission submission) throws RepositoryException, SubmissionAlreadyInsertedException{
-		this.submissions.insert(submission);
-	}
 	
-	public List<Submission> getSubmissions() throws RepositoryException{
-		return submissions.getSubmissions();
-	}
-	
-	public int getSubmissionLastId() throws RepositoryException{
-		return submissions.getSubmissionLastId();
-	}
-	
-	public void removeSubmission(int idSubmission) throws SubmissionNotFoundException, RepositoryException, SubmissionAlreadyInsertedException{
-		submissions.remove(idSubmission);  
-	}
-	
-	public void updateSubmission(Submission submission) throws SubmissionNotFoundException, RepositoryException, SubmissionAlreadyInsertedException{
-		submissions.update(submission);
-	}
-	
-	public int getSubmissionIdByTitle(String submissionTitle) throws RepositoryException{
-		return submissions.getSubmissionIdByTitle(submissionTitle);
-	}
-	
-	public Submission searchSubmission(int idSubmission) throws SubmissionNotFoundException, RepositoryException, SubmissionAlreadyInsertedException{
-		return submissions.search(idSubmission);
-	}
-	//#if ${SubmissionCompleta} == "T"
-	public void insertAttachment(File attachment, int idActivity) throws RepositoryException, SubmissionAlreadyInsertedException{
-		this.submissions.inserAttachmanet(attachment, idActivity);
-	}
-	//#endif
-	public void pdfRecovey(int idSubmission) throws RepositoryException{
-		this.submissions.pdfRecover(idSubmission);
-	}
-	
-	public List<Submission> getSubmissionsByUser(int idUser) throws RepositoryException{
-		return submissions.getSubmissionsByUser(idUser);
-	}
-	
-	//SUBMISSIONUSER
-	
-	public void insertSubmissionUser(SubmissionUser submissionUser) throws SubmissionUserAlreadyInsertedException, RepositoryException{
-		submissionUsers.insert(submissionUser);
-	}
-	
-	public List<SubmissionUser> getSubmissionUsers() throws RepositoryException{
-		return submissionUsers.getSubmissionUsers();
-	}
-	//#endif
 	
 	//ASSIGNMENT
 	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"

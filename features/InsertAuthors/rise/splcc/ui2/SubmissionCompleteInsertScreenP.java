@@ -1,4 +1,3 @@
-//#if ${SubmissionCompleta} == "T"
 package rise.splcc.ui2;
 
 //#if ${InsertAuthors} == "T"
@@ -180,4 +179,3 @@ public class SubmissionCompleteInsertScreenP extends JInternalFrame {
 	}
 
 }
-// #endif

@@ -129,6 +129,7 @@ public class RiSEEventMainScreenP extends JFrame {
 	private JMenu mnPayment = new JMenu("Payment"); // moved out due references issue
 	private JMenu menu = new JMenu("CheckingCopy"); // moved out due references issue
 	private JMenu mnEvent = new JMenu("Event"); // moved out due references issue
+	private JMenu mnSubmission = new JMenu("Submission"); // moved out due references issue
 	
 	/**
 	 * Create the frame.

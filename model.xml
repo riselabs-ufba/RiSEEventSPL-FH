@@ -40,13 +40,13 @@
 					<feature name="NotificationsAceptanceRejection"/>
 					<feature name="NotificationsPaperAssignemnt"/>
 				</and>
-				<or abstract="true" name="Submission">
+				<or name="Submission">
 					<and mandatory="true" name="SubmissionCompleta">
 						<alt hidden="true" mandatory="true" name="Review">
 							<feature mandatory="true" name="ReviewRoundofReview"/>
 							<feature mandatory="true" name="ReviewSimpleReview"/>
 						</alt>
-						<and abstract="true" mandatory="true" name="Assignment">
+						<and abstract="true" hidden="true" mandatory="true" name="Assignment">
 							<alt abstract="true" mandatory="true" name="AssignmentIndications">
 								<feature mandatory="true" name="AssignmentChairindication"/>
 								<feature mandatory="true" name="Assignmentautomatic"/>
@@ -79,11 +79,20 @@
 					<var>Receipt</var>
 				</imp>
 			</rule>
+			<rule>
+				<imp>
+					<var>InsertAuthors</var>
+					<var>SubmissionCompleta</var>
+				</imp>
+			</rule>
 		</constraints>
 		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
 		<comments/>
 		<featureOrder userDefined="true">
 			<feature name="Base"/>
+			<feature name="Submission"/>
+			<feature name="SubmissionCompleta"/>
+			<feature name="SubmissionParcial"/>
 			<feature name="Speaker"/>
 			<feature name="Organizer"/>
 			<feature name="Reviewer"/>
@@ -104,13 +113,11 @@
 			<feature name="PaymentCartao"/>
 			<feature name="PaymentDeposito"/>
 			<feature name="PaymentAvista"/>
-			<feature name="SubmissionCompleta"/>
 			<feature name="ReviewRoundofReview"/>
 			<feature name="ReviewSimpleReview"/>
 			<feature name="AssignmentChairindication"/>
 			<feature name="Assignmentautomatic"/>
 			<feature name="ConflictofinterestAutomatic"/>
-			<feature name="SubmissionParcial"/>
 			<feature name="Notification"/>
 			<feature name="NotificationsDeadline"/>
 			<feature name="NotificationsAceptanceRejection"/>
