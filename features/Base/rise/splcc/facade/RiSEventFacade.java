@@ -9,26 +9,16 @@ import org.apache.commons.mail.EmailException;
 
 import rise.splcc.business.ActivityControl;
 import rise.splcc.business.ActivityUserControl;
-//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-import rise.splcc.business.AssignmentControl;
-//#endif
 import rise.splcc.business.EventControl;
 import rise.splcc.business.RegistrationControl;
 import rise.splcc.business.UserControl;
 import rise.splcc.data.Activity;
 import rise.splcc.data.ActivityUser;
-//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-import rise.splcc.data.Assignment;
-//#endif
 import rise.splcc.data.Event;
 import rise.splcc.data.Registration;
 import rise.splcc.data.User;
 import rise.splcc.exception.ActivityUserAlreadyInsertedException;
 import rise.splcc.exception.ActivityUserNotFoundException;
-//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-import rise.splcc.exception.AssignmentAlreadyInsertedException;
-import rise.splcc.exception.AssignmentNotFoundException;
-//#endif
 import rise.splcc.exception.EventAlreadyInsertedException;
 import rise.splcc.exception.EventNotFoundException;
 import rise.splcc.exception.RegistrationAlreadyInsertedException;
@@ -40,10 +30,6 @@ import rise.splcc.repository.ActivityRepository;
 import rise.splcc.repository.ActivityRepositoryBDR;
 import rise.splcc.repository.ActivityUserRepository;
 import rise.splcc.repository.ActivityUserRepositoryBDR;
-//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-import rise.splcc.repository.AssignmentRepository;
-import rise.splcc.repository.AssignmentRepositoryBDR;
-//#endif
 import rise.splcc.repository.EventRepository;
 import rise.splcc.repository.EventRepositoryBDR;
 import rise.splcc.repository.RegistrationRepository;
@@ -63,10 +49,6 @@ public class RiSEventFacade {
 
 	private RegistrationControl registrations;
 
-	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T" 
-	private AssignmentControl assignments;
-	//#endif
-
 	protected static RiSEventFacade instance;
 	
 	public RiSEventFacade(){
@@ -82,20 +64,11 @@ public class RiSEventFacade {
 		
 		RegistrationRepository registrationRepository = RegistrationRepositoryBDR.getInstance();
 
-		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-		AssignmentRepository assignmentRepository = AssignmentRepositoryBDR.getInstance();
-		//#endif
-		
 		events = new EventControl(eventRepository);
 		
 		users = new UserControl(userRepository);
 		
 		registrations = new RegistrationControl(registrationRepository);
-
-		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-		assignments = new AssignmentControl(assignmentRepository);
-		//#endif
-		
 	}
 	
 	public static RiSEventFacade getInstance()  {
@@ -197,32 +170,4 @@ public class RiSEventFacade {
 	public int searchRegistration(int idUser, int idEvent) throws RegistrationNotFoundException, RepositoryException{
 		return registrations.search(idUser, idEvent);
 	}
-	
-	
-	//ASSIGNMENT
-	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-	public void insertAssignment(Assignment review) throws RepositoryException, AssignmentAlreadyInsertedException{
-		this.assignments.insert(review);
-	}
-	
-	public void removeAssignment(Assignment assignment) throws AssignmentNotFoundException, RepositoryException, AssignmentAlreadyInsertedException{
-		assignments.remove(assignment);  
-	}
-	
-	public Assignment searchAssignment(Assignment assignment) throws AssignmentNotFoundException, RepositoryException, AssignmentAlreadyInsertedException{
-		return assignments.search(assignment);
-	}
-	
-	public List<Assignment> getAssignments() throws RepositoryException{
-		return assignments.getAssignments();
-	}
-	
-	public void updateAssignment(Assignment assignment) throws AssignmentNotFoundException, RepositoryException, AssignmentAlreadyInsertedException{
-		assignments.update(assignment);
-	}
-	
-	public boolean isThereAssignment(Assignment assignment) throws RepositoryException{
-		return assignments.isThere(assignment);
-	}
-	//#endif
 }

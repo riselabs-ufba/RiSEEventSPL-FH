@@ -23,45 +23,29 @@ import rise.splcc.facade.RiSEventFacade;
 public class RiSEEventMainScreenP extends JFrame {
 
 	private JPanel contentPane;
-	
-    public static RiSEventFacade facade; // caso a variabilidade de tela login seja retirada o sistema deve iniciar dessa tela
-	
-	private static RiSEEventMainScreenP instanceRiSEEventMainScreenP;      
-	
 
-	private UserInsertScreenP screenInsertUser;	
+	public static RiSEventFacade facade; // caso a variabilidade de tela login
+											// seja retirada o sistema deve
+											// iniciar dessa tela
+
+	private static RiSEEventMainScreenP instanceRiSEEventMainScreenP;
+
+	private UserInsertScreenP screenInsertUser;
 	private UserRemoveScreenP screenRemoveUser;
-	private UserUpdateScreenP screenUpdateUser;	
-	private UserSearchScreenP screenSearchUser;	
+	private UserUpdateScreenP screenUpdateUser;
+	private UserSearchScreenP screenSearchUser;
 	private UserListAllScreenP screenListAllUser;
 
-	//private UserManagementScreenP screenManagementUser;
-	//#if ${Reviewer} == "T"
-	private ReviewerInsertScreenP screenInsertReviewer;
-	private ReviewerRemoveScreenP screenRemoveReviewer;
-	private ReviewerUpdateScreenP screenUpdateReviewer;
-	private ReviewerSearchScreenP screenSearchReviewer;
-	private ReviewerListAllScreenP screenListAllReviewer;
-	//#endif
-	
-	
+	// private UserManagementScreenP screenManagementUser;
+
 	private EventInsertScreenP screenInsertEvent;
-	 
+
 	private EventRemoveScreenP screenRemoveEvent;
 	private EventUpdateScreenP screenUpdateEvent;
 	private EventSearchScreenP screenSearchEvent;
 	private EventListAllScreenP screenListAllEvent;
 	private EventManagementScreenP screenManagementEvent;
-	
 
-	//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-	private AssignmentInsertScreenP screenInsertAssignment;
-	private AssignmentRemoveScreenP screenRemoveAssignment;
-	private AssignmentListAllScreenP screenListAllAssignment;
-	private AssignmentManagementScreenP screenManagementAssignment;
-	private AssignmentSearchScreenP screenSearchAssignment;
-	//#endif
-	
 	private RegistrationInsertScreenP screenInsertRegistration;
 	private RegistrationSearchScreenP screenSearchRegistration;
 	private RegistrationListAllScreenP screenListAllRegistration;
@@ -70,14 +54,13 @@ public class RiSEEventMainScreenP extends JFrame {
 	private RegistrationRemoveScreenP screenRemoveRegistration;
 
 	private static JLabel labelImagem;
-	
+
 	private JDesktopPane desktopPane;
-	
-	
-	public static RiSEventFacade getFacade(){
+
+	public static RiSEventFacade getFacade() {
 		return RiSEventFacade.getInstance();
 	}
-	
+
 	public static RiSEEventMainScreenP getInstanceRiSEEventMainScreenP() {
 		if (instanceRiSEEventMainScreenP == null) {
 			RiSEEventMainScreenP.instanceRiSEEventMainScreenP = new RiSEEventMainScreenP();
@@ -94,7 +77,7 @@ public class RiSEEventMainScreenP extends JFrame {
 				try {
 					RiSEEventMainScreenP frame = new RiSEEventMainScreenP();
 					frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -102,276 +85,218 @@ public class RiSEEventMainScreenP extends JFrame {
 		});
 	}
 
-	private JMenuBar menuBar = new JMenuBar(); // moved out from constructor due compiler issue
-	private JMenu mnArchieve = new JMenu("Archieve"); // moved out due references issue
-	private JMenu mnRegistration = new JMenu("Registration"); // moved out due references issue
-	private JMenu mnReports = new JMenu("Reports");  // moved out due references issue
-	private JMenu mnPayment = new JMenu("Payment"); // moved out due references issue
-	private JMenu menu = new JMenu("CheckingCopy"); // moved out due references issue
-	private JMenu mnEvent = new JMenu("Event"); // moved out due references issue
-	private JMenu mnSubmission = new JMenu("Submission"); // moved out due references issue
-	
+	private JMenuBar menuBar = new JMenuBar(); // moved out from constructor due
+												// compiler issue
+	private JMenu mnArchieve = new JMenu("Archieve"); // moved out due
+														// references issue
+	private JMenu mnRegistration = new JMenu("Registration"); // moved out due
+																// references
+																// issue
+	private JMenu mnReports = new JMenu("Reports"); // moved out due references
+													// issue
+	private JMenu mnPayment = new JMenu("Payment"); // moved out due references
+													// issue
+	private JMenu menu = new JMenu("CheckingCopy"); // moved out due references
+													// issue
+	private JMenu mnEvent = new JMenu("Event"); // moved out due references
+												// issue
+	private JMenu mnSubmission = new JMenu("Submission"); // moved out due
+															// references issue
+
 	/**
 	 * Create the frame.
 	 */
 	public RiSEEventMainScreenP() {
 		init();
 	}
-	
-			
-	public void init(){
-		
+
+	public void init() {
+
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		
+
 		ExitMenuAction exitMenuAction = new ExitMenuAction();
-		
-	
-		InsertUserMenuAction insertUserAction = new InsertUserMenuAction();	
-		RemoveUserMenuAction removeUserAction = new RemoveUserMenuAction();	
-		UpdateUserMenuAction updateUserAction = new UpdateUserMenuAction();		
+
+		InsertUserMenuAction insertUserAction = new InsertUserMenuAction();
+		RemoveUserMenuAction removeUserAction = new RemoveUserMenuAction();
+		UpdateUserMenuAction updateUserAction = new UpdateUserMenuAction();
 		SearchUserMenuAction searchUserAction = new SearchUserMenuAction();
 		ListAllUserMenuAction listAllUserAction = new ListAllUserMenuAction();
 
-		//ManagementUserMenuAction managementUserAction = new ManagementUserMenuAction();
-		//#if ${Reviewer} == "T"
-		InsertReviewerMenuAction insertReviewerAction = new InsertReviewerMenuAction();
-		RemoveReviewerMenuAction removeReviewerAction = new RemoveReviewerMenuAction();
-		UpdateReviewerMenuAction updateReviewerAction = new UpdateReviewerMenuAction();
-		SearchReviewerMenuAction searchReviewerAction = new SearchReviewerMenuAction();
-		ListAllReviewerMenuAction listAllReviewerAction = new ListAllReviewerMenuAction();
-		//#endif
-		
+		// ManagementUserMenuAction managementUserAction = new
+		// ManagementUserMenuAction();
+
 		InsertEventMenuAction insertEventAction = new InsertEventMenuAction();
-		
+
 		RemoveEventMenuAction removeEventAction = new RemoveEventMenuAction();
 		UpdateEventMenuAction updateEventAction = new UpdateEventMenuAction();
 		SearchEventMenuAction searchEventAction = new SearchEventMenuAction();
 		ListAllEventMenuAction listAllEventAction = new ListAllEventMenuAction();
 		ManagementEventMenuAction managementEventAction = new ManagementEventMenuAction();
-		
-		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-		InsertAssignmentMenuAction insertAssignmentAction = new InsertAssignmentMenuAction();
-		RemoveAssignmentMenuAction removeAssignmentAction = new RemoveAssignmentMenuAction();
-		ListAllAssignmentMenuAction listAllAssignmentAction = new ListAllAssignmentMenuAction();
-		ManagementAssignmentMenuAction managementAssignmentAction = new ManagementAssignmentMenuAction();
-		SearchAssignmentMenuAction searchAssignmentAction = new SearchAssignmentMenuAction();
-		//#endif
-		
+
 		InsertRegistrationMenuAction insertRegistrationAction = new InsertRegistrationMenuAction();
 		RemoveRegistrationMenuAction removeRegistrationAction = new RemoveRegistrationMenuAction();
 		UpdateRegistrationMenuAction updateRegistrationAction = new UpdateRegistrationMenuAction();
 		SearchRegistrationMenuAction searchRegistrationAction = new SearchRegistrationMenuAction();
 		ListAllRegistrationMenuAction listAllRegistrationAction = new ListAllRegistrationMenuAction();
 		ManagementRegistrationMenuAction managementRegistrationAction = new ManagementRegistrationMenuAction();
-		
-		
-		//		
-		//ADICIONADO
+
+		//
+		// ADICIONADO
 		RiSEEventMainScreenP.facade = RiSEventFacade.getInstance();
-		
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1120, 691);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		desktopPane.setBounds(6, 36, 1104, 624);
 		contentPane.add(desktopPane);
-		
+
 		labelImagem = new JLabel("");
 		labelImagem.setBounds(210, 164, 648, 193);
-		ImageIcon image = new ImageIcon(getClass().getResource("/images/riseLabs.png"));
-		Image imag = image.getImage().getScaledInstance(labelImagem.getWidth(), labelImagem.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon image = new ImageIcon(getClass().getResource(
+				"/images/riseLabs.png"));
+		Image imag = image.getImage().getScaledInstance(labelImagem.getWidth(),
+				labelImagem.getHeight(), Image.SCALE_SMOOTH);
 		labelImagem.setIcon(new ImageIcon(imag));
 		desktopPane.add(labelImagem);
-		
-		
+
 		menuBar.setBounds(32, 12, 1078, 22);
 		contentPane.add(menuBar);
-		
+
 		menuBar.add(mnArchieve);
-		
-		
+
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnArchieve.add(mntmExit);
 
 		JMenu mnUser = new JMenu("User");
 		menuBar.add(mnUser);
-		
+
 		JMenuItem mntmInsert = new JMenuItem("Insert");
 		mnUser.add(mntmInsert);
-		
+
 		JMenuItem mntmRemove = new JMenuItem("Remove");
 		mnUser.add(mntmRemove);
-		
+
 		JMenuItem mntmUpdate = new JMenuItem("Update");
 		mnUser.add(mntmUpdate);
-		
+
 		JMenuItem mntmSearch = new JMenuItem("Search");
 		mnUser.add(mntmSearch);
-		
+
 		JMenuItem mntmListall = new JMenuItem("ListALL");
 		mnUser.add(mntmListall);
 
-		
-//		JMenuItem mntmUserManagement = new JMenuItem("User Management");
-//		mnUser.add(mntmUserManagement);
-		//#if ${Reviewer} == "T"
-		JMenu mnReviewer = new JMenu("Reviewer");
-		menuBar.add(mnReviewer);
-		
-		JMenuItem mntmInsert_2 = new JMenuItem("Insert");
-		mnReviewer.add(mntmInsert_2);
-		
-		JMenuItem mntmRemove_2 = new JMenuItem("Remove");
-		mnReviewer.add(mntmRemove_2);
-		
-		JMenuItem mntmUpdate_2 = new JMenuItem("Update");
-		mnReviewer.add(mntmUpdate_2);
-		
-		JMenuItem mntmSearch_2 = new JMenuItem("Search");
-		mnReviewer.add(mntmSearch_2);
-		
-		JMenuItem mntmListall_2 = new JMenuItem("ListAll");
-		mnReviewer.add(mntmListall_2);
-		//#endif
+		// JMenuItem mntmUserManagement = new JMenuItem("User Management");
+		// mnUser.add(mntmUserManagement);
 		JMenu mnEvent = new JMenu("Event");
 		menuBar.add(mnEvent);
-		
+
 		JMenuItem mntmInsert_4 = new JMenuItem("Insert");
 		mnEvent.add(mntmInsert_4);
-		
+
 		JMenuItem mntmRemove_4 = new JMenuItem("Remove");
 		mnEvent.add(mntmRemove_4);
-		
+
 		JMenuItem mntmUpdate_4 = new JMenuItem("Update");
 		mnEvent.add(mntmUpdate_4);
-		
+
 		JMenuItem mntmSearch_4 = new JMenuItem("Search");
 		mnEvent.add(mntmSearch_4);
-		
+
 		JMenuItem mntmListall_4 = new JMenuItem("ListAll");
 		mnEvent.add(mntmListall_4);
-		
+
 		JMenuItem mntmEventManagement = new JMenuItem("Event Management");
 		mnEvent.add(mntmEventManagement);
-		
+
 		menuBar.add(mnRegistration);
 
 		JMenuItem mntmInsert_10 = new JMenuItem("Insert");
 		mnRegistration.add(mntmInsert_10);
-		
+
 		JMenuItem mntmRemove_10 = new JMenuItem("Remove");
 		mnRegistration.add(mntmRemove_10);
-		
+
 		JMenuItem mntmUpdate_10 = new JMenuItem("Update");
 		mnRegistration.add(mntmUpdate_10);
-		
+
 		JMenuItem mntmSearch_10 = new JMenuItem("Search");
 		mnRegistration.add(mntmSearch_10);
-		
+
 		JMenuItem mntmListall_10 = new JMenuItem("ListAll");
 		mnRegistration.add(mntmListall_10);
-		
-		JMenuItem mntmRegistrationManagement = new JMenuItem("Registration Management");
+
+		JMenuItem mntmRegistrationManagement = new JMenuItem(
+				"Registration Management");
 		mnRegistration.add(mntmRegistrationManagement);
-		
-		//#if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity} == "T" or ${ReportsFrequencyperEvent} == "T" or ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"	
+
+		// #if ${ReportsListofAuthors} == "T" or ${ReportsFrequencyperActivity}
+		// == "T" or ${ReportsFrequencyperEvent} == "T" or
+		// ${CheckingCopyCertificado} == "T" or ${CheckingCopyAtestado} == "T"
 		menuBar.add(mnReports);
-		//#endif
+		// #endif
 
 		JMenuItem mntmRemove_8 = new JMenuItem("Remove");
 		mnSubmission.add(mntmRemove_8);
-		
+
 		JMenuItem mntmSearch_8 = new JMenuItem("Search");
 		mnSubmission.add(mntmSearch_8);
-		
+
 		JMenuItem mntmListall_8 = new JMenuItem("List All");
 		mnSubmission.add(mntmListall_8);
-		//#endif
-		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-		JMenu mnAssignment = new JMenu("Assignment");
-		menuBar.add(mnAssignment);
-		
-		JMenuItem mntmInsert_9 = new JMenuItem("Insert");
-		mnAssignment.add(mntmInsert_9);
-		
-		JMenuItem mntmRemove_9 = new JMenuItem("Remove");
-		mnAssignment.add(mntmRemove_9);
-		
-		JMenuItem mntmSearch_9 = new JMenuItem("Search");
-		mnAssignment.add(mntmSearch_9);
-		
-		JMenuItem mntmListall_9 = new JMenuItem("List All");
-		mnAssignment.add(mntmListall_9);
-		
-		JMenuItem mntmAssignmentManagement = new JMenuItem("Assignment Management");
-		mnAssignment.add(mntmAssignmentManagement);
-		//#endif
+		// #endif
+
 		mntmExit.addActionListener(exitMenuAction);
 
 		mntmInsert.addActionListener(insertUserAction);
-		
+
 		mntmRemove.addActionListener(removeUserAction);
-		
+
 		mntmUpdate.addActionListener(updateUserAction);
-		
+
 		mntmSearch.addActionListener(searchUserAction);
-		
+
 		mntmListall.addActionListener(listAllUserAction);
 
-		//mntmUserManagement.addActionListener(managementUserAction);
-		//#if ${Reviewer} == "T"
-		mntmInsert_2.addActionListener(insertReviewerAction);
-		mntmRemove_2.addActionListener(removeReviewerAction);
-		mntmUpdate_2.addActionListener(updateReviewerAction);
-		mntmSearch_2.addActionListener(searchReviewerAction);
-		mntmListall_2.addActionListener(listAllReviewerAction);
-		//#endif
+		// mntmUserManagement.addActionListener(managementUserAction);
 
 		mntmInsert_4.addActionListener(insertEventAction);
-		
+
 		mntmRemove_4.addActionListener(removeEventAction);
 		mntmUpdate_4.addActionListener(updateEventAction);
 		mntmSearch_4.addActionListener(searchEventAction);
 		mntmListall_4.addActionListener(listAllEventAction);
 		mntmEventManagement.addActionListener(managementEventAction);
-		
-		//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-		mntmInsert_9.addActionListener(insertAssignmentAction);
-		mntmSearch_9.addActionListener(searchAssignmentAction);
-		mntmRemove_9.addActionListener(removeAssignmentAction);
-		mntmListall_9.addActionListener(listAllAssignmentAction);
-		mntmAssignmentManagement.addActionListener(managementAssignmentAction);
-		//#endif
-		
+
 		mntmInsert_10.addActionListener(insertRegistrationAction);
 		mntmRemove_10.addActionListener(removeRegistrationAction);
 		mntmUpdate_10.addActionListener(updateRegistrationAction);
 		mntmSearch_10.addActionListener(searchRegistrationAction);
 		mntmListall_10.addActionListener(listAllRegistrationAction);
-		mntmRegistrationManagement.addActionListener(managementRegistrationAction);
+		mntmRegistrationManagement
+				.addActionListener(managementRegistrationAction);
 	}
-	
-	private class ExitMenuAction  implements ActionListener{ 
+
+	private class ExitMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose();
 		}
-	} 
+	}
 
-	private class InsertUserMenuAction  implements ActionListener{ 
+	private class InsertUserMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			screenInsertUser = UserInsertScreenP.getInstanceUserInsertScreenP();
-			if(screenInsertUser.getParent() == null){
+			if (screenInsertUser.getParent() == null) {
 				desktopPane.add(screenInsertUser);
 			}
 			screenInsertUser.setVisible(true);
@@ -382,17 +307,17 @@ public class RiSEEventMainScreenP extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-		}  
+
+		}
 	}
-	
-	private class RemoveUserMenuAction  implements ActionListener{ 
+
+	private class RemoveUserMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			screenRemoveUser = UserRemoveScreenP.getInstanceUserRemoveScreenP();
-			if(screenRemoveUser.getParent() == null){
+			if (screenRemoveUser.getParent() == null) {
 				desktopPane.add(screenRemoveUser);
 			}
 			screenRemoveUser.setVisible(true);
@@ -403,18 +328,18 @@ public class RiSEEventMainScreenP extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-		}  
+
+		}
 	}
-	
-	private class UpdateUserMenuAction  implements ActionListener{ 
+
+	private class UpdateUserMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			screenUpdateUser = UserUpdateScreenP.getInstanceUserUpdateScreenP();
-		//	desktopPane.add(screenUpdateUser);
-			if(screenUpdateUser.getParent() == null){
+			// desktopPane.add(screenUpdateUser);
+			if (screenUpdateUser.getParent() == null) {
 				desktopPane.add(screenUpdateUser);
 			}
 			screenUpdateUser.setVisible(true);
@@ -425,17 +350,17 @@ public class RiSEEventMainScreenP extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
 
-	private class SearchUserMenuAction  implements ActionListener{ 
+	private class SearchUserMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			screenSearchUser = UserSearchScreenP.getInstanceUserSearchScreenP();
-		//	desktopPane.add(screenSearchUser);
-			if(screenSearchUser.getParent() == null){
+			// desktopPane.add(screenSearchUser);
+			if (screenSearchUser.getParent() == null) {
 				desktopPane.add(screenSearchUser);
 			}
 			screenSearchUser.setVisible(true);
@@ -446,17 +371,19 @@ public class RiSEEventMainScreenP extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
 
-	private class ListAllUserMenuAction  implements ActionListener{ 
+	private class ListAllUserMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenListAllUser = UserListAllScreenP.getInstanceUserListAllScreenP();
-			//desktopPane.add(screenListAllUser);
-			if(screenListAllUser.getParent() == null && screenListAllUser.getParent() != desktopPane){
+
+			screenListAllUser = UserListAllScreenP
+					.getInstanceUserListAllScreenP();
+			// desktopPane.add(screenListAllUser);
+			if (screenListAllUser.getParent() == null
+					&& screenListAllUser.getParent() != desktopPane) {
 				desktopPane.add(screenListAllUser);
 			}
 			screenListAllUser.setVisible(true);
@@ -467,619 +394,297 @@ public class RiSEEventMainScreenP extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
 
-//	private class ManagementUserMenuAction  implements ActionListener{ 
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			screenManagementUser = UserManagementScreenP.getInstanceUserManagementScreenP();
-//			if(screenManagementUser.getParent() == null && screenManagementUser.getParent() != desktopPane){
-//				desktopPane.add(screenManagementUser);
-//			}
-//			screenManagementUser.setVisible(true);
-//			desktopPane.moveToFront(screenManagementUser);
-//			try {
-//				screenManagementUser.setSelected(true);
-//			} catch (PropertyVetoException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//		}  
-//	}
-	
-	
-	
-	
-	//REVIEWER
-	//#if ${Reviewer} == "T"
-	private class InsertReviewerMenuAction  implements ActionListener{ 
+	// private class ManagementUserMenuAction implements ActionListener{
+	//
+	// @Override
+	// public void actionPerformed(ActionEvent e) {
+	// screenManagementUser =
+	// UserManagementScreenP.getInstanceUserManagementScreenP();
+	// if(screenManagementUser.getParent() == null &&
+	// screenManagementUser.getParent() != desktopPane){
+	// desktopPane.add(screenManagementUser);
+	// }
+	// screenManagementUser.setVisible(true);
+	// desktopPane.moveToFront(screenManagementUser);
+	// try {
+	// screenManagementUser.setSelected(true);
+	// } catch (PropertyVetoException e1) {
+	// // TODO Auto-generated catch block
+	// e1.printStackTrace();
+	// }
+	// }
+	// }
+
+
+	// EVENT
+	private class InsertEventMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenInsertReviewer = ReviewerInsertScreenP.getInstanceReviewerInsertScreenP();
-			//desktopPane.add(screenInsertReviewer);
-			if(screenInsertReviewer.getParent() == null){
-				desktopPane.add(screenInsertReviewer);
+
+			screenInsertEvent = EventInsertScreenP
+					.getInstanceEventInsertScreenP();
+			// desktopPane.add(screenInsertEvent);
+			if (screenInsertEvent.getParent() == null) {
+				desktopPane.add(screenInsertEvent);
 			}
-			screenInsertReviewer.setVisible(true);
-			desktopPane.moveToFront(screenInsertReviewer);
+			screenInsertEvent.setVisible(true);
+			desktopPane.moveToFront(screenInsertEvent);
 			try {
-				screenInsertReviewer.setSelected(true);
+				screenInsertEvent.setSelected(true);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-		}  
+
+		}
 	}
-	
-	private class RemoveReviewerMenuAction  implements ActionListener{ 
+
+	private class RemoveEventMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenRemoveReviewer = ReviewerRemoveScreenP.getInstanceReviewerRemoveScreenP();
-			//desktopPane.add(screenRemoveReviewer);
-			if(screenRemoveReviewer.getParent() == null){
-				desktopPane.add(screenRemoveReviewer);
+
+			screenRemoveEvent = EventRemoveScreenP
+					.getInstanceEventRemoveScreenP();
+			// desktopPane.add(screenRemoveEvent);
+			if (screenRemoveEvent.getParent() == null) {
+				desktopPane.add(screenRemoveEvent);
 			}
-			screenRemoveReviewer.setVisible(true);
-			desktopPane.moveToFront(screenRemoveReviewer);
+			screenRemoveEvent.setVisible(true);
+			desktopPane.moveToFront(screenRemoveEvent);
 			try {
-				screenRemoveReviewer.setSelected(true);
+				screenRemoveEvent.setSelected(true);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-		}  
+
+		}
 	}
-	
-	private class UpdateReviewerMenuAction  implements ActionListener{ 
+
+	private class UpdateEventMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenUpdateReviewer = ReviewerUpdateScreenP.getInstanceReviewerUpdateScreenP();
-			//desktopPane.add(screenUpdateReviewer);
-			if(screenUpdateReviewer.getParent() == null){
-				desktopPane.add(screenUpdateReviewer);
+
+			screenUpdateEvent = EventUpdateScreenP
+					.getInstanceEventUpdateScreenP();
+			// desktopPane.add(screenUpdateEvent);
+			if (screenUpdateEvent.getParent() == null) {
+				desktopPane.add(screenUpdateEvent);
 			}
-			screenUpdateReviewer.setVisible(true);
-			desktopPane.moveToFront(screenUpdateReviewer);
+			screenUpdateEvent.setVisible(true);
+			desktopPane.moveToFront(screenUpdateEvent);
 			try {
-				screenUpdateReviewer.setSelected(true);
+				screenUpdateEvent.setSelected(true);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
-	
-	private class SearchReviewerMenuAction  implements ActionListener{ 
+
+	private class SearchEventMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenSearchReviewer = ReviewerSearchScreenP.getInstanceReviewerSearchScreenP();
-		//	desktopPane.add(screenSearchReviewer);
-			if(screenSearchReviewer.getParent() == null){
-				desktopPane.add(screenSearchReviewer);
+
+			screenSearchEvent = EventSearchScreenP
+					.getInstanceEventSearchScreenP();
+			// desktopPane.add(screenSearchEvent);
+			if (screenSearchEvent.getParent() == null) {
+				desktopPane.add(screenSearchEvent);
 			}
-			screenSearchReviewer.setVisible(true);
-			desktopPane.moveToFront(screenSearchReviewer);
+			screenSearchEvent.setVisible(true);
+			desktopPane.moveToFront(screenSearchEvent);
 			try {
-				screenSearchReviewer.setSelected(true);
+				screenSearchEvent.setSelected(true);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
-	
-	private class ListAllReviewerMenuAction  implements ActionListener{ 
+
+	private class ListAllEventMenuAction implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			screenListAllReviewer = ReviewerListAllScreenP.getInstanceReviewerListAllScreenP();
-		//	desktopPane.add(screenListAllReviewer);
-			if(screenListAllReviewer.getParent() == null){
-				desktopPane.add(screenListAllReviewer);
+
+			screenListAllEvent = EventListAllScreenP
+					.getInstanceEventListAllScreenP();
+			// desktopPane.add(screenListAllEvent);
+			if (screenListAllEvent.getParent() == null) {
+				desktopPane.add(screenListAllEvent);
 			}
-			screenListAllReviewer.setVisible(true);
-			desktopPane.moveToFront(screenListAllReviewer);
+			screenListAllEvent.setVisible(true);
+			desktopPane.moveToFront(screenListAllEvent);
 			try {
-				screenListAllReviewer.setSelected(true);
+				screenListAllEvent.setSelected(true);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}  
+		}
 	}
-	//#endif
-	
-	
-	//Organizer
-	//#if ${Organizer} == "T"
-		private class InsertOrganizerMenuAction  implements ActionListener{ 
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenInsertOrganizer = OrganizerInsertScreenP.getInstanceOrganizerInsertScreenP();
-			//	desktopPane.add(screenInsertOrganizer);
-				if(screenInsertOrganizer.getParent() == null){
-					desktopPane.add(screenInsertOrganizer);
-				}
-				screenInsertOrganizer.setVisible(true);
-				desktopPane.moveToFront(screenInsertOrganizer);
-				try {
-					screenInsertOrganizer.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}  
+	private class ManagementEventMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManagementEvent = EventManagementScreenP
+					.getInstanceEventManagementScreenP();
+			// desktopPane.add(screenManagementEvent);
+			if (screenManagementEvent.getParent() == null) {
+				desktopPane.add(screenManagementEvent);
+			}
+			screenManagementEvent.setVisible(true);
+			desktopPane.moveToFront(screenManagementEvent);
+			try {
+				screenManagementEvent.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		
-		private class RemoveOrganizerMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenRemoveOrganizer = OrganizerRemoveScreenP.getInstanceOrganizerRemoveScreenP();
-				//desktopPane.add(screenRemoveOrganizer);
-				if(screenRemoveOrganizer.getParent() == null){
-					desktopPane.add(screenRemoveOrganizer);
-				}
-				screenRemoveOrganizer.setVisible(true);
-				desktopPane.moveToFront(screenRemoveOrganizer);
-				try {
-					screenRemoveOrganizer.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}  
+	// REGISTRATION
+	private class InsertRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			screenInsertRegistration = RegistrationInsertScreenP
+					.getInstanceRegistrationInsertScreenP();
+			// desktopPane.add(screenInsertRegistration);
+			if (screenInsertRegistration.getParent() == null) {
+				desktopPane.add(screenInsertRegistration);
+			}
+			screenInsertRegistration.setVisible(true);
+			desktopPane.moveToFront(screenInsertRegistration);
+			try {
+				screenInsertRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 		}
-		
-		private class UpdateOrganizerMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenUpdateOrganizer = OrganizerUpdateScreenP.getInstanceOrganizerUpdateScreenP();
-				//desktopPane.add(screenUpdateOrganizer);
-				if(screenUpdateOrganizer.getParent() == null){
-					desktopPane.add(screenUpdateOrganizer);
-				}
-				screenUpdateOrganizer.setVisible(true);
-				desktopPane.moveToFront(screenUpdateOrganizer);
-				try {
-					screenUpdateOrganizer.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
+	private class RemoveRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			screenRemoveRegistration = RegistrationRemoveScreenP
+					.getInstanceRegistrationRemoveScreenP();
+			// desktopPane.add(screenRemoveRegistration);
+			if (screenRemoveRegistration.getParent() == null) {
+				desktopPane.add(screenRemoveRegistration);
+			}
+			screenRemoveRegistration.setVisible(true);
+			desktopPane.moveToFront(screenRemoveRegistration);
+			try {
+				screenRemoveRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 		}
-		
-		private class SearchOrganizerMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenSearchOrganizer = OrganizerSearchScreenP.getInstanceOrganizerSearchScreenP();
-				//desktopPane.add(screenSearchOrganizer);
-				if(screenSearchOrganizer.getParent() == null){
-					desktopPane.add(screenSearchOrganizer);
-				}
-				screenSearchOrganizer.setVisible(true);
-				desktopPane.moveToFront(screenSearchOrganizer);
-				try {
-					screenSearchOrganizer.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
+	private class UpdateRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			screenUpdateRegistration = RegistrationUpdateScreenP
+					.getInstanceRegistrationUpdateScreenP();
+			// desktopPane.add(screenUpdateRegistration);
+			if (screenUpdateRegistration.getParent() == null) {
+				desktopPane.add(screenUpdateRegistration);
+			}
+			screenUpdateRegistration.setVisible(true);
+			desktopPane.moveToFront(screenUpdateRegistration);
+			try {
+				screenUpdateRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		
-		private class ListAllOrganizerMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenListAllOrganizer = OrganizerListAllScreenP.getInstanceOrganizerListAllScreenP();
-				//desktopPane.add(screenListAllOrganizer);
-				if(screenListAllOrganizer.getParent() == null){
-					desktopPane.add(screenListAllOrganizer);
-				}
-				screenListAllOrganizer.setVisible(true);
-				desktopPane.moveToFront(screenListAllOrganizer);
-				try {
-					screenListAllOrganizer.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
+	private class SearchRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			screenSearchRegistration = RegistrationSearchScreenP
+					.getInstanceRegistrationSearchScreenP();
+			// desktopPane.add(screenSearchRegistration);
+			if (screenSearchRegistration.getParent() == null) {
+				desktopPane.add(screenSearchRegistration);
+			}
+			screenSearchRegistration.setVisible(true);
+			desktopPane.moveToFront(screenSearchRegistration);
+			try {
+				screenSearchRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		//#endif
-		
-		
-		//EVENT
-		
-		private class InsertEventMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenInsertEvent = EventInsertScreenP.getInstanceEventInsertScreenP();
-				//desktopPane.add(screenInsertEvent);
-				if(screenInsertEvent.getParent() == null){
-					desktopPane.add(screenInsertEvent);
-				}
-				screenInsertEvent.setVisible(true);
-				desktopPane.moveToFront(screenInsertEvent);
-				try {
-					screenInsertEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}  
+	private class ListAllRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			screenListAllRegistration = RegistrationListAllScreenP
+					.getInstanceRegistrationListAllScreenP();
+			// desktopPane.add(screenListAllRegistration);
+			if (screenListAllRegistration.getParent() == null) {
+				desktopPane.add(screenListAllRegistration);
+			}
+			screenListAllRegistration.setVisible(true);
+			desktopPane.moveToFront(screenListAllRegistration);
+			try {
+				screenListAllRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		
-		
-		private class RemoveEventMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenRemoveEvent = EventRemoveScreenP.getInstanceEventRemoveScreenP();
-				//desktopPane.add(screenRemoveEvent);
-				if(screenRemoveEvent.getParent() == null){
-					desktopPane.add(screenRemoveEvent);
-				}
-				screenRemoveEvent.setVisible(true);
-				desktopPane.moveToFront(screenRemoveEvent);
-				try {
-					screenRemoveEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}  
+	private class ManagementRegistrationMenuAction implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManagementRegistration = RegistrationManagementScreenP
+					.getInstanceRegistrationManagementScreenP();
+			// desktopPane.add(screenManagementRegistration);
+			if (screenManagementRegistration.getParent() == null) {
+				desktopPane.add(screenManagementRegistration);
+			}
+			screenManagementRegistration.setVisible(true);
+			desktopPane.moveToFront(screenManagementRegistration);
+			try {
+				screenManagementRegistration.setSelected(true);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		
-		private class UpdateEventMenuAction  implements ActionListener{ 
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenUpdateEvent = EventUpdateScreenP.getInstanceEventUpdateScreenP();
-			//	desktopPane.add(screenUpdateEvent);
-				if(screenUpdateEvent.getParent() == null){
-					desktopPane.add(screenUpdateEvent);
-				}
-				screenUpdateEvent.setVisible(true);
-				desktopPane.moveToFront(screenUpdateEvent);
-				try {
-					screenUpdateEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		
-		private class SearchEventMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenSearchEvent = EventSearchScreenP.getInstanceEventSearchScreenP();
-				//desktopPane.add(screenSearchEvent);
-				if(screenSearchEvent.getParent() == null){
-					desktopPane.add(screenSearchEvent);
-				}
-				screenSearchEvent.setVisible(true);
-				desktopPane.moveToFront(screenSearchEvent);
-				try {
-					screenSearchEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		
-		private class ListAllEventMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				screenListAllEvent = EventListAllScreenP.getInstanceEventListAllScreenP();
-				//desktopPane.add(screenListAllEvent);
-				if(screenListAllEvent.getParent() == null){
-					desktopPane.add(screenListAllEvent);
-				}
-				screenListAllEvent.setVisible(true);
-				desktopPane.moveToFront(screenListAllEvent);
-				try {
-					screenListAllEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		
-		private class ManagementEventMenuAction  implements ActionListener{ 
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				screenManagementEvent = EventManagementScreenP.getInstanceEventManagementScreenP();
-				//desktopPane.add(screenManagementEvent);
-				if(screenManagementEvent.getParent() == null){
-					desktopPane.add(screenManagementEvent);
-				}
-				screenManagementEvent.setVisible(true);
-				desktopPane.moveToFront(screenManagementEvent);
-				try {
-					screenManagementEvent.setSelected(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}  
-		}
-		
-				
-				//Assignemnt
-				//#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
-				private class InsertAssignmentMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenInsertAssignment = AssignmentInsertScreenP.getInstanceAssignmentInsertScreenP();
-						//desktopPane.add(screenInsertAssignment);
-						if(screenInsertAssignment.getParent() == null){
-							desktopPane.add(screenInsertAssignment);
-						}
-						screenInsertAssignment.setVisible(true);
-						desktopPane.moveToFront(screenInsertAssignment);
-						try {
-							screenInsertAssignment.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}  
-				}
-				
-				private class SearchAssignmentMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenSearchAssignment = AssignmentSearchScreenP.getInstanceAssignmentSearchScreenP();
-						//desktopPane.add(screenSearchAssignment);
-						if(screenSearchAssignment.getParent() == null){
-							desktopPane.add(screenSearchAssignment);
-						}
-						screenSearchAssignment.setVisible(true);
-						desktopPane.moveToFront(screenSearchAssignment);
-						try {
-							screenSearchAssignment.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-				
-				private class RemoveAssignmentMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						screenRemoveAssignment = AssignmentRemoveScreenP.getInstanceAssignmentRemoveScreenP();
-						//desktopPane.add(screenRemoveAssignment);
-						if(screenRemoveAssignment.getParent() == null){
-							desktopPane.add(screenRemoveAssignment);
-						}
-						screenRemoveAssignment.setVisible(true);
-						desktopPane.moveToFront(screenRemoveAssignment);
-						try {
-							screenRemoveAssignment.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						
-					}  
-				}
-				
-				private class ListAllAssignmentMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						screenListAllAssignment = AssignmentListAllScreenP.getInstanceAssignmentListAllScreenP();
-						//desktopPane.add(screenListAllAssignment);
-						if(screenListAllAssignment.getParent() == null){
-							desktopPane.add(screenListAllAssignment);
-						}
-						screenListAllAssignment.setVisible(true);
-						desktopPane.moveToFront(screenListAllAssignment);
-						try {
-							screenListAllAssignment.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-				
-				private class ManagementAssignmentMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						screenManagementAssignment = AssignmentManagementScreenP.getInstanceAssignmentManagementScreenP();
-						//desktopPane.add(screenManagementAssignment);
-						if(screenManagementAssignment.getParent() == null){
-							desktopPane.add(screenManagementAssignment);
-						}
-						screenManagementAssignment.setVisible(true);
-						desktopPane.moveToFront(screenManagementAssignment);
-						try {
-							screenManagementAssignment.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-				//#endif
-		
-		//REGISTRATION
-				private class InsertRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenInsertRegistration = RegistrationInsertScreenP.getInstanceRegistrationInsertScreenP();
-						//desktopPane.add(screenInsertRegistration);
-						if(screenInsertRegistration.getParent() == null){
-							desktopPane.add(screenInsertRegistration);
-						}
-						screenInsertRegistration.setVisible(true);
-						desktopPane.moveToFront(screenInsertRegistration);
-						try {
-							screenInsertRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}  
-				}
-
-				private class RemoveRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenRemoveRegistration = RegistrationRemoveScreenP.getInstanceRegistrationRemoveScreenP();
-						//desktopPane.add(screenRemoveRegistration);
-						if(screenRemoveRegistration.getParent() == null){
-							desktopPane.add(screenRemoveRegistration);
-						}
-						screenRemoveRegistration.setVisible(true);
-						desktopPane.moveToFront(screenRemoveRegistration);
-						try {
-							screenRemoveRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}  
-				}
-
-				private class UpdateRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenUpdateRegistration = RegistrationUpdateScreenP.getInstanceRegistrationUpdateScreenP();
-						//desktopPane.add(screenUpdateRegistration);
-						if(screenUpdateRegistration.getParent() == null){
-							desktopPane.add(screenUpdateRegistration);
-						}
-						screenUpdateRegistration.setVisible(true);
-						desktopPane.moveToFront(screenUpdateRegistration);
-						try {
-							screenUpdateRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				private class SearchRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenSearchRegistration = RegistrationSearchScreenP.getInstanceRegistrationSearchScreenP();
-						//desktopPane.add(screenSearchRegistration);
-						if(screenSearchRegistration.getParent() == null){
-							desktopPane.add(screenSearchRegistration);
-						}
-						screenSearchRegistration.setVisible(true);
-						desktopPane.moveToFront(screenSearchRegistration);
-						try {
-							screenSearchRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				private class ListAllRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						screenListAllRegistration = RegistrationListAllScreenP.getInstanceRegistrationListAllScreenP();
-						//desktopPane.add(screenListAllRegistration);
-						if(screenListAllRegistration.getParent() == null){
-							desktopPane.add(screenListAllRegistration);
-						}
-						screenListAllRegistration.setVisible(true);
-						desktopPane.moveToFront(screenListAllRegistration);
-						try {
-							screenListAllRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-
-				private class ManagementRegistrationMenuAction  implements ActionListener{ 
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						screenManagementRegistration = RegistrationManagementScreenP.getInstanceRegistrationManagementScreenP();
-						//desktopPane.add(screenManagementRegistration);
-						if(screenManagementRegistration.getParent() == null){
-							desktopPane.add(screenManagementRegistration);
-						}
-						screenManagementRegistration.setVisible(true);
-						desktopPane.moveToFront(screenManagementRegistration);
-						try {
-							screenManagementRegistration.setSelected(true);
-						} catch (PropertyVetoException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}  
-				}
-				
 }

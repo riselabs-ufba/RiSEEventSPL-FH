@@ -47,8 +47,8 @@
 							<feature mandatory="true" name="ReviewSimpleReview"/>
 						</alt>
 						<and abstract="true" mandatory="true" name="Assignment">
-							<alt abstract="true" mandatory="true" name="AssignmentIndications">
-								<feature mandatory="true" name="AssignmentChairindication"/>
+							<alt mandatory="true" name="AssignmentIndications">
+								<feature abstract="true" mandatory="true" name="AssignmentChairindication"/>
 								<feature mandatory="true" name="Assignmentautomatic"/>
 							</alt>
 							<alt abstract="true" mandatory="true" name="Conflicto">
@@ -121,7 +121,7 @@
 			<feature name="PaymentAvista"/>
 			<feature name="ReviewRoundofReview"/>
 			<feature name="ReviewSimpleReview"/>
-			<feature name="AssignmentChairindication"/>
+			<feature name="AssignmentIndications"/>
 			<feature name="Assignmentautomatic"/>
 			<feature name="ConflictofinterestAutomatic"/>
 			<feature name="Notification"/>

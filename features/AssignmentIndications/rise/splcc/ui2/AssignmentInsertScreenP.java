@@ -1,7 +1,6 @@
 //#if ${AssignmentChairindication} == "T" or ${Assignmentautomatic} == "T"
 package rise.splcc.ui2;
 
-
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -67,9 +66,6 @@ public class AssignmentInsertScreenP extends JInternalFrame{
 	private JTable tableReviewer;
 	private JTable tableSelectReviewer;
 	
-	//#if ${Assignmentautomatic} == "T"
-	private JButton btnGenerate;
-	//#endif
 	
 	private List<Reviewer> listaRevisoresSelecionados = new ArrayList<Reviewer>();
 	
@@ -99,7 +95,10 @@ public class AssignmentInsertScreenP extends JInternalFrame{
 	 * Create the frame.
 	 */
 	public AssignmentInsertScreenP() {
-setTitle("Insert Assignment");
+		init();
+	}
+	private void init(){
+		setTitle("Insert Assignment");
 		
 		int inset = 30;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -116,9 +115,6 @@ setTitle("Insert Assignment");
 		BackButtonAction backAction = new BackButtonAction();
 		RightButtonAction buttonInsertRigthAction = new RightButtonAction();
 		LeftButtonAction buttonInsertLeftAction = new LeftButtonAction();
-		//#if ${Assignmentautomatic} == "T"
-		GenerateButtonAction generateAction = new GenerateButtonAction();
-		//#endif
 		JLabel lblSubmission = new JLabel("Submission:");
 		lblSubmission.setBounds(6, 71, 80, 16);
 		getContentPane().add(lblSubmission);
@@ -170,19 +166,11 @@ setTitle("Insert Assignment");
 		list.setBounds(335, 106, 1, 1);
 		getContentPane().add(list);
 		
-		//#if ${Assignmentautomatic} == "T"
-		JButton btnGenerate = new JButton("Generate");
-		btnGenerate.setBounds(280, 358, 117, 29);
-		getContentPane().add(btnGenerate);
-		//#endif
 		
 		btnInsert.addActionListener(insertAction);
 		btnBack.addActionListener(backAction);
 		buttonInsert.addActionListener(buttonInsertRigthAction);
 		buttonRemove.addActionListener(buttonInsertLeftAction);
-		//#if ${Assignmentautomatic} == "T"
-		btnGenerate.addActionListener(generateAction);
-		//#endif
 		
 		populateTableReviewer();
 		carregarComboSubmission();
@@ -581,101 +569,6 @@ setTitle("Insert Assignment");
 			e.printStackTrace();
 		}
 	}
-	
-	
-	//#if ${Assignmentautomatic} == "T"
-	private class GenerateButtonAction  implements ActionListener{ 
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String submissao = comboBoxSubmission.getSelectedItem().toString();
-			List<Reviewer> reviewerList = new ArrayList<Reviewer>();
-			if(submissao.equals("")){
-				JOptionPane.showMessageDialog(getContentPane(),
-						"Selecione uma Submissão", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
-			}else{
-				try {
-					int subId = RiSEEventMainScreenP.facade.getSubmissionIdByTitle(submissao);
-					Submission sub = RiSEEventMainScreenP.facade.searchSubmission(subId);
-					String keywords = sub.getKeywords();
-					String keywordsSplit[] = keywords.split(Pattern.quote(","));
-					reviewerList = RiSEEventMainScreenP.facade.getReviewers();
-					boolean flag;
-
-					
-					for(Reviewer r : reviewerList){
-						flag = false;
-						ReviewerTableModel model;
-						String knowledgeAreaSplit[] = r.getKnowledgeArea().split(Pattern.quote(","));						
-						for(String know : knowledgeAreaSplit){
-							flag = false;
-							for(String key : keywordsSplit){
-								if(know.equals(key)){
-									listaRevisoresSelecionados.add(r);
-									model = new ReviewerTableModel(listaRevisoresSelecionados);
-									tableSelectReviewer.setModel(model);
-									flag = true;
-									break;
-								}
-							}
-							if(flag == true){
-								break;
-							}
-						}
-						if(listaRevisoresSelecionados.size() == 3){
-							break;
-						}
-					}
-					
-					if(listaRevisoresSelecionados.size() < 3){
-					
-						if(listaRevisoresSelecionados.isEmpty()){
-							int i = 0;
-							ReviewerTableModel model;
-							while(i<3){
-								listaRevisoresSelecionados.add(reviewerList.get(i));
-								model = new ReviewerTableModel(listaRevisoresSelecionados);
-								tableSelectReviewer.setModel(model);
-								i++;
-							}
-							
-						}else{
-							int i = listaRevisoresSelecionados.size();
-							ReviewerTableModel model;
-							while(i<3){
-								listaRevisoresSelecionados.add(reviewerList.get(i));
-								model = new ReviewerTableModel(listaRevisoresSelecionados);
-								tableSelectReviewer.setModel(model);
-								i++;
-							}
-							
-						}
-						
-					}
-					
-					
-				} catch (RepositoryException e1) {
-					JOptionPane.showMessageDialog(getContentPane(),
-							e1.toString(), "Erro",
-							JOptionPane.INFORMATION_MESSAGE);
-					e1.printStackTrace();
-				} catch (SubmissionNotFoundException e1) {
-					JOptionPane.showMessageDialog(getContentPane(),
-							e1.toString(), "Erro",
-							JOptionPane.INFORMATION_MESSAGE);
-					e1.printStackTrace();
-				} catch (SubmissionAlreadyInsertedException e1) {
-					JOptionPane.showMessageDialog(getContentPane(),
-							e1.toString(), "Erro",
-							JOptionPane.INFORMATION_MESSAGE);
-					e1.printStackTrace();
-				}
-			}
-				
-		}
-	}
-	//#endif
 	
 }
 //#endif
