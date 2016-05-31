@@ -1,9 +1,0 @@
-Anotações;
-
-Lembrar de colocar o delete on cascade no banco, quando um usuario for deletado da tabela user, refletir a delecao
-em speaker ou organizer ou reviewer.
-
-retirar o erro quando acontece uma insercao de eventos, ele mostra duas vezes o mesmo registro na tabela. 
-
-TRatar a retirada de uma atividade, como ficara o organizador e as entidades 
-relacionadas aquela atividade?

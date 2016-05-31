@@ -1,1 +1,0 @@
-java -jar FeatureHouse.jar --expression ./AandB.features --base-directory ./features/ --output-directory ./out/
