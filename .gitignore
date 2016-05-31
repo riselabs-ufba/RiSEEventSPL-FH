@@ -1,12 +1,13 @@
-
 # ignore MacOS files
 *.DS_Store
 
 # ignore generated files
-bin/
-*.class
-src/
+FeatureHouse/bin/
+FeatureHouse/*.class
+FeatureHouse/src/
  
 # ignore temporary files
-.tmp/
+FeatureHouse/.tmp/
 
+# ignore binary files
+ObjectOriented/bin/
